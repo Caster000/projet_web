@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <a href="https://www.youtube.com/">Laravel</a>
+                    <a href="https://www.youtube.com/">Go on youtube</a>
                 </div>
 
                 <div class="links">
