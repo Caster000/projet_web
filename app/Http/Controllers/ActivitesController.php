@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 class ActivitesController extends Controller
 {
-    public function activites(){
-        return view('activites');
+    public function index(){
+        return view('activites.activites');
     }
 
     public function activiteNumero($numero){
-        return view('activites', compact('numero'));
+        return view('activites.activites', compact('numero'));
     }
 }
