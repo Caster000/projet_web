@@ -12,7 +12,7 @@
 
 
             <hr class="w-100 clearfix d-md-none">
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 MarginPading">
                 <h6 class="text-uppercase mb-4 font-weight-bold">Récents</h6>
 
                 <p>

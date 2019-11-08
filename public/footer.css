@@ -11,4 +11,8 @@ footer a:hover{
 footer a {
     color: black;
 }
+.MarginPading{
+    margin: 0;
+    padding: 0;
+}
 

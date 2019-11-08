@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@section('title','Boutique trop swag')
 @section('content')
 
 <div class="flex-center position-ref full-height">
