@@ -1,0 +1,14 @@
+.footerbody{
+    color: #000000;
+background-color: #637bbd;
+}
+.textcolor{
+    text-color: black;
+}
+footer a:hover{
+    color: #cacaca;
+}
+footer a {
+    color: black;
+}
+
