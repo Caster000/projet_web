@@ -4,7 +4,7 @@ Route::group(['prefix'=>'/'], function(){
     Route::get('/', 'GeneralController@accueil')->name('accueil');
     Route::get('cgv','GeneralController@cgv')->name('cgv');
     Route::get('mentions_legales', 'GeneralController@mentions_legales')->name('mentions_legales');
-
+    Route::get('conditions', 'GeneralController@conditions_generales')->name('conditions');
 });
 
 Route::group(['prefix'=>'boutique'], function(){
