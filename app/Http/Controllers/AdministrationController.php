@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class AdministrationController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function controlIdentity($identity){
         //Si la session correspond à une session admin, renvoyer true ou admin
         //return true;
