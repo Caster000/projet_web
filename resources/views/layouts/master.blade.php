@@ -6,8 +6,8 @@
 
     <title>@yield ('title')</title>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <!--  ================  Ajout à Head  =================  -->
+    @yield('ajoutHead')
 
     <!-- Styles -->
     @include('layouts.cesi_graphique')
@@ -65,11 +65,23 @@
     </style>
 </head>
 <body>
+
+<!--  ================  NavBar  =================  -->
+
 @include('layouts.navbar')
+
+<!--  ================  Content  =================  -->
 
 @yield('content')
 
+<!--  ================  Footer  =================  -->
+
 @include('layouts.footer')
+
+<!--  ================  Scripts  =================  -->
+@include('layouts.scripts_communs')
+@yield('addScripts')
+
 </body>
 
 </html>

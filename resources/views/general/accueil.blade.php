@@ -1,5 +1,11 @@
 @extends('layouts.master')
-@section('title','Accueil')
+
+@section('title', 'Accueil')
+
+@section('ajoutHead')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
+
 @section('content')
 
 <div class="flex-center position-ref full-height">
