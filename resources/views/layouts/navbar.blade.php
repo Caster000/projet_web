@@ -9,7 +9,7 @@
         <nav class="navbar navbar-expand-lg navbar-custom ">
             <a class="navbar-brand ">
                 <!-- Logo Text -->
-                <span class="text-uppercase font-weight-bold mr-auto navbarbody">BDE CESI</span>
+                <span class="text-uppercase font-weight-bold mr-auto navbarbody">Bureau des Étudiants du CESI</span>
             </a>
 
 
@@ -30,14 +30,30 @@
                     </li>
                 </ul>
 
-
                 <ul class="navbar-nav   ml-auto" >
+                @if (Route::has('login'))
+                    @auth
+                        <li class="nav-item">
+                            <a href="{{ url('/home') }}">Profil</a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a href="{{ route('login') }}">Connexion</a>
+                        </li>
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a href="{{ route('register') }}">Inscription</a>
+                        </li>
+                    @endif
+                    @endauth
+                @endif
+                    <!--
                     <li class="nav-item">
                         <a class="nav-link">Inscription</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link">Connexion</a>
-                    </li>
+                    </li>-->
                 </ul>
                 <!--<form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="CESI !" aria-label="Search">
