@@ -1,0 +1,53 @@
+
+.navbarbody {
+    font-size:115%;
+    color: white;
+    font: caption;
+
+
+
+}
+
+.navbar-custom {
+    background-color: #637bbd;
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, .5);
+}
+
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+}
+
+.navbar-custom .dropdown-menu {
+    background-color: #ff5500;
+}
+
+.navbar-custom .dropdown-item {
+    color: #ffffff;
+}
+
+.navbar-custom .dropdown-item:hover,
+.navbar-custom .dropdown-item:focus {
+    color: #333333;
+    background-color: rgba(255, 255, 255, .5);
+}
+
+/* Dropdown menu background color*/
+
+ul.dropdown-menu {
+    background-color: #000;
+}
+
+.navbarcolotoggler {
+    background-color: #637bbd;
+    color: white;
+    border: thick double #5563bd;
+}
+nav .navbar-nav li a{
+    color: white !important;
+}
+
