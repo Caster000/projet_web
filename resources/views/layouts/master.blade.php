@@ -6,7 +6,7 @@
 
     <title>@yield ('title')</title>
 
-    <!-- Fonts -->
+    <!--  ================  Ajout à Head  =================  -->
     @yield('ajoutHead')
 
     <!-- Styles -->
@@ -65,11 +65,23 @@
     </style>
 </head>
 <body>
+
+<!--  ================  NavBar  =================  -->
+
 @include('layouts.navbar')
+
+<!--  ================  Content  =================  -->
 
 @yield('content')
 
+<!--  ================  Footer  =================  -->
+
 @include('layouts.footer')
+
+<!--  ================  Scripts  =================  -->
+@include('layouts.scripts_communs')
+@yield('addScripts')
+
 </body>
 
 </html>

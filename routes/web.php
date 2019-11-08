@@ -1,7 +1,10 @@
 <?php
+Route::group(['prefix'=>'/'], function(){
 
-Route::get('/', function () {
-    return view('accueil');
+    Route::get('/', 'GeneralController@accueil')->name('accueil');
+    Route::get('cgv','GeneralController@cgv')->name('cgv');
+    Route::get('mentions_legales', 'GeneralController@mentions_legales')->name('mentions_legales');
+
 });
 
 Route::group(['prefix'=>'boutique'], function(){
