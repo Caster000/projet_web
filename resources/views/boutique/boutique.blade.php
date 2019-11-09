@@ -104,7 +104,8 @@
     </div>
     </div>
 
-
+<br>
+    @include('boutique.admin_panel')
 
 
 

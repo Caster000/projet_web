@@ -1,6 +1,6 @@
-<br>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@ajouterProduit">Ajouter un nouveau produit</button>
-
+<div class="row justify-content-center">
+    <button type="button" class="btn btn-primary m-4 col-10 " data-toggle="modal" data-target="#exampleModal" data-whatever="@ajouterProduit">Ajouter un nouveau produit</button>
+</div>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

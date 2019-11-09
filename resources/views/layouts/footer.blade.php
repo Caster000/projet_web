@@ -1,4 +1,4 @@
-<<!-- Footer -->
+<!-- Footer -->
 <footer class="page-footer footerbody pt-4 ">
     <div class="container  text-center text-md-left">
         <div class="row text-center text-md-left mt-3 pb-3">
