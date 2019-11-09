@@ -39,6 +39,7 @@
                     </div>
                     <div class="card-footer">
                         <button class="btn btn-info btn-sm">En savoir plus</button>
+                        <button class="btn btn-danger btn-sm">Supprimer</button>
                     </div>
                 </div>
             </div>
@@ -97,7 +98,7 @@
 
     <br>
     <hr>
-    
+
     <hr>
             <!--Checker si on affiche la page en administrateur ou pas. Ceci est intéressant car permet à un admin
                 de se connecter comme un simple utilisateur ou un admin selon la route utilisée-->
