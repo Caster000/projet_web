@@ -65,6 +65,7 @@
                     </div>
                     <div class="card-footer">
                         <button class="btn btn-info btn-sm">Voir plus</button>
+                        <button class="btn btn-danger btn-sm">Delete</button>
                     </div>
                 </div>
             </div>

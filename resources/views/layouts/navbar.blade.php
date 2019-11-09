@@ -3,7 +3,7 @@
 
 <div class="row m-1 menu navbarbody">
     <div class="col-2 pl-4 mt-2">
-        <img src="../public/images/CESILOGO.png" width="50%" alt="Logo CESI">
+        <img src="/projet_web//public/images/CESILOGO.png" width="50%" alt="Logo CESI">
     </div>
     <div class="col-10">
         <nav class="navbar navbar-expand-lg navbar-custom ">

@@ -2,42 +2,24 @@
 
 @section('content')
 
-<div class="flex-center position-ref full-height">
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-                <a href="{{ url('/home') }}">Home</a>
-            @else
-                <a href="{{ route('login') }}">Login</a>
-
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}">Register</a>
-                @endif
-            @endauth
-        </div>
-    @endif
-
-    <div class="content">
-        <div class="title m-b-md">
-            Article {{$numero}}
-        </div>
-
-        <div class="links">
-            <a href="https://laravel.com/docs">Docs</a>
-            <a href="https://laracasts.com">Laracasts</a>
-            <a href="https://laravel-news.com">News</a>
-            <a href="https://blog.laravel.com">Blog</a>
-            <a href="https://nova.laravel.com">Nova</a>
-            <a href="https://forge.laravel.com">Forge</a>
-            <a href="https://vapor.laravel.com">Vapor</a>
-            <a href="https://github.com/laravel/laravel">GitHub</a>
-        </div>
+<div class="row m-4 p-4">
+    <div class="col-sm-5 col-md-4 col-lg-5">
+        <img src="/projet_web/public/images/Tshirt.png" alt="" class="img-fluid">
+    </div>
+    <div class="col-sm-5 col-md-3 col-lg-5">
+        <h4>Super T-shirt</h4>
+        <h6 class="mt-2">Description :</h6>
         <div>
-            <br>
-            <hr>
-            Site en travaux !
-            <hr>
+            Bah il est blanc et c'est bien le blanc
         </div>
+        <h6 class="mt-4">Prix :</h6>
+        <di>
+            69,37 €
+        </di>
+    </div>
+    <div class="col-lg-2 col-sm-2 col-md-2">
+        <button class="btn btn-warning" data-toggle="button" aria-pressed="false"><span class="fa fa-shopping-cart fa-lg"></span>     Ajouter au panier</button>
+        <button class="btn btn-info mt-4" data-toggle="button" aria-pressed="false"><span class="fa .fa-pencil fa-lg"></span>     Modifier l'article</button>
     </div>
 </div>
 
