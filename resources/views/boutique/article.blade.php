@@ -19,6 +19,7 @@
     </div>
     <div class="col-lg-2 col-sm-2 col-md-2">
         <button class="btn btn-warning" data-toggle="button" aria-pressed="false"><span class="fa fa-shopping-cart fa-lg"></span>     Ajouter au panier</button>
+        <!-- ADMIN BOUTON -->
         <button class="btn btn-info mt-4" data-toggle="button" aria-pressed="false"><span class="fa .fa-pencil fa-lg"></span>     Modifier l'article</button>
     </div>
 </div>

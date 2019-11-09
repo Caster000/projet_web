@@ -18,9 +18,9 @@
 }
 
 .navbar-custom .nav-item.active .nav-link,
-.navbar-custom .nav-item:hover .nav-link {
-    color: #ffffff;
-}
+ .navbar-custom .nav-item:hover .nav-link {
+     color: #ffffff;
+ }
 
 .navbar-custom .dropdown-menu {
     background-color: #ff5500;
@@ -50,4 +50,6 @@ ul.dropdown-menu {
 nav .navbar-nav li a{
     color: white !important;
 }
-
+.nav-link:hover{
+    text-decoration:underline;
+}

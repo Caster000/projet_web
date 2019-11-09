@@ -2,7 +2,7 @@
 
 
 <div class="row m-1 menu navbarbody">
-    <div class="col-2 pl-4 mt-2">
+    <div class="col-2 pl-4 mt-1">
         <img src="/projet_web//public/images/CESILOGO.png" width="50%" alt="Logo CESI">
     </div>
     <div class="col-10">
@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse font-weight-bold " id="collapsibleNavbar">
                 <ul class="navbar-nav  mx-auto">
                     <li class="nav-item ">
-                        <a class="nav-link">Accueil<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href={{route('accueil')}}>Accueil<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link " href={{route('activites')}}>Activités<span class="sr-only">(current)</span></a>
@@ -37,7 +37,7 @@
                             <a href="{{ url('/home') }}">Profil</a>
                         </li>
                     @else
-                        <li class="nav-item">
+                        <li class="nav-item mr-2 ">
                             <a href="{{ route('login') }}">Connexion</a>
                         </li>
                     @if (Route::has('register'))

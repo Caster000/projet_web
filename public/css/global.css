@@ -1,4 +1,15 @@
+.carousel-item> img {
+    margin: 0 ;
 
+    height: 50vh;
+    min-height: 350px;
+    width:100%;
+    background: no-repeat center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
 .full-height {
     height: 100vh;
