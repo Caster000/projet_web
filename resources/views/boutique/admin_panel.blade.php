@@ -15,23 +15,23 @@
                     <div class="form">
                         <div class="form-group row">
                             <label for="nom">Nom :</label>
-                            <input type="text" class="form-control" placeholder="Ex: Sweat BDE">
+                            <input type="text" class="form-control" placeholder="Ex: Sweat BDE"required>
                         </div>
                         <div class="form-group row">
                             <label for="description">Description </label>
-                            <textarea class="form-control" placeholder="Description..."></textarea>
+                            <textarea class="form-control" placeholder="Description..."required></textarea>
                         </div>
                         <div class="form-group row">
                             <label for="prix">Prix en € :</label>
-                            <input type="number" class="form-control" placeholder="Ex: 10,99">
+                            <input type="number" class="form-control" placeholder="Ex: 10,99"required>
                         </div>
                         <div class="form-group row">
                             <label for="Image">Choisissez une image</label>
-                            <input type="file" class="form-control-file" id="ImageNewProduit">
+                            <input type="file" class="form-control-file" id="ImageNewProduit"required>
                         </div>
                         <div class="form-group row ">
                             <label class="mr-sm-2" for="inlineFormCustomSelect">Catégorie :</label>
-                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect"required>
                                 <option selected>Choose...</option>
                                 <option value="1">T-shirt</option>
                                 <option value="2">Sweat-shirt</option>

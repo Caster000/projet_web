@@ -4,29 +4,6 @@
 
 <link rel="stylesheet" type="text/css" href="../public/css/activite.css">
 
-<div class="flex-center position-ref full-height">
-    @if (Route::has('login'))
-    <div class="top-right links">
-        @auth
-        <a href="{{ url('/home') }}">Home</a>
-        @else
-        <a href="{{ route('login') }}">Login</a>
-
-        @if (Route::has('register'))
-        <a href="{{ route('register') }}">Register</a>
-        @endif
-        @endauth
-    </div>
-    @endif
-    <div class="content">
-        <div class="title m-b-md">
-            @if(isset($numero))
-            Activité {{$numero}}
-            @else
-            Activités
-            @endif
-        </div>
-
         <div class="row flex-center">
             <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4 ">
                 <div class="card card-inverse card-info ">
@@ -90,9 +67,9 @@
 
         </div>
 
+@include('activites.admin_panel')
 
 
-</div>
 
 <div>
 
