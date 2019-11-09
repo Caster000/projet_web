@@ -101,15 +101,15 @@
 
         </div>
     </div>
-    </div>
-    </div>
+
+
 
 <br>
     @include('boutique.admin_panel')
 
 
 
-    </div>
+
 
 
     <!-- ATTENTION RAPPEL pour l'espace administrateur quand nous sommes membres avec un if ou foreach -->
