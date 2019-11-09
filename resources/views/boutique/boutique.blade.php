@@ -56,7 +56,7 @@
         <div class="row flex-center">
             <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4 ">
                 <div class="card card-inverse card-info ">
-                    <img class="card-img-top" src="images/Webp.net-resizeimage.jpg">
+                    <img class="card-img-top" src="images/Tshirt.png">
                     <div class="card-block">
                         <h4 class="card-title">Casquette BDE</h4>
                         <div class="card-text">
@@ -71,7 +71,7 @@
 
             <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4">
                 <div class="card card-inverse card-info">
-                    <img class="card-img-top" src="images/teeshirt.jpg">
+                    <img class="card-img-top" src="images/Tshirt.png">
                     <div class="card-block">
                         <h4 class="card-title">T-Shirt blanc BDE</h4>
                         <div class="card-text">
@@ -85,7 +85,7 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4">
                 <div class="card card-inverse card-info">
-                    <img class="card-img-top" src="images/sweatshirt.jpg">
+                    <img class="card-img-top" src="images/Tshirt.png">
                     <div class="card-block">
                         <h4 class="card-title">Sweat Shirt BDE</h4>
                         <div class="card-text">
