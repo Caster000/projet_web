@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Produit;
 use Illuminate\Http\Request;
 
 class BoutiqueController extends Controller
@@ -23,7 +24,8 @@ class BoutiqueController extends Controller
     }
 
     public function article($numero){
-        return view('boutique.article', compact('numero'));
+        $produit = Produit::find($numero);
+        return view('boutique.article', compact('produit'));
     }
 
 }

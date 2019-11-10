@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-info btn-sm">Voir plus</button>
+                        <span><a class="btn btn-info btn-sm" href="{{route('article', ['numero'=>$article->id_produit])}}">Voir plus</a></span>
                         <button class="btn btn-danger btn-sm">Supprimer</button>
                     </div>
                 </div>
