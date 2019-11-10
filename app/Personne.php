@@ -27,6 +27,9 @@ use Illuminate\Auth\Authenticatable as BasicAuthenticatable;
 class Personne extends Model implements Authenticatable
 {
     use BasicAuthenticatable;
+
+    public $timestamps = false;
+
     /**
      * The table associated with the model.
      *
