@@ -21,8 +21,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function logout()
     {
-        return view('accueil');
+        auth()->logout();
+        return view('general/accueil');
     }
 }

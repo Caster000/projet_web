@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Categorie extends Model
 {
+    public $timestamps = false;
+
     /**
      * The table associated with the model.
      *
