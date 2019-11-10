@@ -54,13 +54,14 @@
         </div>
 
         <div class="row flex-center">
+        @foreach($topArticles as $article)
             <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4 ">
                 <div class="card card-inverse card-info ">
-                    <img class="card-img-top" src="images/Tshirt.png">
+                    <img class="card-img-top" src="{{$article->urlImage}}">
                     <div class="card-block">
-                        <h4 class="card-title">Casquette BDE</h4>
+                        <h4 class="card-title">{{$article->nom}}, {{$article->prix}}€</h4>
                         <div class="card-text">
-                            Prener cette casquette après les soirées BDE pour vos cheveux !
+                            {{$article->description}}
                         </div>
                     </div>
                     <div class="card-footer">
@@ -69,37 +70,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4">
-                <div class="card card-inverse card-info">
-                    <img class="card-img-top" src="images/Tshirt.png">
-                    <div class="card-block">
-                        <h4 class="card-title">T-Shirt blanc BDE</h4>
-                        <div class="card-text">
-                            Le T-Shirt le plus commum mais il passe partout !
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-info btn-sm">Voir plus</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4">
-                <div class="card card-inverse card-info">
-                    <img class="card-img-top" src="images/Tshirt.png">
-                    <div class="card-block">
-                        <h4 class="card-title">Sweat Shirt BDE</h4>
-                        <div class="card-text">
-                            Ce sweatshirt vous tiendra bien au chaud durant l'hiver
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-info btn-sm">Voir plus</button>
-                    </div>
-                </div>
-            </div>
-
-
+         @endforeach
         </div>
     </div>
 
