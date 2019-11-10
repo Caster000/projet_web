@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Activite;
 use Illuminate\Http\Request;
 
 class ActivitesController extends Controller
@@ -12,6 +13,7 @@ class ActivitesController extends Controller
     }
 
     public function activiteNumero($numero){
-        return view('activites.activites', compact('numero'));
+    	$activite = Activite::find($numero);
+        return view('activites.activite', compact('activite'));
     }
 }
