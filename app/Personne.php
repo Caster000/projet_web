@@ -27,6 +27,9 @@ use Illuminate\Auth\Authenticatable as BasicAuthenticatable;
 class Personne extends Model implements Authenticatable
 {
     use BasicAuthenticatable;
+
+    public $timestamps = false;
+
     /**
      * The table associated with the model.
      *
@@ -117,4 +120,5 @@ class Personne extends Model implements Authenticatable
     {
         return $this->belongsToMany('App\Activite', 'voter', 'id_personne', 'id_activite');
     }
+
 }
