@@ -29,4 +29,10 @@ class BoutiqueController extends Controller
         return view('boutique.article', compact('produit'));
     }
 
+    public function delete($id_article){
+        $article = Produit::find($id_article);
+        $article->contenirs()->delete();
+        $article->delete();
+        return redirect('/boutique');
+    }
 }

@@ -20,7 +20,7 @@
             <div class="col-lg-2 col-sm-2 col-md-2">
                 <span><a class="btn btn-warning" data-toggle="button" aria-pressed="false"><span class="fa fa-shopping-cart fa-lg"></span>&nbspAjouter au panier</a></span>
                 <!-- ADMIN BOUTON -->
-                <button class="btn btn-info mt-4" data-toggle="button" aria-pressed="false"><span class="fa .fa-pencil fa-lg"></span>Modifier l'article</button>
+                <a class="btn btn-info mt-4" data-toggle="button" aria-pressed="false"><span class="fa fa-pencil fa-lg"></span>&nbspModifier l'article</a>
             </div>
         </div>
     @else
