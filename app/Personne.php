@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Auth\Authenticatable as BasicAuthenticatable;
 
 /**
  * @property int $id_personne
@@ -10,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id_campus
  * @property string $nom
  * @property string $prenom
- * @property string $mail
+ * @property string $email
  * @property string $password
  * @property Campus $campus
  * @property Role $role
@@ -22,8 +24,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property Photo[] $photos
  * @property Activite[] $activites_voter
  */
-class Personne extends Model
+class Personne extends Model implements Authenticatable
 {
+    use BasicAuthenticatable;
     /**
      * The table associated with the model.
      *
@@ -41,7 +44,7 @@ class Personne extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_role', 'id_campus', 'nom', 'prenom', 'mail', 'password'];
+    protected $fillable = ['id_role', 'id_campus', 'nom', 'prenom', 'email', 'password'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
