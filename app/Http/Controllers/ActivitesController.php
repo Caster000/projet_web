@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class ActivitesController extends Controller
 {
     public function index(){
-        return view('activites.activites');
+        $activites=\App\Activite::where('visible','=','1')->select('activite','description','recurrence','urlImage','date','prix')->get();
+        return view('activites.activites', compact('activites'));
     }
 
     public function activiteNumero($numero){
