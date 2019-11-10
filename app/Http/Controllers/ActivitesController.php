@@ -14,7 +14,8 @@ class ActivitesController extends Controller
     }
 
     public function activiteNumero($numero){
-        return view('activites.activites', compact('numero'));
+    	$activite = Activite::find($numero);
+        return view('activites.activite', compact('activite'));
     }
 
     public function addActivite(Request $request){
