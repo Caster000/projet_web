@@ -10,18 +10,19 @@
                 <div class="card card-inverse card-info ">
                     <img class="card-img-top" src="{{$activite->urlImage}}">
                     <div class="card-block">
-                        <h4 class="card-title text-center">{{$activite->activite}}, {{$activite->prix}}€</h4>
+                        <h4 class="card-title text-center">{{$activite->activite}}@if(($activite->prix)!=0), {{$activite->prix}}€@endif</h4>
                         <div class="card-text">
-                            <div class="row" style="margin:0px; padding:0px;">
-                                <div class="col-6 text-left text-bold" style="margin:0px; padding:0px;">{{$activite->recurrence}}</div>
-                                <div class="col-6 text-right" style="margin:0px; padding:0px;">{{$activite->date}}</div>
+                            <div class="row" >
+                                <div class="col-6 text-left text-bold m-0 p-0" >{{$activite->recurrence}}</div>
+                                <div class="col-6 text-right m-0 p-0" >{{$activite->date}}</div>
                             </div>
                             {{$activite->description}}
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-info btn-sm">En savoir plus</button>
-                        <button class="btn btn-danger btn-sm">Supprimer</button>
+                        <a href="{{ URL::action('ActivitesController@activiteNumero',  $activite->id_activite) }}"><button class="btn btn-info btn-sm">En savoir plus</button></a>
+                        <a href="{{ URL::action('ActivitesController@inscrire',  $activite->id_activite) }}"><button class="btn btn-primary btn-sm">S'inscrire</button></a>
+                        <a href="{{ URL::action('ActivitesController@delete',  $activite->id_activite) }}"><button class="btn btn-danger btn-sm" >Supprimer</button></a>
                     </div>
                 </div>
             </div>
