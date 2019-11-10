@@ -15,7 +15,8 @@ class BoutiqueController extends Controller
             ->orderBy('quantite', 'DESC')
             ->orderBy('produit.nom', 'ASC')
             ->get();
-        return view('boutique.boutique', compact('topArticles'));
+        $allArticles=Produit::get();
+        return view('boutique.boutique', compact('topArticles', 'allArticles'));
         //:/public/images/article/keychain.png
     }
 
