@@ -120,4 +120,5 @@ class Personne extends Model implements Authenticatable
     {
         return $this->belongsToMany('App\Activite', 'voter', 'id_personne', 'id_activite');
     }
+
 }
