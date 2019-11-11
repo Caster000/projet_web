@@ -8,17 +8,10 @@ class AdministrationController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
-    }
-
-    public function controlIdentity($identity){
-        //Si la session correspond à une session admin, renvoyer true ou admin
-        //return true;
-        //Si la session n'est pas une session admin, renvoyer false ou no_admin
-        //return false;
+        $this->middleware('Administration');
     }
 
     public function boutique(){
-        //$identity=$this->controlIdentity();
         echo "<script>alert(\"Version d'administration\");</script>";
         return view('boutique.boutique');//, compact('identity'));
     }
