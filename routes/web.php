@@ -13,7 +13,7 @@ Route::group(['prefix'=>'boutique'], function(){
     Route::get('/article/{numero}', 'BoutiqueController@article')->name('article');
     Route::post('/', 'BoutiqueController@addArticle');
     Route::get('/panier', 'PanierController@index')->name('panier');
-    Route::get('/delete/{id_produit}', 'BoutiqueController@delete')->name('panier');
+    Route::get('/delete/{id_produit}', 'BoutiqueController@delete');
 
 });
 
