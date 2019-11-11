@@ -27,7 +27,7 @@ Route::group(['prefix'=>'activites'], function(){
     Route::get('/inscrire/{id_activite}', 'ActivitesController@inscrire');
 
 });
-
+/*
 Route::group(['prefix'=>'administration'], function(){
 
     Route::group(['prefix'=>'boutique'], function(){
@@ -44,7 +44,7 @@ Route::group(['prefix'=>'administration'], function(){
 
     });
 
-});
+});*/
 
 
 

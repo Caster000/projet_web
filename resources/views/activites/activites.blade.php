@@ -19,30 +19,23 @@
                             {{$activite->description}}
                         </div>
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer text-center">
                         <a href="{{ URL::action('ActivitesController@activiteNumero',  $activite->id_activite) }}"><button class="btn btn-info btn-sm">En savoir plus</button></a>
+                        @if(auth()->check())
                         <a href="{{ URL::action('ActivitesController@inscrire',  $activite->id_activite) }}"><button class="btn btn-primary btn-sm">S'inscrire</button></a>
-                        <a href="{{ URL::action('ActivitesController@delete',  $activite->id_activite) }}"><button class="btn btn-danger btn-sm" >Supprimer</button></a>
+                            @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
+                            <a href="{{ URL::action('ActivitesController@delete',  $activite->id_activite) }}"><button class="btn btn-danger btn-sm" >Supprimer</button></a>
+                            @endif
+                        @endif
                     </div>
                 </div>
             </div>
             @endforeach
 
         </div>
-
-@include('activites.admin_panel')
-
-
-
-<div>
-
-    <br>
-    <hr>
-
-    <hr>
-            <!--Checker si on affiche la page en administrateur ou pas. Ceci est intéressant car permet à un admin
-                de se connecter comme un simple utilisateur ou un admin selon la route utilisée-->
-            </div>
-        </div>
-
-    @endsection
+@if(auth()->check() && auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
+    @include('activites.admin_panel')
+@endif
+<!--Checker si on affiche la page en administrateur ou pas. Ceci est intéressant car permet à un admin
+    de se connecter comme un simple utilisateur ou un admin selon la route utilisée-->
+@endsection
