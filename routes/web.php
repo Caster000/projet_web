@@ -21,6 +21,7 @@ Route::group(['prefix'=>'activites'], function(){
 
     Route::get('/', 'ActivitesController@index')->name('activites');
     Route::get('/{numero}', 'ActivitesController@activiteNumero')->name('activite');
+    Route::post('/{numero}', 'PhotoController@addPhoto');
     Route::post('/', 'ActivitesController@addActivite');
     Route::get('/delete/{id_activite}', 'ActivitesController@delete');
     Route::get('/inscrire/{id_activite}', 'ActivitesController@inscrire');

@@ -21,12 +21,14 @@
                 <a class="btn btn-warning" data-toggle="button" aria-pressed="false"><span class="fa fa-shopping-cart fa-lg"></span>&nbspParticiper</a>
                 <!-- ADMIN BOUTON -->
                 <button class="btn btn-info mt-4" data-toggle="button" aria-pressed="false"><span class="fa fa-pencil fa-lg"></span>&nbspModifier l'article</button>
-                <form class="mt-4 dropzone text-center border border-primary" action="#" paramName="photo" method="post" enctype="multipart/form-data">
+                <form paramName="file" class="mt-4 mb-2 dropzone text-center border border-primary" action="/projet_web/public/activites/{{$activite->id_activite}}" method="post" enctype="multipart/form-data" method="post">
+                @csrf <!-- {{ csrf_field() }} -->
                     <div class="fallback">
                         <input name="file" type="file" multiple />
                     </div>
+                    <button type="submit" class="btn btn-primary">Ajouter des photo</button>
                 </form>
-                <input type="file" multiple="multiple" class="dz-hidden-input" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;">
+
             </div>
         </div>
     @else

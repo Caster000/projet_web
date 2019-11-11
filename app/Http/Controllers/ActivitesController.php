@@ -42,4 +42,5 @@ class ActivitesController extends Controller
 //        $activite->delete();
         return redirect('/activites');
     }
+
 }
