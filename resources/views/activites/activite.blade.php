@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    @if($activite)
+    @if($activite && $activite->visible===1)
         <div class="row m-4 p-4">
             <div class="col-sm-5 col-md-4 col-lg-5">
                 <img src="{{$activite->urlImage}}" alt="" class="img-fluid">
@@ -17,12 +17,22 @@
                     {{$activite->prix}}€
                 </di>
             </div>
+            @if(auth()->check())
             <div class="col-lg-2 col-sm-2 col-md-2">
-                <a class="btn btn-warning" data-toggle="button" aria-pressed="false"><span class="fa fa-shopping-cart fa-lg"></span>&nbspParticiper</a>
+                <div class="text-center">
+                    @if((\App\Inscrire::where('id_activite', $activite->id_activite)->where('id_personne', auth()->user()->id_personne)->first()))
+                        <a class="btn btn-warning" href="{{ URL::action('ActivitesController@desinscription',  $activite->id_activite) }}" aria-pressed="false"><span class="fa fa-shopping-cart fa-lg"></span>&nbspSe raviser</a>
+                    @else
+                        <a class="btn btn-warning" href="{{ URL::action('ActivitesController@inscription',  $activite->id_activite) }}" aria-pressed="false"><span class="fa fa-shopping-cart fa-lg"></span>&nbspParticiper</a>
+                    @endif
                 <!-- ADMIN BOUTON -->
-                <button class="btn btn-info mt-4" data-toggle="button" aria-pressed="false"><span class="fa fa-pencil fa-lg"></span>&nbspModifier l'article</button>
+                @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
+                    <button class="btn btn-info" data-toggle="button" aria-pressed="false"><span class="fa fa-pencil fa-lg"></span>&nbspModifier l'article</button>
+                @endif
+                </div>
+                @if((\App\Inscrire::where('id_activite', $activite->id_activite)->where('id_personne', auth()->user()->id_personne)->first()) || auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
                 <div class="border border-primary p-4  mt-5">
-                    <h6>Ajouter une image :</h6>
+                    <h6 class="text-center text-bold">Ajouter une image</h6>
                     <form paramName="file" action="/projet_web/public/activites/{{$activite->id_activite}}" method="post" enctype="multipart/form-data" method="post">
                     @csrf <!-- {{ csrf_field() }} -->
                         <div class=" mb-4 ">
@@ -30,10 +40,12 @@
                             <input type="text" class="form-control" placeholder="Ex: Tournoi Smash" name="titre" required>
                             <input class="mt-3" name="file" type="file" multiple required/>
                         </div>
-                        <button type="submit" class="btn btn-primary">Ajouter des photo</button>
+                        <button type="submit" class="btn btn-primary">Ajouter des photos</button>
                     </form>
                 </div>
+                @endif
             </div>
+            @endif
         </div>
     @else
         <div class="row m-4 p-4">

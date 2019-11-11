@@ -13,15 +13,19 @@
                     {{$produit->description}}
                 </div>
                 <h6 class="mt-4">Prix :</h6>
-                <di>
+                <div>
                     {{$produit->prix}}€
-                </di>
+                </div>
             </div>
-            <div class="col-lg-2 col-sm-2 col-md-2">
-                <a href="{{ URL::action('PanierController@addToPanier',  $produit->id_produit) }}" class="btn btn-warning" ><span class="fa fa-shopping-cart fa-lg"></span>&nbspAjouter au panier</a>
-                <!-- ADMIN BOUTON -->
-                <a class="btn btn-info mt-4" data-toggle="button" aria-pressed="false"><span class="fa fa-pencil fa-lg"></span>&nbspModifier l'article</a>
-            </div>
+            @if(auth()->check())
+                <div class="col-lg-2 col-sm-2 col-md-2">
+                    <a href="{{ URL::action('PanierController@addToPanier',  $produit->id_produit) }}" class="btn btn-warning" ><span class="fa fa-shopping-cart fa-lg"></span>&nbspAjouter au panier</a>
+                    @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
+                        <!-- ADMIN BOUTON -->
+                        <a class="btn btn-info mt-4" data-toggle="button" aria-pressed="false"><span class="fa fa-pencil fa-lg"></span>&nbspModifier l'article</a>
+                    @endif
+                </div>
+            @endif
         </div>
     @else
         <div class="row m-4 p-4">
