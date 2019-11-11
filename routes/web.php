@@ -11,6 +11,7 @@ Route::group(['prefix'=>'boutique'], function(){
 
     Route::get('/', 'BoutiqueController@index')->name('boutique');
     Route::get('/article/{numero}', 'BoutiqueController@article')->name('article');
+    Route::get('/panier/{id_produit}', 'PanierController@addToPanier');
     Route::post('/', 'BoutiqueController@addArticle');
     Route::get('/panier', 'PanierController@index')->name('panier');
     Route::get('/delete/{id_produit}', 'BoutiqueController@delete');

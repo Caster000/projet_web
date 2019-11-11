@@ -76,11 +76,12 @@
                                         <td class="border-0 align-middle"><a href="#" class="text-dark"><i
                                                     class="fa fa-trash"></i></a></td>
                                     </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    @endforeach
+
                     <div class=" bg-white rounded shadow-sm col-6">
                             <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Récapitulatif
                                 de commande
