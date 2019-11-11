@@ -100,7 +100,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-4 offset-md-5">
-                                <button type="submit" class="btn bleu-cesi">
+                                <button type="submit" class="btn btn-primary">
                                     {{ __('S\'inscrire') }}
                                 </button>
                             </div>

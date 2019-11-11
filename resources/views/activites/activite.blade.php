@@ -7,7 +7,7 @@
                 <img src="{{$activite->urlImage}}" alt="" class="img-fluid">
             </div>
             <div class="col-sm-5 col-md-3 col-lg-5">
-                <h4>{{$activite->nom}}</h4>
+                <h4>{{$activite->activite}}</h4>
                 <h6 class="mt-2">Description :</h6>
                 <div>
                     {{$activite->description}}
@@ -18,9 +18,15 @@
                 </di>
             </div>
             <div class="col-lg-2 col-sm-2 col-md-2">
-                <span><a class="btn btn-warning" data-toggle="button" aria-pressed="false"><span class="fa fa-shopping-cart fa-lg"></span>&nbspParticiper</a></span>
+                <a class="btn btn-warning" data-toggle="button" aria-pressed="false"><span class="fa fa-shopping-cart fa-lg"></span>&nbspParticiper</a>
                 <!-- ADMIN BOUTON -->
-                <button class="btn btn-info" data-toggle="button" aria-pressed="false"><span class="fa .fa-pencil fa-lg"></span>Modifier l'article</button>
+                <button class="btn btn-info mt-4" data-toggle="button" aria-pressed="false"><span class="fa fa-pencil fa-lg"></span>&nbspModifier l'article</button>
+                <form class="mt-4 dropzone text-center border border-primary" action="#" paramName="photo" method="post" enctype="multipart/form-data">
+                    <div class="fallback">
+                        <input name="file" type="file" multiple />
+                    </div>
+                </form>
+                <input type="file" multiple="multiple" class="dz-hidden-input" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;">
             </div>
         </div>
     @else
@@ -40,5 +46,9 @@
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSKuxfXksQIPvXRbB5h9sEBM3HC-GuLqmG1MRI2-RrWu8q8o8i&s" alt="" class="img-fluid">
             </div>
         </div>
+
     @endif
+@endsection
+@section('addScripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
 @endsection

@@ -11,27 +11,28 @@
                 </button>
             </div>
             <div class="modal-body mr-5 ml-5">
-                <form>
+                <form action="/projet_web/public/boutique" method="post" enctype="multipart/form-data">
+            @csrf <!-- {{ csrf_field() }} -->
                     <div class="form">
                         <div class="form-group row">
                             <label for="nom">Nom :</label>
-                            <input type="text" class="form-control" placeholder="Ex: Sweat BDE"required>
+                            <input type="text" class="form-control" placeholder="Ex: Sweat BDE" name="nom" required>
                         </div>
                         <div class="form-group row">
                             <label for="description">Description </label>
-                            <textarea class="form-control" placeholder="Description..."required></textarea>
+                            <textarea class="form-control" placeholder="Description..." name="description" required></textarea>
                         </div>
                         <div class="form-group row">
                             <label for="prix">Prix en € :</label>
-                            <input type="number" class="form-control" placeholder="Ex: 10,99"required>
+                            <input type="number" class="form-control" placeholder="Ex: 10,99" name="prix" required>
                         </div>
                         <div class="form-group row">
-                            <label for="Image">Choisissez une image</label>
-                            <input type="file" class="form-control-file" id="ImageNewProduit"required>
+                            <label for="image">Choisissez une image</label>
+                            <input type="file" class="form-control-file" id="ImageNewProduit" name="image" required>
                         </div>
                         <div class="form-group row ">
                             <label class="mr-sm-2" for="inlineFormCustomSelect">Catégorie :</label>
-                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect"required>
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect"name="categorie" required>
                                 <option selected>Choose...</option>
                                 <option value="1">T-shirt</option>
                                 <option value="2">Sweat-shirt</option>

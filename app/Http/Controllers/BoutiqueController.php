@@ -29,6 +29,20 @@ class BoutiqueController extends Controller
         return view('boutique.article', compact('produit'));
     }
 
+    public function addArticle(Request $request){
+        $produit = new Produit;
+        $produit->nom =$request->nom;
+        $produit->description= $request->description;
+        $produit->prix =$request->prix;
+        $produit->nom =$request->nom;
+        $produit->id_categorie =$request->categorie;
+        $destinationPath = '/projet_web/storage/app/public/images/articles'; // upload path
+        $file = $request->image->getClientOriginalName();
+        $request->file('image')->storeAs('/images/articles', $file);
+        $produit->urlImage = $destinationPath."/".$file;
+        $produit->save();
+        return redirect('/boutique');
+    }
     public function delete($id_article){
         $article = Produit::find($id_article);
         $article->contenirs()->delete();
