@@ -36,46 +36,20 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <th scope="row" class="border-0">
-                                                <div class="p-2">
-                                                    <img src="../images/article/Tshirt.png" alt="Article 1" width="70" class="img-fluid rounded shadow-sm">
-                                                    <div class="ml-3 d-inline-block align-middle">
-                                                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">Simple Tshirt blanc</a></h5><span class="text-muted font-weight-normal font-italic d-block">Catégorie : Tshirt</span>
+                                        @foreach($articles as $article)
+                                            <tr>
+                                                <th scope="row" class="border-0">
+                                                    <div class="p-2">
+                                                        <img src="{{$article->urlImage}}" alt="Article 1" width="70" class="img-fluid rounded shadow-sm">
+                                                        <div class="ml-3 d-inline-block align-middle">
+                                                            <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">{{$article->nom}}</a></h5><span class="text-muted font-weight-normal font-italic d-block">Catégorie : {{$article->categorie}}</span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </th>
-                                            <td class="border-0 align-middle"><strong>$79.00</strong></td>
-                                            <td class="border-0 align-middle"><strong>3</strong></td>
-                                            <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <div class="p-2">
-                                                    <img src="../images/article/sweatshirt.jpg" alt="Article 2" width="70" class="img-fluid rounded shadow-sm">
-                                                    <div class="ml-3 d-inline-block align-middle">
-                                                        <h5 class="mb-0"><a href="#" class="text-dark d-inline-block">Pull BDE</a></h5><span class="text-muted font-weight-normal font-italic">Catégorie : Pull</span>
-                                                    </div>
-                                                </div>
-                                            </th>
-                                            <td class="align-middle"><strong>$79.00</strong></td>
-                                            <td class="align-middle"><strong>3</strong></td>
-                                            <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <div class="p-2">
-                                                    <img src="../images/article/porteclef.jpg" alt="Article 3" width="70" class="img-fluid rounded shadow-sm">
-                                                    <div class="ml-3 d-inline-block align-middle">
-                                                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block">Lot de porte clé</a></h5><span class="text-muted font-weight-normal font-italic">Categorie: Porte clé</span>
-                                                    </div>
-                                                </div>
-                                            <td class="align-middle"><strong>$79.00</strong></td>
-                                            <td class="align-middle"><strong>3</strong></td>
-                                            <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
+                                                </th>
+                                                <td class="border-0 align-middle"><strong>{{$article->prix}}</strong></td>
+                                                <td class="border-0 align-middle"><strong>{{$article->quantite}}</strong></td>
+                                                <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

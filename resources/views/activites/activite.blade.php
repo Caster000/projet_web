@@ -21,14 +21,18 @@
                 <a class="btn btn-warning" data-toggle="button" aria-pressed="false"><span class="fa fa-shopping-cart fa-lg"></span>&nbspParticiper</a>
                 <!-- ADMIN BOUTON -->
                 <button class="btn btn-info mt-4" data-toggle="button" aria-pressed="false"><span class="fa fa-pencil fa-lg"></span>&nbspModifier l'article</button>
-                <form paramName="file" class="mt-4 mb-2 dropzone text-center border border-primary" action="/projet_web/public/activites/{{$activite->id_activite}}" method="post" enctype="multipart/form-data" method="post">
-                @csrf <!-- {{ csrf_field() }} -->
-                    <div class="fallback">
-                        <input name="file" type="file" multiple />
-                    </div>
-                    <button type="submit" class="btn btn-primary">Ajouter des photo</button>
-                </form>
-
+                <div class="border border-primary p-4  mt-5">
+                    <h6>Ajouter une image :</h6>
+                    <form paramName="file" action="/projet_web/public/activites/{{$activite->id_activite}}" method="post" enctype="multipart/form-data" method="post">
+                    @csrf <!-- {{ csrf_field() }} -->
+                        <div class=" mb-4 ">
+                            <label class="mt-2" for="titre">Titre :</label>
+                            <input type="text" class="form-control" placeholder="Ex: Tournoi Smash" name="titre" required>
+                            <input class="mt-3" name="file" type="file" multiple required/>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ajouter des photo</button>
+                    </form>
+                </div>
             </div>
         </div>
     @else

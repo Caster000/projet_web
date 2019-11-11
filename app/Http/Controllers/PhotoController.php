@@ -25,14 +25,15 @@ class PhotoController extends Controller
     public function addPhoto(Request $request){
         $photo = new Photo;
         $file = $request->file->getClientOriginalName();
-        $photo->titre=explode($file);
-        $destinationPath = '/projet_web/storage/app/public/images/activite/{numero}'; // upload path
-        $request->file('image')->storeAs('/images/activite/{numero}', $file);
+        $photo->titre=$request->titre;
+        $destinationPath = '/projet_web/storage/app/public/images/activite/'; // upload path
+        $request->file('file')->storeAs('/images/activite/', $file);
         $photo->urlImage = $destinationPath."/".$file;
         $photo->visible= 1;
-        $photo->id_activite=8;
+        $photo->id_personne= auth()->user()->id_personne;
+        $photo->id_activite=$request->numero;
         $photo->save();
-        return redirect('/activites/{numero}');
+        return redirect('/activites/');
     }
 
     /**
