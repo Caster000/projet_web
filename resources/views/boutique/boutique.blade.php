@@ -3,39 +3,38 @@
 @section('content')
 
 
-    <div class="content">
-        <div class="title mb-3">
-            Boutique
-        </div>
-
-        <hr>
-        <div class="row flex-center">
-            <div class="display-4 text-center text-danger p-md-3">
-                Le top 3 de nos articles
-            </div>
-        </div>
-        <div class="row flex-center">
-        @foreach($topArticles as $article)
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4 ">
-                <div class="card card-inverse card-info ">
-                    <img class="card-img-top" src="{{$article->urlImage}}">
-                    <div class="card-block">
-                        <h4 class="card-title">{{$article->nom}}, {{$article->prix}}€</h4>
-                        <div class="card-text">
-                            {{$article->description}}
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}"class="btn btn-info btn-sm" href="{{route('article', ['numero'=>$article->id_produit])}}">Voir plus</a>
-                        <a href="{{ URL::action('BoutiqueController@delete',  $article->id_produit) }}" class="btn btn-danger btn-sm">Supprimer</a>
-                    </div>
-                </div>
-            </div>
-         @endforeach
-        </div>
+<div class="content">
+    <div class="title mb-3">
+        Boutique
     </div>
 
     <hr>
+    <div class="row flex-center">
+        <div class="display-4 text-center text-danger p-md-3">
+            Le top 3 de nos articles
+        </div>
+    </div>
+    <div class="row flex-center">
+    @foreach($topArticles as $article)
+        <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4 ">
+            <div class="card card-inverse card-info ">
+                <img class="card-img-top" src="{{$article->urlImage}}">
+                <div class="card-block">
+                    <h4 class="card-title">{{$article->nom}}, {{$article->prix}}€</h4>
+                    <div class="card-text">
+                        {{$article->description}}
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}"class="btn btn-info btn-sm" href="{{route('article', ['numero'=>$article->id_produit])}}">Voir plus</a>
+                </div>
+            </div>
+        </div>
+     @endforeach
+    </div>
+</div>
+
+<hr>
 
     <div class="container">
         <div class="btn-group pr-5">
@@ -58,17 +57,15 @@
                     <button class="dropdown-item" type="button">Sweat-shirt</button>
                     <button class="dropdown-item" type="button">Casquette</button>
                     <button class="dropdown-item" type="button">Goodies</button>
-
                 </div>
             </div>
             <div class="col-12 col-sm-8 col-lg-4 pr-5 pl-5">
                 <form action="search" method="get" class="form-inline">
                     <div class="input-group">
-                        <input type="text" name="search" class="form-control"
-                               placeholder="Recherche">
+                        <input type="text" name="search" class="form-control" placeholder="Recherche">
                         <span class="input-group-btn">
-                                <button type="submit" class="btn btn-secondary"><span class="fa fa-search"></span> Valider</button>
-                            </span>
+                            <button type="submit" class="btn btn-secondary"><span class="fa fa-search"></span> Valider</button>
+                        </span>
                     </div>
                 </form>
             </div>
@@ -91,27 +88,18 @@
                             {{$article->description}}
                         </div>
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer text-center">
                         <a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}"class="btn btn-info btn-sm" href="{{route('article', ['numero'=>$article->id_produit])}}">Voir plus</a>
-                        <a href="{{ URL::action('BoutiqueController@delete',  $article->id_produit) }}" class="btn btn-danger btn-sm">Supprimer</a>
+                        @if(auth()->check() && auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
+                            <a href="{{ URL::action('BoutiqueController@delete',  $article->id_produit) }}" class="btn btn-danger btn-sm">Supprimer</a>
+                        @endif
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
-    </div>
 
-
-<br>
+@if(auth()->check() && auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
     @include('boutique.admin_panel')
-
-
-
-
-
-
-    <!-- ATTENTION RAPPEL pour l'espace administrateur quand nous sommes membres avec un if ou foreach -->
-
-
-
+@endif
 @endsection

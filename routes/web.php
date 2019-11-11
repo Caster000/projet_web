@@ -13,7 +13,7 @@ Route::group(['prefix'=>'boutique'], function(){
     Route::get('/article/{numero}', 'BoutiqueController@article')->name('article');
     Route::post('/', 'BoutiqueController@addArticle');
     Route::get('/panier', 'PanierController@index')->name('panier');
-    Route::get('/delete/{id_produit}', 'BoutiqueController@delete')->name('panier');
+    Route::get('/delete/{id_produit}', 'BoutiqueController@delete');
 
 });
 
@@ -27,7 +27,7 @@ Route::group(['prefix'=>'activites'], function(){
     Route::get('/inscrire/{id_activite}', 'ActivitesController@inscrire');
 
 });
-
+/*
 Route::group(['prefix'=>'administration'], function(){
 
     Route::group(['prefix'=>'boutique'], function(){
@@ -44,7 +44,7 @@ Route::group(['prefix'=>'administration'], function(){
 
     });
 
-});
+});*/
 
 
 
