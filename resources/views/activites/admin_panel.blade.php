@@ -11,11 +11,11 @@
                 </button>
             </div>
             <div class="modal-body mr-5 ml-5">
-                <form action="/projet_web/public/activites" method="post" enctype="multipart/form-data">
+                <form action="{{route('addactivite')}}" method="post" enctype="multipart/form-data">
                 @csrf <!-- {{ csrf_field() }} -->
                     <div class="form">
                         <div class="form-group row">
-                            <label for="nom">Nom activité :</label>
+                            <label for="nom">Nom de l'activité :</label>
                             <input type="text" class="form-control" placeholder="Ex: Tournoi Smash" name="nom" required>
                         </div>
                         <div class="form-group row">
@@ -23,7 +23,7 @@
                             <textarea class="form-control" placeholder="Description..." name="description" required></textarea>
                         </div>
                         <div class="form-group ">
-                            <label for="recurrence">Reccurence de l'évenement : </label><br>
+                            <label for="recurrence">Réccurence de l'évenement : </label><br>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input " type="radio" name="recurrence" id="exampleRadios1" value="unique" checked>
                                     <label class="form-check-label" for="Unique">

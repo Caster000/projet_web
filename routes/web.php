@@ -19,13 +19,20 @@ Route::group(['prefix'=>'boutique'], function(){
 });
 
 Route::group(['prefix'=>'activites'], function(){
-
     Route::get('/', 'ActivitesController@index')->name('activites');
     Route::get('/{numero}', 'ActivitesController@activiteNumero')->name('activite');
-    Route::post('/{numero}', 'PhotoController@addPhoto');
-    Route::post('/', 'ActivitesController@addActivite');
-    Route::get('/delete/{id_activite}', 'ActivitesController@delete');
-    Route::get('/inscrire/{id_activite}', 'ActivitesController@inscrire');
+
+    Route::group(['middleware'=>'auth'], function(){
+        Route::get('/inscription/{id_activite}', 'ActivitesController@inscription')->name('inscription');
+        Route::get('/desinscription/{id_activite}', 'ActivitesController@desinscription')->name('desinscription');
+        Route::post('/{numero}', 'PhotoController@addPhoto');
+
+        Route::group(['middleware'=>'Administration'], function(){
+            Route::post('/', 'ActivitesController@addActivite')->name('addactivite');
+            Route::get('/delete/{id_activite}', 'ActivitesController@delete');
+        });
+
+    });
 
 });
 /*
