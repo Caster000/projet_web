@@ -22,7 +22,11 @@
                     <div class="card-footer text-center">
                         <a href="{{ URL::action('ActivitesController@activiteNumero',  $activite->id_activite) }}"><button class="btn btn-info btn-sm">En savoir plus</button></a>
                         @if(auth()->check())
-                        <a href="{{ URL::action('ActivitesController@inscrire',  $activite->id_activite) }}"><button class="btn btn-primary btn-sm">S'inscrire</button></a>
+                            @if((\App\Inscrire::where('id_activite', $activite->id_activite)->where('id_personne', auth()->user()->id_personne)->first()))
+                                <a href="{{ URL::action('ActivitesController@desinscription',  $activite->id_activite) }}"><button class="btn btn-primary btn-sm">Se désinscrire</button></a>
+                            @else
+                                <a href="{{ URL::action('ActivitesController@inscription',  $activite->id_activite) }}"><button class="btn btn-primary btn-sm">S'inscrire</button></a>
+                            @endif
                             @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
                             <a href="{{ URL::action('ActivitesController@delete',  $activite->id_activite) }}"><button class="btn btn-danger btn-sm" >Supprimer</button></a>
                             @endif
