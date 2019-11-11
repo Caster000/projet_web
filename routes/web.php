@@ -11,7 +11,9 @@ Route::group(['prefix'=>'boutique'], function(){
 
     Route::get('/', 'BoutiqueController@index')->name('boutique');
     Route::get('/article/{numero}', 'BoutiqueController@article')->name('article');
+    Route::post('/', 'BoutiqueController@addArticle');
     Route::get('/panier', 'BoutiqueController@panier')->name('panier');
+    Route::get('/delete/{id_produit}', 'BoutiqueController@delete')->name('panier');
 
 });
 
@@ -19,6 +21,10 @@ Route::group(['prefix'=>'activites'], function(){
 
     Route::get('/', 'ActivitesController@index')->name('activites');
     Route::get('/{numero}', 'ActivitesController@activiteNumero')->name('activite');
+    Route::post('/{numero}', 'PhotoController@addPhoto');
+    Route::post('/', 'ActivitesController@addActivite');
+    Route::get('/delete/{id_activite}', 'ActivitesController@delete');
+    Route::get('/inscrire/{id_activite}', 'ActivitesController@inscrire');
 
 });
 
@@ -44,4 +50,4 @@ Route::group(['prefix'=>'administration'], function(){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', 'HomeController@logout')->name('logout');

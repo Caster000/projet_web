@@ -26,6 +26,38 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Prénom') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
+
+                                @error('surname')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="campus" class="col-md-4 col-form-label text-md-right">{{ __('Campus') }}</label>
+                            <select id="campus" class="form-control col-md-6" @error('campus') is-invalid @enderror name="campus" value="{{ old('campus') }}" required autocomplete="campus" autofocus>
+                                @foreach($campus as $campusUnit)
+                                    <option class="dropdown-item" value="{{$campusUnit->id_campus}}">{{$campusUnit->campus}}</option>
+                                @endforeach
+                            </select>
+                            <!--<div class="col-md-6">
+                                <input id="campus" type="" class="form-control @error('campus') is-invalid @enderror" name="campus" value="{{ old('campus') }}" required autocomplete="campus" autofocus>
+
+                                @error('campus')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>-->
+                        </div>
+
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Adresse e-mail') }}</label>
 
                             <div class="col-md-6">
@@ -68,7 +100,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-4 offset-md-5">
-                                <button type="submit" class="btn bleu-cesi">
+                                <button type="submit" class="btn btn-primary">
                                     {{ __('S\'inscrire') }}
                                 </button>
                             </div>

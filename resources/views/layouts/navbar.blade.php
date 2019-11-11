@@ -34,7 +34,7 @@
                 @if (Route::has('login'))
                     @auth
                         <li class="nav-item">
-                            <a href="{{ url('/home') }}">Profil</a>
+                            <a href="{{ url('/logout') }}">Déconnexion</a>
                         </li>
                     @else
                         <li class="nav-item mr-2 ">

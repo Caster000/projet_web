@@ -26,8 +26,8 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <span><a class="btn btn-info btn-sm" href="{{route('article', ['numero'=>$article->id_produit])}}">Voir plus</a></span>
-                        <button class="btn btn-danger btn-sm">Supprimer</button>
+                        <a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}"class="btn btn-info btn-sm" href="{{route('article', ['numero'=>$article->id_produit])}}">Voir plus</a>
+                        <a href="{{ URL::action('BoutiqueController@delete',  $article->id_produit) }}" class="btn btn-danger btn-sm">Supprimer</a>
                     </div>
                 </div>
             </div>
@@ -92,8 +92,8 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <span><a class="btn btn-info btn-sm" href="{{route('article', ['numero'=>$article->id_produit])}}">Voir plus</a></span>
-                        <button class="btn btn-danger btn-sm">Supprimer</button>
+                        <a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}"class="btn btn-info btn-sm" href="{{route('article', ['numero'=>$article->id_produit])}}">Voir plus</a>
+                        <a href="{{ URL::action('BoutiqueController@delete',  $article->id_produit) }}" class="btn btn-danger btn-sm">Supprimer</a>
                     </div>
                 </div>
             </div>
