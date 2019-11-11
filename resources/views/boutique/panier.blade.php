@@ -11,7 +11,7 @@
             <div class="title pb-5">
                 Panier
             </div>
-
+            @if(empty($articles))
                     <div class="container">
                         <div class="row col-12">
                             <div class="bg-white rounded shadow-smrow col-6">
@@ -35,6 +35,7 @@
                                             </th>
                                         </tr>
                                         </thead>
+
                                         <tbody>
                                         @foreach($articles as $article)
                                             <tr>
@@ -53,30 +54,50 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                        @endforeach
 
-                            </div>
 
+                            <div class="row bg-white rounded shadow-sm col-6">
 
-                        <div class="row bg-white rounded shadow-sm col-6">
-
-                            <div class="">
-                                <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Récapitulatif de commande</div>
-                                <div class="p-4">
-                                    <p class="font-italic mb-4">
-                                        Les frais d’expédition et les frais supplémentaires sont calculés en fonction des valeurs que vous avez entrées.</p>
-                                    <ul class="list-unstyled mb-4">
-                                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Prix des articles </strong><strong>$390.00</strong></li>
-                                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Frais de port</strong><strong>$10.00</strong></li>
-                                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Taxe</strong><strong>$0.00</strong></li>
-                                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                                            <h5 class="font-weight-bold">$400.00</h5>
-                                        </li>
-                                    </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Proceder au payement</a>
+                                <div class="">
+                                    <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Récapitulatif de commande</div>
+                                    <div class="p-4">
+                                        <p class="font-italic mb-4">
+                                            Les frais d’expédition et les frais supplémentaires sont calculés en fonction des valeurs que vous avez entrées.</p>
+                                        <ul class="list-unstyled mb-4">
+                                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Prix des articles </strong><strong>$390.00</strong></li>
+                                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Frais de port</strong><strong>$10.00</strong></li>
+                                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Taxe</strong><strong>$0.00</strong></li>
+                                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
+                                                <h5 class="font-weight-bold">$400.00</h5>
+                                            </li>
+                                        </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Proceder au payement</a>
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
+
+                    </div>
+                    </div>
+        </div>
+            @else
+                <div class="row m-4 p-4">
+                    <div class="col-lg-6 offset-3 text-center">
+                        <div class="text-bold">
+                            Pas d'article dans votre panier !
+                            <br>
+                            Allez visiter la boutique !!
+                            <hr>
                         </div>
                     </div>
+                    <div>
+                        &nbsp
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSKuxfXksQIPvXRbB5h9sEBM3HC-GuLqmG1MRI2-RrWu8q8o8i&s" alt="" class="img-fluid">
+                    </div>
                 </div>
-            </div>
+            @endif
+
 @endsection
