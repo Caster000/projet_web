@@ -37,10 +37,26 @@ class ActivitesController extends Controller
         $activite->delete();
         return redirect('/activites');
     }
-    public function inscrire($id_activite){
-//        $activite = Activite::find($id_activite);
-//        $activite->delete();
-        return redirect('/activites');
+    public function inscription($id_activite)
+    {
+        if (!(\App\Inscrire::where('id_activite', $id_activite)->where('id_personne', auth()->user()->id_personne)->first())) {
+            \App\Inscrire::create([
+                'id_personne' => auth()->user()->id_personne,
+                'id_activite' => $id_activite,
+            ]);
+        }
+        return back();
+    }
+    public function desinscription($id_activite){
+       /* $pdo = new \PDO();
+        $requete = $pdo->prepare("DELETE FROM `inscrire` WHERE `id_personne`=:id_personne AND `id_activite`=:id_activite;");
+        $requete->bindValue(':id_personne', auth()->user()->id_personne);
+        $requete->bindValue(':id_activite', $id_activite);
+        $requete->execute();*/
+        $inscription = \App\Inscrire::where('id_activite', $id_activite)->where('id_personne', auth()->user()->id_personne)->first();
+        $inscription->delete();
+        //dd($inscription);
+        return back();
     }
 
 }
