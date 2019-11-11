@@ -55,4 +55,15 @@ class PanierController extends Controller
         return redirect('/boutique/panier');
     }
 
+    public function addQuantite($id_commande,$id_produit,Request $request){
+        $produit= Contenir::where('id_produit',$id_produit)
+            ->where('id_commande',$id_commande)->first();
+        echo $produit;
+        $produit->Quantite=$request->quantite;
+        echo $produit;
+        $produit->save();
+        return redirect('/boutique/panier');
+    }
+
+
 }

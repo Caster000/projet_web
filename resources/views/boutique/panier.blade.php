@@ -72,9 +72,18 @@
                                             </div>
                                         </th>
                                         <td class="border-0 align-middle"><strong>{{$article->prix}}€</strong></td>
-                                        <td class="border-0 align-middle"><strong>{{$article->Quantite}}</strong></td>
+                                        <td class="border-0 align-middle"><strong>
+                                                <form name="myform" method="get" action="{{ URL::action('PanierController@addQuantite', [$article->id_commande ,$article->id_produit]) }}">
+                                                    <select onchange='this.form.submit()' class="custom-select mr-sm-2" id="inlineFormCustomSelect"name="quantite">
+                                                        <option value="1" autofocus>{{$article->Quantite}}</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                    </select>
+                                                </form>
                                         <td class="border-0 align-middle"><a href="{{ URL::action('PanierController@delete', [$article->id_commande ,$article->id_produit]) }}" class="text-dark">
-                                                <i class="fa fa-trash"></i></a></td>
+                                                <i class="fa fa-trash fa-2x"></i></a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -112,4 +121,9 @@
         </div>
     @endif
 
+@endsection
+@section('addScript')
+{{--    <script type="text/javascript">--}}
+{{--        document.myform.submit();--}}
+{{--    </script>--}}
 @endsection

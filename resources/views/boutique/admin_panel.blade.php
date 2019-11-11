@@ -37,7 +37,7 @@
                                 <option value="1">T-shirt</option>
                                 <option value="2">Sweat-shirt</option>
                                 <option value="3">Casquette</option>
-                                <option value="3">Goodies</option>
+                                <option value="4">Goodies</option>
                             </select>
                         </div>
                         <div class="modal-footer col mt-4">
