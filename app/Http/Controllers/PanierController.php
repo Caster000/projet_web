@@ -23,7 +23,7 @@ class PanierController extends Controller
 
     public function addToPanier($id_produit){
         $commande =Commande::select('id_commande')->where('id_personne',auth()->user()->id_personne)->where('valider',0)->first();
-        echo $commande->id_commande;
+        //echo $commande->id_commande;
         if(!is_null($commande)){
             //echo $commande->id_commande;
 
@@ -46,9 +46,11 @@ class PanierController extends Controller
         return redirect('/boutique/panier');
     }
 
-    public function delete($id_produit, $id_commande){
-        $contenir = Contenir::where('$id_produit',$id_produit)
+    public function delete($id_commande, $id_produit){
+        //echo $id_commande;
+        $contenir = Contenir::where('id_produit',$id_produit)
             ->where('id_commande',$id_commande);
+        //echo $contenir;
         $contenir->delete();
         return redirect('/boutique/panier');
     }

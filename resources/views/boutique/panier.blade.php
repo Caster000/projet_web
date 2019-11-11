@@ -73,7 +73,7 @@
                                         </th>
                                         <td class="border-0 align-middle"><strong>{{$article->prix}}€</strong></td>
                                         <td class="border-0 align-middle"><strong>{{$article->Quantite}}</strong></td>
-                                        <td class="border-0 align-middle"><a href={{ URL::action('PanierController@delete',  $article->id_produit),$article->id_commonde }}"" class="text-dark">
+                                        <td class="border-0 align-middle"><a href="{{ URL::action('PanierController@delete', [$article->id_commande ,$article->id_produit]) }}" class="text-dark">
                                                 <i class="fa fa-trash"></i></a></td>
                                     </tr>
                                 @endforeach
