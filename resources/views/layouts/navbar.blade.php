@@ -30,6 +30,15 @@
                     </li>
                 </ul>
 
+                <div id="cookieConsent">
+                    <div id="closeCookieConsent"></div>
+                        En navigant sur ce site, vous acceptez l'utilisation des cookies de navigation 
+                        <a href={{route('mentions_legales')}} target="_blank">Plus d'informations</a>
+                        <a class="cookieConsentOK">Très bien</a>
+                        <a class="cookieConsentOK" href="https://www.google.fr">Non Merci (retour a Google)</a>
+                </div>
+
+
                 <ul class="navbar-nav   ml-auto" >
                 @if (Route::has('login'))
                     @auth
