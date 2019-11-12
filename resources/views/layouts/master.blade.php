@@ -11,6 +11,9 @@
 
     <!-- Styles -->
     @include('layouts.cesi_graphique')
+
+    @yield('styleParticulier')
+
     <style>
 
     </style>
