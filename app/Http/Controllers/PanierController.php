@@ -15,7 +15,7 @@ class PanierController extends Controller
             ->where('valider',0)
             ->leftJoin('contenir','contenir.id_commande','=','commande.id_commande')
             ->join('produit','produit.id_produit','=','contenir.id_produit') ->get();
-        echo $articles;
+        //echo $articles;
         $totale=0;
         foreach ($articles as $article){
             $montant=$article->prix*$article->Quantite;
