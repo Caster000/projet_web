@@ -32,18 +32,19 @@
                         @endif
                 </div>
                 @if((\App\Inscrire::where('id_activite', $activite->id_activite)->where('id_personne', auth()->user()->id_personne)->first()) || auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
-                <div class="border border-primary p-4  mt-3">
-                    <h6 class="text-center text-bold">Ajouter une image</h6>
-                    <form paramName="file" action="/projet_web/public/activites/{{$activite->id_activite}}" method="post" enctype="multipart/form-data" method="post">
+{{--                <div class="border border-primary p-4  mt-3">--}}
+                    <h6 class="text-center text-bold mt-5">Ajouter une image</h6>
+                    <form class="dropzone" paramName="file" action="{{ URL::action('PhotoController@addPhoto',  $activite->id_activite) }}" enctype="multipart/form-data" method="post">
                     @csrf <!-- {{ csrf_field() }} -->
-                        <div class=" mb-4 ">
-                            <label class="mt-2" for="titre">Titre :</label>
-                            <input type="text" class="form-control" placeholder="Ex: Tournoi Smash" name="titre" required>
-                            <input class="mt-3" name="file" type="file" multiple required/>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Ajouter des photos</button>
+{{--                        <div class=" mb-4 ">--}}
+{{--                            <label class="mt-2" for="titre">Titre :</label>--}}
+{{--                            <input type="text" class="form-control" placeholder="Ex: Tournoi Smash" name="titre" required>--}}
+{{--                            <input class="mt-3" name="file" type="file" multiple required/>--}}
+{{--                        </div>--}}
+{{--                        <button type="submit" class="btn btn-primary">Ajouter des photos</button>--}}
                     </form>
-                </div>
+{{--                </div>--}}
+                    <a href="{{ URL::action('PhotoController@index',  $activite->id_activite) }}" class="btn btn-success mt-2">Voir la Gallerie</a>
                 @endif
             </div>
             @endif
