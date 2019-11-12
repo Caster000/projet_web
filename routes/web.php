@@ -37,7 +37,10 @@ Route::group(['prefix' => 'activites'], function () {
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/inscription/{id_activite}', 'ActivitesController@inscription')->name('inscription');
         Route::get('/desinscription/{id_activite}', 'ActivitesController@desinscription')->name('desinscription');
-        Route::post('/{numero}', 'PhotoController@addPhoto');
+        Route::post('/{id_activite}', 'PhotoController@addPhoto');
+        Route::get('/{id_activite}/gallerie','PhotoController@index');
+        Route::get('/{id_activite}/{titre}/d','PhotoController@image');
+
 
         Route::group(['middleware' => 'Administration'], function () {
             Route::post('/', 'ActivitesController@addActivite')->name('addactivite');

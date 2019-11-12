@@ -12,9 +12,11 @@ class PhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index($id_activite)
+    {   $activite=Photo::where('id_activite',$id_activite)->first();
+        $gallerie =Photo::select('titre','urlImage','visible','id_activite')->where('id_activite',$id_activite)->get();
+        //echo $gallerie;
+        return view('activites.gallerie',compact('gallerie','activite'));
     }
 
     /**
@@ -23,72 +25,30 @@ class PhotoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function addPhoto(Request $request){
+        $this->validate($request, ['file'=>'required|mimes:jpg,jpeg,png']);
+        $file= $request->file;
+        $name = time().$file->getClientOriginalName();
+        $destinationPath = '/projet_web/public/images/activite/';
+       // $destinationPath = '/projet_web/storage/app/public/images/activite/'; // upload path
+       // $request->file('file')->storeAs('/images/activite/', $file);
+        $file->move('images/activite/'.$request->id_activite."/",$name);
         $photo = new Photo;
-        $file = $request->file->getClientOriginalName();
-        $photo->titre=$request->titre;
-        $destinationPath = '/projet_web/storage/app/public/images/activite/'; // upload path
-        $request->file('file')->storeAs('/images/activite/', $file);
-        $photo->urlImage = $destinationPath."/".$file;
+        $photo->titre=$name;
+        $photo->urlImage = 'images/activite/'.$request->id_activite."/".$name;
         $photo->visible= 1;
         $photo->id_personne= auth()->user()->id_personne;
-        $photo->id_activite=$request->numero;
+        $photo->id_activite=$request->id_activite;
         $photo->save();
         return redirect('/activites/');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function image($id_activite, $titre){
+        $gallerie =Photo::select('titre','urlImage','visible','id_activite')
+            ->where('id_activite',$id_activite)
+             ->where('titre',$titre)
+            ->first();
+        //dd($gallerie);
+        return view('activites.image_gallerie',compact('gallerie'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Photo  $photo
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Photo $photo)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Photo  $photo
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Photo $photo)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Photo  $photo
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Photo $photo)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Photo  $photo
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Photo $photo)
-    {
-        //
-    }
 }

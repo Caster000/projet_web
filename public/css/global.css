@@ -56,3 +56,10 @@
     margin-left:0px;
     margin-right: 0;
 }
+.photo{
+    max-width: 20rem;
+    /*max-height:500px;*/
+}
+.lity-hide {
+    display: none;
+}
