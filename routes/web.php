@@ -5,6 +5,7 @@ Route::group(['prefix'=>'/'], function(){
     Route::get('cgv','GeneralController@cgv')->name('cgv');
     Route::get('mentions_legales', 'GeneralController@mentions_legales')->name('mentions_legales');
     Route::get('conditions', 'GeneralController@conditions_generales')->name('conditions');
+    Route::post('cookieConsent', 'GeneralController@cookieConsent')->name('cookieConsent');
 });
 
 Route::group(['prefix'=>'boutique'], function(){
