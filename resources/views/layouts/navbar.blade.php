@@ -1,6 +1,5 @@
 <!-- NAVBAR-->
 
-
 <div class="row m-1 menu navbarbody">
     <div class="col-2 pl-4 mt-1">
         <img src="/projet_web//public/images/CESILOGO.png" width="50%" alt="Logo CESI">
@@ -29,6 +28,16 @@
                         <a class="nav-link" href={{route('boutique')}}>Boutique</a>
                     </li>
                 </ul>
+                @if (Session::get('cookieConsent',0) != 1)
+                <div id="cookieConsent">
+                    <div id="closeCookieConsent"></div>
+                        En navigant sur ce site, vous acceptez l'utilisation des cookies de navigation et les conditions générales d'utilisation.
+                        <a href={{route('mentions_legales')}} target="_blank">&nbsp Plus d'informations</a>
+                        <form action={{route('cookieConsent')}} method="post">   {{csrf_field()}}        
+                        <input class="cookieConsentOK" type="submit" class="submitcookie" value="Très Bien"/></form>
+                        <a class="cookieConsentOK" href="https://www.google.fr">Non Merci (retour a Google)</a>
+                </div>
+                @endif
 
                 <ul class="navbar-nav   ml-auto" >
                 @if (Route::has('login'))

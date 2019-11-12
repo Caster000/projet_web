@@ -4,6 +4,7 @@
 <link rel="stylesheet" type="text/css" href="/projet_web/public/css/footer.css"/>
 <link rel="stylesheet" type="text/css" href="/projet_web/public/css/boutique.css"/>
 <link rel="stylesheet" type="text/css" href="/projet_web/public/css/dropzone.css"/>
+<link rel="stylesheet" type="text/css" href="/projet_web/public/css/cookiebar.css"/>
 <!-- A TOUJOURS ADD EN DERNIER--> <link rel="stylesheet" type="text/css" href="/projet_web/public/css/global.css"/>
 
 

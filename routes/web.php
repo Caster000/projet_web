@@ -5,6 +5,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('cgv', 'GeneralController@cgv')->name('cgv');
     Route::get('mentions_legales', 'GeneralController@mentions_legales')->name('mentions_legales');
     Route::get('conditions', 'GeneralController@conditions_generales')->name('conditions');
+    Route::post('cookieConsent', 'GeneralController@cookieConsent')->name('cookieConsent');
 });
 
 Route::group(['prefix' => 'boutique'], function () {
@@ -28,7 +29,10 @@ Route::group(['prefix' => 'boutique'], function () {
 
 Route::group(['prefix' => 'activites'], function () {
     Route::get('/', 'ActivitesController@index')->name('activites');
+    Route::get('/evenementsPasses', 'ActivitesController@evenementsPasses')->name('evenementsPasses');
+    Route::get('/evenementsDuMois', 'ActivitesController@evenementsDuMois')->name('evenementsDuMois');
     Route::get('/{numero}', 'ActivitesController@activiteNumero')->where('numero','[0-9]+')->name('activite');
+
 
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/inscription/{id_activite}', 'ActivitesController@inscription')->name('inscription');
@@ -41,6 +45,8 @@ Route::group(['prefix' => 'activites'], function () {
             Route::get('/visible/{id_activite}', 'ActivitesController@rendreVisible')->name('activiteRendreVisible');
             Route::get('/invisible/{id_activite}', 'ActivitesController@rendreInvisible')->name('activiteRendreInvisible');
             Route::get('/updateActivites', 'ActivitesController@updateActivites')->name('updateActivites');
+            Route::get('/{id_activite}/list', 'ActivitesController@export');
+
         });
     });
 

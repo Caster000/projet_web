@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Activite;
+use App\Exports\InscritExport;
+use App\Inscrire;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\DB;
 
 class ActivitesController extends Controller
 {
     public function index(){
-        //$activites=\App\Activite::where('visible','=','1')->select('id_activite','activite','description','recurrence','urlImage','date','prix')->get();
         $activites=\App\Activite::select('id_activite','activite','description','recurrence','urlImage','date','prix','visible')->get();
         return view('activites.activites', compact('activites'));
     }
@@ -62,7 +65,25 @@ class ActivitesController extends Controller
         \App\Activite::where('id_activite', $id_activite)->first()->update(['visible'=>0]);
         return back();
     }
-    public  function updateActivites(){
+
+    public  function updateActivites()
+    {
         return view('activites.updateActivites');
+    }
+
+    public function export($id_activite)
+    {
+        return Excel::download(new InscritExport, 'liste_inscrit.csv');
+    }
+
+    public function evenementsPasses(){
+        $activites=\App\Activite::where('date','<', DB::raw('NOW()'))->select('id_activite','activite','description','recurrence','urlImage','date','prix','visible')->get();
+        return view('activites.activites', compact('activites'));
+    }
+
+    public function evenementsDuMois(){
+        $activites=\App\Activite::where(DB::raw('MONTH(date)'),'=', DB::raw('MONTH(NOW())'))->select('id_activite','activite','description','recurrence','urlImage','date','prix','visible')->get();
+        return view('activites.activites', compact('activites'));
+
     }
 }

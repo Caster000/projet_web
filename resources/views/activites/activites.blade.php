@@ -6,7 +6,11 @@
 
 @section('content')
 
-
+        <div class="row flex-center">
+            <a href="{{route('evenementsPasses')}}"><button class="btn btn-primary btn-md mr-2">Évènements passés</button></a>
+            <a href="{{route('activites')}}"><button class="btn btn-primary btn-md mr-2 ml-2">Tous</button></a>
+            <a href="{{route('evenementsDuMois')}}"><button class="btn btn-primary btn-md ml-2">Évènements du mois</button></a>
+        </div>
 
         <div class="row flex-center">
             @if(auth()->check() && auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
