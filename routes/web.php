@@ -31,6 +31,8 @@ Route::group(['prefix'=>'activites'], function(){
         Route::group(['middleware'=>'Administration'], function(){
             Route::post('/', 'ActivitesController@addActivite')->name('addactivite');
             Route::get('/delete/{id_activite}', 'ActivitesController@delete');
+            Route::get('/visible/{id_activite}', 'ActivitesController@rendreVisible')->name('activiteRendreVisible');
+            Route::get('/invisible/{id_activite}', 'ActivitesController@rendreInvisible')->name('activiteRendreInvisible');
         });
 
     });
