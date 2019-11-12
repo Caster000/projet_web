@@ -1,5 +1,6 @@
 <div class="row justify-content-center">
-    <button type="button" class="btn btn-primary m-4 col-10 " data-toggle="modal" data-target="#exampleModal" data-whatever="@ajouterProduit">Ajouter une nouvelle activité</button>
+    <button type="button" class="btn btn-primary m-2 col-2" data-toggle="modal" data-target="#exampleModal" data-whatever="@ajouterProduit">Ajouter une nouvelle activité</button>
+    <a href="{{route('updateActivites')}}" class="btn btn-primary m-2 col-2">Modifier les activités</a>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

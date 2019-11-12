@@ -71,9 +71,6 @@
                                         @else
                                             <a href="{{ URL::action('ActivitesController@inscription',  $activite->id_activite) }}"><button class="btn btn-primary btn-sm">S'inscrire</button></a>
                                         @endif
-                                        @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
-                                        <a href="{{ URL::action('ActivitesController@delete',  $activite->id_activite) }}"><button class="btn btn-danger btn-sm" >Supprimer</button></a>
-                                        @endif
                                     @endif
                                 </div>
                             </div>
@@ -81,14 +78,6 @@
                     @endif
                 @endforeach
             @endif
-        </div>
-
-        <div class="flex-center">
-            <a href="{{route('updateActivites')}}">
-                <button type="button" class="btn btn-black">
-                    Modifier les activités
-                </button>
-            </a>
         </div>
 
 @if(auth()->check() && auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)

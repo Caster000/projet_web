@@ -14,9 +14,8 @@ class PhotoController extends Controller
      */
     public function index($id_activite)
     {   $activite=Photo::where('id_activite',$id_activite)->first();
-        $gallerie =Photo::select('titre','urlImage','visible','id_activite')->where('id_activite',$id_activite)->get();
-        //echo $gallerie;
-        return view('activites.gallerie',compact('gallerie','activite'));
+        $galerie =Photo::select('id_photo','titre','urlImage','visible','id_activite')->where('id_activite',$id_activite)->get();
+        return view('activites.gallerie',compact('galerie','activite'));
     }
 
     /**
@@ -43,12 +42,25 @@ class PhotoController extends Controller
     }
 
     public function image($id_activite, $titre){
-        $gallerie =Photo::select('titre','urlImage','visible','id_activite')
+        $galerie =Photo::select('id_photo','titre','urlImage','visible','id_activite')
             ->where('id_activite',$id_activite)
              ->where('titre',$titre)
             ->first();
-        //dd($gallerie);
-        return view('activites.image_gallerie',compact('gallerie'));
+        return view('activites.image_gallerie',compact('galerie'));
     }
 
+    public function photoRendreInvisible($id_photo){
+        \App\Photo::find($id_photo)->update(['visible'=>0]);
+        return back();
+    }
+
+    public function photoRendreVisible($id_photo){
+        \App\Photo::find($id_photo)->update(['visible'=>1]);
+        return back();
+    }
+
+    public function deletePhoto($id_photo){
+        $activite = \App\Photo::find($id_photo)->delete();
+        return back();
+    }
 }

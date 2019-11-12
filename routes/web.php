@@ -38,7 +38,10 @@ Route::group(['prefix' => 'activites'], function () {
         Route::get('/inscription/{id_activite}', 'ActivitesController@inscription')->name('inscription');
         Route::get('/desinscription/{id_activite}', 'ActivitesController@desinscription')->name('desinscription');
         Route::post('/{id_activite}', 'PhotoController@addPhoto');
-        Route::get('/{id_activite}/gallerie','PhotoController@index');
+        Route::get('/{id_activite}/galerie','PhotoController@index');
+        Route::get('/{id_activite}/galerie/visible', 'PhotoController@photoRendreVisible')->name('photoRendreVisible');
+        Route::get('/{id_activite}/galerie/invisible','PhotoController@photoRendreInvisible')->name('photoRendreInvisible');
+        Route::get('/{id_activite}/galerie/delete', 'PhotoController@deletePhoto')->name('deletePhoto');
         Route::get('/{id_activite}/{titre}/d','PhotoController@image');
 
 

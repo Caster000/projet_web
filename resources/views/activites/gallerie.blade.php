@@ -7,14 +7,21 @@
            class="btn btn-success mb-5">Retour sur l'activité</a>
     </div>
     <div class="row justify-content-center">
-        @foreach($gallerie as $photo)
-            <div class="card col-lg-6 col-sm-4  mb-3 mr-4 ml-4 photo ">
+        @foreach($galerie as $photo)
+            <div class="card col-lg-6 col-sm-4  mb-3 mr-4 ml-4 photo border border-dark">
 {{--                {{dd($activite)}}--}}
                 <a href="{{ URL::action('PhotoController@image',  [$activite->id_activite,$photo->titre]) }}" data-lity><img
                         src="/projet_web/public/{{$photo->urlImage}}" class="card-img-top " alt="{{$photo->titre}}">
 
                 </a>
-
+                <div class="row">
+                    @if(!($photo->visible===1))
+                        <a href="{{route('photoRendreVisible', $photo->id_photo)}}" class="btn btn-warning btn-sm col-lg-6 text-bold rounded-0">Invisible</a>
+                    @else
+                        <a href="{{route('photoRendreInvisible', $photo->id_photo)}}" class="btn btn-warning btn-sm col-lg-6 text-bold rounded-0">Visible</a>
+                    @endif
+                    <a href="{{route('deletePhoto',$photo->id_photo)}}" class="btn btn-danger btn-sm col-lg-6 rounded-0">Supprimer</a>
+                </div>
 {{--                <div id="{{$photo->titre}}" style="background:#fff" class="lity-hide 1">--}}
 {{--                        <div>{{$photo->titre}}jj</div>--}}
 {{--                        <img src="/projet_web/public/{{$photo->urlImage}}" class="card-img-top " alt="{{$photo->titre}}">--}}

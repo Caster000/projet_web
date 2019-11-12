@@ -1,7 +1,7 @@
 
 <div style="background:#fff" class="lity-hide 1">
-    <div>{{$gallerie->titre}}ggg</div>
-    <img src="/projet_web/public/{{$gallerie->urlImage}}" class="card-img-top" alt="{{$gallerie->titre}}">
+    <div>{{$galerie->titre}}</div>
+    <img src="/projet_web/public/{{$galerie->urlImage}}" class="card-img-top" alt="{{$galerie->titre}}">
 </div>
 
 

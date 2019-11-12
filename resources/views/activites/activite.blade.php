@@ -44,7 +44,7 @@
 {{--                        <button type="submit" class="btn btn-primary">Ajouter des photos</button>--}}
                     </form>
 {{--                </div>--}}
-                    <a href="{{ URL::action('PhotoController@index',  $activite->id_activite) }}" class="btn btn-success mt-2">Voir la Gallerie</a>
+                    <a href="{{ URL::action('PhotoController@index',  $activite->id_activite) }}" class="btn btn-success mt-2">Voir la Galerie</a>
                 @endif
             </div>
             @endif
