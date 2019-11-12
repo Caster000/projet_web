@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    @if($activite && $activite->visible===1)
+    @if($activite && ($activite->visible===1 || auth()->check() && auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role))
         <div class="row m-4 p-4">
             <div class="col-sm-5 col-md-4 col-lg-5">
                 <img src="{{$activite->urlImage}}" alt="" class="img-fluid">
