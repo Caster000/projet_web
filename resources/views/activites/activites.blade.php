@@ -78,6 +78,15 @@
                 @endforeach
             @endif
         </div>
+
+        <div class="flex-center">
+            <a href="{{route('updateActivites')}}">
+                <button type="button" class="btn btn-black">
+                    Modifier les activités
+                </button>
+            </a>
+        </div>
+
 @if(auth()->check() && auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
     @include('activites.admin_panel')
 @endif

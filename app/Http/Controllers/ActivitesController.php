@@ -62,4 +62,7 @@ class ActivitesController extends Controller
         \App\Activite::where('id_activite', $id_activite)->first()->update(['visible'=>0]);
         return back();
     }
+    public  function updateActivites(){
+        return view('activites.updateActivites');
+    }
 }

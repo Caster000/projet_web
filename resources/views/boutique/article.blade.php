@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
+
+
     @if($produit)
         <div class="row m-4 p-4">
             <div class="col-sm-5 col-md-4 col-lg-5">
@@ -19,10 +21,10 @@
             </div>
             @if(auth()->check())
                 <div class="col-lg-2 col-sm-2 col-md-2">
-                    <a href="{{ URL::action('PanierController@addToPanier',  $produit->id_produit) }}" class="btn btn-warning" ><span class="fa fa-shopping-cart fa-lg"></span>&nbspAjouter au panier</a>
+                    <a href="{{ URL::action('PanierController@addToPanier',  $produit->id_produit) }}"
+                       class="btn btn-warning"><span class="fa fa-shopping-cart fa-lg"></span>&nbspAjouter au panier</a>
                     @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
-                        <!-- ADMIN BOUTON -->
-                        <a class="btn btn-info mt-4" data-toggle="button" aria-pressed="false"><span class="fa fa-pencil fa-lg"></span>&nbspModifier l'article</a>
+
                     @endif
                 </div>
             @endif
@@ -41,8 +43,11 @@
                 &nbsp
             </div>
             <div class="col-lg-12 text-center">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSKuxfXksQIPvXRbB5h9sEBM3HC-GuLqmG1MRI2-RrWu8q8o8i&s" alt="" class="img-fluid">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSKuxfXksQIPvXRbB5h9sEBM3HC-GuLqmG1MRI2-RrWu8q8o8i&s"
+                    alt="" class="img-fluid">
             </div>
         </div>
     @endif
 @endsection
+
