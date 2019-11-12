@@ -1,11 +1,12 @@
-div.content {
-	font-size: 80%;
+div.paragraphe{
+	margin-left: 30px;
 }
 
-#paragraphe {
-	font-size: 80%;
+h2{
+	margin-top: 15px;
+	margin-left: 10px;
 }
-
-#titre {
-	font-size: 400%;
+h3 {
+	margin-left: -10px;	
+	text-decoration: underline;
 }
