@@ -22,6 +22,8 @@ Route::group(['prefix'=>'boutique'], function(){
 
 Route::group(['prefix'=>'activites'], function(){
     Route::get('/', 'ActivitesController@index')->name('activites');
+    Route::get('/evenementsPasses', 'ActivitesController@evenementsPasses')->name('evenementsPasses');
+    Route::get('/evenementsDuMois', 'ActivitesController@evenementsDuMois')->name('evenementsDuMois');
     Route::get('/{numero}', 'ActivitesController@activiteNumero')->name('activite');
 
     Route::group(['middleware'=>'auth'], function(){
