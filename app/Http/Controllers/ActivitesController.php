@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Activite;
+use App\Exports\InscritExport;
+use App\Inscrire;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ActivitesController extends Controller
 {
@@ -61,5 +64,10 @@ class ActivitesController extends Controller
     public function rendreInvisible($id_activite){
         \App\Activite::where('id_activite', $id_activite)->first()->update(['visible'=>0]);
         return back();
+    }
+
+    public function export($id_activite)
+    {
+        return Excel::download(new InscritExport, 'liste_inscrit.csv');
     }
 }

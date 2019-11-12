@@ -34,6 +34,7 @@ Route::group(['prefix'=>'activites'], function(){
             Route::get('/delete/{id_activite}', 'ActivitesController@delete');
             Route::get('/visible/{id_activite}', 'ActivitesController@rendreVisible')->name('activiteRendreVisible');
             Route::get('/invisible/{id_activite}', 'ActivitesController@rendreInvisible')->name('activiteRendreInvisible');
+            Route::get('/{id_activite}/list', 'ActivitesController@export');
         });
 
     });
