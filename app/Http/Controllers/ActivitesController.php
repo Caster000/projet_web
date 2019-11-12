@@ -9,7 +9,8 @@ use Illuminate\Http\UploadedFile;
 class ActivitesController extends Controller
 {
     public function index(){
-        $activites=\App\Activite::where('visible','=','1')->select('id_activite','activite','description','recurrence','urlImage','date','prix')->get();
+        //$activites=\App\Activite::where('visible','=','1')->select('id_activite','activite','description','recurrence','urlImage','date','prix')->get();
+        $activites=\App\Activite::select('id_activite','activite','description','recurrence','urlImage','date','prix','visible')->get();
         return view('activites.activites', compact('activites'));
     }
 
@@ -48,15 +49,17 @@ class ActivitesController extends Controller
         return back();
     }
     public function desinscription($id_activite){
-       /* $pdo = new \PDO();
-        $requete = $pdo->prepare("DELETE FROM `inscrire` WHERE `id_personne`=:id_personne AND `id_activite`=:id_activite;");
-        $requete->bindValue(':id_personne', auth()->user()->id_personne);
-        $requete->bindValue(':id_activite', $id_activite);
-        $requete->execute();*/
-        $inscription = \App\Inscrire::where('id_activite', $id_activite)->where('id_personne', auth()->user()->id_personne)->first();
-        $inscription->delete();
-        //dd($inscription);
+        \App\Inscrire::where('id_activite', $id_activite)->where('id_personne', auth()->user()->id_personne)->first()->delete();
         return back();
     }
 
+    public function rendreVisible($id_activite){
+        \App\Activite::where('id_activite', $id_activite)->first()->update(['visible'=>1]);
+        return back();
+    }
+
+    public function rendreInvisible($id_activite){
+        \App\Activite::where('id_activite', $id_activite)->first()->update(['visible'=>0]);
+        return back();
+    }
 }
