@@ -49,4 +49,10 @@ class BoutiqueController extends Controller
         $article->delete();
         return redirect('/boutique');
     }
+    public  function updateArticles(){
+        return view('boutique.updateArticles');
+    }
+
+
+
 }

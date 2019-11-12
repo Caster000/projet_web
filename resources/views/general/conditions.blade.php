@@ -25,7 +25,7 @@
 
         <div class="content">
             <div class="title m-b-md">
-                Conditions Générales
+               Conditions générales
             </div>
 
             <div class="links">
@@ -45,6 +45,5 @@
                 <hr>
             </div>
         </div>
-</div>
 
 @endsection
