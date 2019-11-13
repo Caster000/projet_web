@@ -17,8 +17,11 @@
                     {{$activite->prix}}€
                 </di>
             </div>
-            @if(auth()->check())
             <div class="col-lg-2 col-sm-2 col-md-2">
+                <div class="text-center mb-3">
+                    <a class="btn btn-primary" href="{{ route('activites') }}" aria-pressed="false">&nbspRetour aux activités</a>
+                </div>
+            @if(auth()->check())
                 <div class="text-center">
                     @if((\App\Inscrire::where('id_activite', $activite->id_activite)->where('id_personne', auth()->user()->id_personne)->first()))
                         <a class="btn btn-warning" href="{{ URL::action('ActivitesController@desinscription',  $activite->id_activite) }}" aria-pressed="false"><span class="fa fa-shopping-cart fa-lg"></span>&nbspSe raviser</a>
@@ -27,9 +30,8 @@
                     @endif
                 <!-- ADMIN BOUTON -->
                 @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
-                    <button class="btn btn-info" data-toggle="button" aria-pressed="false"><span class="fa fa-pencil fa-lg"></span>&nbspModifier l'article</button>
-                            <a href="{{ URL::action('ActivitesController@export',  $activite->id_activite) }}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-download fa-lg"></span> &nbspTélécharger la liste des inscrits</a>
-                        @endif
+                    <a href="{{ URL::action('ActivitesController@export',  $activite->id_activite) }}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-download fa-lg"></span> &nbspTélécharger la liste des inscrits</a>
+                @endif
                 </div>
                 @if((\App\Inscrire::where('id_activite', $activite->id_activite)->where('id_personne', auth()->user()->id_personne)->first()) || auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
 {{--                <div class="border border-primary p-4  mt-3">--}}

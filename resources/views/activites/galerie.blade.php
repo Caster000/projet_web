@@ -14,14 +14,16 @@
                         src="/projet_web/public/{{$photo->urlImage}}" class="card-img-top " alt="{{$photo->titre}}">
 
                 </a>
-                <div class="row">
-                    @if(!($photo->visible===1))
-                        <a href="{{route('photoRendreVisible', $photo->id_photo)}}" class="btn btn-warning btn-sm col-lg-6 text-bold rounded-0">Invisible</a>
-                    @else
-                        <a href="{{route('photoRendreInvisible', $photo->id_photo)}}" class="btn btn-warning btn-sm col-lg-6 text-bold rounded-0">Visible</a>
-                    @endif
-                    <a href="{{route('deletePhoto',$photo->id_photo)}}" class="btn btn-danger btn-sm col-lg-6 rounded-0">Supprimer</a>
-                </div>
+                @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
+                    <div class="row">
+                        @if(!($photo->visible===1))
+                            <a href="{{route('photoRendreVisible', $photo->id_photo)}}" class="btn btn-warning btn-sm col-lg-6 text-bold rounded-0">Invisible</a>
+                        @else
+                            <a href="{{route('photoRendreInvisible', $photo->id_photo)}}" class="btn btn-warning btn-sm col-lg-6 text-bold rounded-0">Visible</a>
+                        @endif
+                        <a href="{{route('deletePhoto',$photo->id_photo)}}" class="btn btn-danger btn-sm col-lg-6 rounded-0">Supprimer</a>
+                    </div>
+                @endif
 {{--                <div id="{{$photo->titre}}" style="background:#fff" class="lity-hide 1">--}}
 {{--                        <div>{{$photo->titre}}jj</div>--}}
 {{--                        <img src="/projet_web/public/{{$photo->urlImage}}" class="card-img-top " alt="{{$photo->titre}}">--}}
@@ -58,6 +60,4 @@
 
 @endsection
 @section('addScripts')
-    <script >
-    </script>
 @endsection

@@ -26,7 +26,7 @@ class Liker extends Model
     /**
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['id_photo','id_personne'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

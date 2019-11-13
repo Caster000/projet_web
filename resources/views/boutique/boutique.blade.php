@@ -57,10 +57,9 @@
                     Trier vos articles par catégories
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <button class="dropdown-item" type="button">T-shirt</button>
-                    <button class="dropdown-item" type="button">Sweat-shirt</button>
-                    <button class="dropdown-item" type="button">Casquette</button>
-                    <button class="dropdown-item" type="button">Goodies</button>
+                    @foreach($allCategories as $categorie)
+                    <button class="dropdown-item" type="button">{{$categorie->categorie}}</button>
+                    @endforeach
                 </div>
             </div>
             <div class="col-12 col-sm-8 col-lg-4 pr-5 pl-5">

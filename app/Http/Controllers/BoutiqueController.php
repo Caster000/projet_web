@@ -16,8 +16,8 @@ class BoutiqueController extends Controller
             ->orderBy('produit.nom', 'ASC')
             ->get();
         $allArticles=Produit::get();
-        return view('boutique.boutique', compact('topArticles', 'allArticles'));
-        //:/public/images/article/keychain.png
+        $allCategories = \App\Categorie::get();
+        return view('boutique.boutique', compact('topArticles', 'allArticles', 'allCategories'));
     }
 
     public function panier(){
