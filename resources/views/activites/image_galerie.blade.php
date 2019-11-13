@@ -3,10 +3,10 @@
 <div  class="row mt-1 ">
     <div class="col-7 ">
         <img src="/projet_web/public/{{$galerie->urlImage}}" class="img-fluid photo" alt="{{$galerie->titre}}">
-        @if($like->isEmpty())
-             <a href="{{-- {{ URL::action('LikeController@Like',  $activite->id_activite) }}--}}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-heart-o fa-lg"></span> </a>
+        @if(!(\App\Liker::where('id_photo', $galerie->id_photo)->where('id_personne', auth()->user()->id_personne)))
+             <a href=" {{ URL::action('PhotoController@addLike',  [$galerie->id_photo,auth()->user()->id_personne]) }}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-heart-o fa-lg"></span> </a>
         @else
-            <a href=" {{--{{ URL::action('LikeController@Like',  $activite->id_activite) }}--}}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-heart fa-lg"></span> </a>
+            <a href=" {{ URL::action('PhotoController@deleteLike',  [$galerie->id_photo,auth()->user()->id_personne]) }}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-heart fa-lg"></span> </a>
         @endif
             {{$countLike}}
     </div>

@@ -43,6 +43,8 @@ Route::group(['prefix' => 'activites'], function () {
         Route::get('/{id_activite}/galerie/invisible','PhotoController@photoRendreInvisible')->name('photoRendreInvisible');
         Route::get('/{id_activite}/galerie/delete', 'PhotoController@deletePhoto')->name('deletePhoto');
         Route::get('/{id_activite}/{titre}/d','PhotoController@image');
+        Route::get('/{id_photo}/{id_personne}','PhotoController@addLike');
+        Route::get('/{id_photo}/{id_personne}/delete','PhotoController@deleteLike');
 
 
         Route::group(['middleware' => 'Administration'], function () {
@@ -52,6 +54,7 @@ Route::group(['prefix' => 'activites'], function () {
             Route::get('/invisible/{id_activite}', 'ActivitesController@rendreInvisible')->name('activiteRendreInvisible');
             Route::get('/updateActivites', 'ActivitesController@updateActivites')->name('updateActivites');
             Route::get('/{id_activite}/list', 'ActivitesController@export');
+
 
         });
     });
