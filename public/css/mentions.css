@@ -4,9 +4,12 @@ div.paragraphe{
 
 h2{
 	margin-top: 15px;
-	margin-left: 10px;
 }
 h3 {
 	margin-left: -10px;	
 	text-decoration: underline;
+}
+
+.mentions {
+	margin-left: 30px;
 }
