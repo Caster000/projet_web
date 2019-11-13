@@ -74,7 +74,10 @@ class PhotoController extends Controller
     }
 
     public function deletePhoto($id_photo){
-        $activite = \App\Photo::find($id_photo)->delete();
+        $activite = \App\Photo::find($id_photo);
+        $activite->commenters()->delete();
+        $activite->delete();
+
         return back();
     }
 

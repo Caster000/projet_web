@@ -39,7 +39,7 @@
                                 @csrf <!-- {{ csrf_field() }} -->
                                     <div class="form">
                                         <div class="form-group row">
-                                            <textarea class="form-control" placeholder="Commentaire..." name="description" required></textarea>
+                                            <textarea class="form-control" placeholder="Commentaire..." name="commentaire" required></textarea>
                                         </div>
                                         <div class="modal-footer col mt-4">
                                             <button type="submit" class="btn btn-primary">Ajouter</button>
