@@ -15,7 +15,7 @@ class PhotoController extends Controller
     public function index($id_activite)
     {   $activite=Photo::where('id_activite',$id_activite)->first();
         $galerie =Photo::select('id_photo','titre','urlImage','visible','id_activite')->where('id_activite',$id_activite)->get();
-        return view('activites.gallerie',compact('galerie','activite'));
+        return view('activites.galerie',compact('galerie','activite'));
     }
 
     /**
@@ -46,7 +46,7 @@ class PhotoController extends Controller
             ->where('id_activite',$id_activite)
              ->where('titre',$titre)
             ->first();
-        return view('activites.image_gallerie',compact('galerie'));
+        return view('activites.image_galerie',compact('galerie'));
     }
 
     public function photoRendreInvisible($id_photo){
