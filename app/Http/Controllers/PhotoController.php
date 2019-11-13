@@ -104,11 +104,13 @@ class PhotoController extends Controller
 
     public function deleteCommentaire($id_photo,$id_personne){
         \App\Commenter::where('id_photo', $id_photo)->where('id_personne',$id_personne)->first()->delete();
+        dd(request()->path());
         return back();
     }
 
     public function commentaireRendreInvisible($id_photo, $id_personne){
         \App\Commenter::where('id_photo', $id_photo)->where('id_personne',$id_personne)->first()->update(['visible'=>0]);
+
         return back();
     }
 

@@ -126,7 +126,7 @@ $result = mysqli_query($connect, $query);
 <div class="col-12 col-sm-4 col-lg-4">
     <a href={{route('activites')}}>
         <button type="button" class="btn btn-black">
-            Retour aux articles
+            Retour aux activités
         </button>
     </a>
 </div>

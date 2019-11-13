@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Administration
+class BDE
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class Administration
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->guest() || auth()->user()->id_role===\App\Role::where('role', 'Etudiant')->first()->id_role){ //Si la personne n'est pas du BDE ou du CESI
+        if(!(auth()->user()->id_role===\App\Role::where('role', 'BDE')->first()->id_role)){ //Si la personne est étudiante ou invitée
             abort(404);
         }
         return $next($request);
