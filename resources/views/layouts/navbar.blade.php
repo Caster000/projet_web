@@ -1,24 +1,28 @@
 <!-- NAVBAR-->
 
-<div class="row m-1 menu navbarbody">
-    <div class="col-2 pl-4 mt-1">
-        <img src="/projet_web//public/images/CESILOGO.png" width="50%" alt="Logo CESI">
-    </div>
-    <div class="col-10">
-        <nav class="navbar navbar-expand-lg navbar-custom ">
-            <a class="navbar-brand ">
+<div class="row  menu navbarbody mb-4">
+
+
+
+        <nav class="navbar navbar-expand-lg navbar-custom col-12 p-0">
+            <div class="col-lg-2 col-sm-2 col-md-2">
+                <img class="mr-3" src="/projet_web//public/images/logo-CESI.png" width="150px" style="" alt="Logo CESI">
+            </div>
+            <a href={{route('accueil')}} class="navbar-brand col-3">
                 <!-- Logo Text -->
-                <span class="text-uppercase font-weight-bold mr-auto navbarbody">Bureau des Étudiants du CESI</span>
+                <span class="text-uppercase font-weight-bold   navbarbody">Bureau des Étudiants du CESI</span>
             </a>
 
 
-            <button class="navbarcolotoggler navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">Menu
+            <button class="navbarcolotoggler navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                    data-target="#collapsibleNavbar">Menu
 
             </button>
 
-            <div class="collapse navbar-collapse font-weight-bold " id="collapsibleNavbar">
-                <ul class="navbar-nav  mx-auto">
-                    <li class="nav-item ">
+            <div class="collapse navbar-collapse font-weight-bold  col-7 p-0" id="collapsibleNavbar">
+                <div class="col-4">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
                         <a class="nav-link" href={{route('accueil')}}>Accueil<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item ">
@@ -29,34 +33,40 @@
                     </li>
                 </ul>
                 @if (Session::get('cookieConsent',0) != 1)
-                <div id="cookieConsent">
-                    <div id="closeCookieConsent"></div>
-                        En navigant sur ce site, vous acceptez l'utilisation des cookies de navigation et les conditions générales d'utilisation.
+                    <div id="cookieConsent">
+                        <div id="closeCookieConsent"></div>
+                        En navigant sur ce site, vous acceptez l'utilisation des cookies de navigation et les conditions
+                        générales d'utilisation.
                         <a href={{route('mentions_legales')}} target="_blank">&nbsp Plus d'informations</a>
-                        <form action={{route('cookieConsent')}} method="post">   {{csrf_field()}}        
-                        <input class="cookieConsentOK" type="submit" class="submitcookie" value="Très Bien"/></form>
+                        <form action={{route('cookieConsent')}} method="post">   {{csrf_field()}}
+                            <input class="cookieConsentOK" type="submit" class="submitcookie" value="Très Bien"/></form>
                         <a class="cookieConsentOK" href="https://www.google.fr">Non Merci (retour a Google)</a>
-                </div>
-                @endif
+                    </div>
 
-                <ul class="navbar-nav   ml-auto" >
-                @if (Route::has('login'))
-                    @auth
-                        <li class="nav-item">
-                            <a href="{{ url('/logout') }}">Déconnexion</a>
-                        </li>
-                    @else
-                        <li class="nav-item mr-2 ">
-                            <a href="{{ route('login') }}">Connexion</a>
-                        </li>
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a href="{{ route('register') }}">Inscription</a>
-                        </li>
-                    @endif
+            @endif
+            </div>
+            <div class="col-2 font-weight-bold al-left">
+                <ul class="navbar-nav ">
+                    @if (Route::has('login'))
+                        @auth
+                            <li class="nav-item">
+                                <a href="{{ url('/logout') }}">Déconnexion</a>
+                            </li>
+                            <li class="nav-item pl-5">
+                                <a href="{{ url('/boutique/panier') }}">Panier</a>
+                            </li>
+                        @else
+                            <li class="nav-item mr-2 ">
+                                <a href="{{ route('login') }}">Connexion</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a href="{{ route('register') }}">Inscription</a>
+                                </li>
+                        @endif
                     @endauth
                 @endif
-                    <!--
+                <!--
                     <li class="nav-item">
                         <a class="nav-link">Inscription</a>
                     </li>
@@ -70,9 +80,9 @@
                 </form> -->
             </div>
 
-
+            </div>
         </nav>
-    </div>
+
 </div>
 
 

@@ -1,6 +1,11 @@
 .footerbody{
     color: #000000;
 background-color: #637bbd;
+    /*position:fixed;*/
+    /*left:0px;*/
+    /*bottom:0px;*/
+    /*width:100%;*/
+    /*margin: 0;*/
 }
 .textcolor{
     text-color: black;

@@ -47,6 +47,29 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <span><a class="dropdown-item" href="{{route('accueil')}}">Par prix croissant</a></span>
+                    <div>
+                        <?php
+                        $db = mysql_connect('localhost', 'login', '');
+                        mysql_select_db('projet_web',$db);
+
+                        // on crée la requête SQL
+                        $sql = 'SELECT nom,prenom,statut,date FROM produit ORDER BY prix ASC';
+
+                        // on envoie la requête
+                        $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+
+                        // on fait une boucle qui va faire un tour pour chaque enregistrement
+                        while($data = mysql_fetch_assoc($req))
+                        {
+                        // on affiche les informations de l'enregistrement en cours
+                        echo '<b>'.$data['nom'].' '.$data['prenom'].'</b> ('.$data['statut'].')';
+                        echo ' <i>date de naissance : '.$data['date'].'</i><br>';
+                        }
+
+                        // on ferme la connexion à mysql
+                        mysql_close();
+                        ?>
+                    </div>
                     <span><a class="dropdown-item" href="{{route('accueil')}}">Par prix décroissant</a></span>
                 </div>
             </div>
@@ -57,10 +80,9 @@
                     Trier vos articles par catégories
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <button class="dropdown-item" type="button">T-shirt</button>
-                    <button class="dropdown-item" type="button">Sweat-shirt</button>
-                    <button class="dropdown-item" type="button">Casquette</button>
-                    <button class="dropdown-item" type="button">Goodies</button>
+                    @foreach($allCategories as $categorie)
+                    <button class="dropdown-item" type="button">{{$categorie->categorie}}</button>
+                    @endforeach
                 </div>
             </div>
             <div class="col-12 col-sm-8 col-lg-4 pr-5 pl-5">

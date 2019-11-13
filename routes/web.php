@@ -1,4 +1,5 @@
 <?php
+
 Route::group(['prefix' => '/'], function () {
 
     Route::get('/', 'GeneralController@accueil')->name('accueil');
@@ -37,18 +38,31 @@ Route::group(['prefix' => 'activites'], function () {
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/inscription/{id_activite}', 'ActivitesController@inscription')->name('inscription');
         Route::get('/desinscription/{id_activite}', 'ActivitesController@desinscription')->name('desinscription');
-        Route::post('/{id_activite}', 'PhotoController@addPhoto');
-        Route::get('/{id_activite}/galerie','PhotoController@index');
-        Route::get('/{id_activite}/galerie/visible', 'PhotoController@photoRendreVisible')->name('photoRendreVisible');
-        Route::get('/{id_activite}/galerie/invisible','PhotoController@photoRendreInvisible')->name('photoRendreInvisible');
-        Route::get('/{id_activite}/galerie/delete', 'PhotoController@deletePhoto')->name('deletePhoto');
-        Route::get('/{id_activite}/{titre}/d','PhotoController@image');
-        Route::get('/{id_photo}/{id_personne}','PhotoController@addLike');
-        Route::get('/{id_photo}/{id_personne}/delete','PhotoController@deleteLike');
-        Route::post('/{id_photo}/{id_personne}/comment','PhotoController@addCommentaire');
+
+        Route::group(['prefix'=>'{id_activite}'], function(){ //Regex id_activite dans RouteServiceProvider@boot
+            Route::post('/', 'PhotoController@addPhoto');
+            Route::get('/galerie','PhotoController@index');
+            Route::get('/galerie/visible', 'PhotoController@photoRendreVisible')->name('photoRendreVisible');
+            Route::get('/galerie/invisible','PhotoController@photoRendreInvisible')->name('photoRendreInvisible');
+            Route::get('/galerie/delete', 'PhotoController@deletePhoto')->name('deletePhoto');
+            Route::get('/{titre}/details','PhotoController@image');
+        });
+
+        Route::group(['prefix'=>'{id_photo}/{id_personne}'], function(){//Regex id_personne et id_photo dans RouteServiceProvider@boot
+            Route::get('/like','PhotoController@addLike')->name('like');
+            Route::get('/deleteLike','PhotoController@deleteLike')->name('deleteLike');
+            Route::get('/visible','PhotoController@commentaireRendreVisible')->name('commentaireRendreVisible');
+            Route::get('/invisible','PhotoController@commentaireRendreInvisible')->name('commentaireRendreInvisible');
+
+            Route::group(['prefix'=>'commentaire'], function(){
+                Route::post('/','PhotoController@addCommentaire');
+                Route::get('/delete','PhotoController@deleteCommentaire')->name('deleteCommentaire');
+            });
+        });
 
 
-        Route::group(['middleware' => 'Administration'], function () {
+
+        Route::group(['middleware' => 'Administration'], function () { //Regex id_activite dans RouteServiceProvider@boot
             Route::post('/', 'ActivitesController@addActivite')->name('addactivite');
             Route::get('/delete/{id_activite}', 'ActivitesController@delete');
             Route::get('/visible/{id_activite}', 'ActivitesController@rendreVisible')->name('activiteRendreVisible');
