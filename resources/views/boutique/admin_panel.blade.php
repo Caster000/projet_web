@@ -1,5 +1,7 @@
-<div class="row justify-content-center">
-    <button type="button" class="btn btn-primary m-4 col-10 " data-toggle="modal" data-target="#exampleModal" data-whatever="@ajouterProduit">Ajouter un nouveau produit</button>
+<div class="row justify-content-center m-4 text-center">
+    <button type="button" class="btn btn-primary  col-2 m-2" data-toggle="modal" data-target="#exampleModal" data-whatever="@ajouterProduit">Ajouter un nouveau produit</button>
+    <a href="{{route('updateArticles')}}" class="btn btn-primary col-2 m-2">Modifier un article</a>
+    </a>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

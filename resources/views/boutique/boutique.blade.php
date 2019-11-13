@@ -74,13 +74,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-12 col-sm-4 col-lg-4 ">
-                <a href="{{route('updateArticles')}}">
-                    <button type="button" class="btn btn-black">
-                        Modifier un article
-                    </button>
-                </a>
-            </div>
+
         </div>
     </div>
 
@@ -116,6 +110,15 @@
     </div>
 
     @if(auth()->check() && auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
+
         @include('boutique.admin_panel')
+{{--        <div class="col-12 col-sm-4 col-lg-4 ">--}}
+{{--            <a href="{{route('updateArticles')}}">--}}
+{{--                <button type="button" class="btn btn-primary">--}}
+{{--                    Modifier un article--}}
+{{--                </button>--}}
+{{--            </a>--}}
+{{--        </div>--}}
+
     @endif
 @endsection
