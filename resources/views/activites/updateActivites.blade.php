@@ -1,6 +1,6 @@
 
 <?php
-$connect = mysqli_connect("localhost", "root", "", "projetweb");
+$connect = mysqli_connect("localhost", "root", "", "projet_web");
 $query = "SELECT * FROM activite ORDER BY id_activite DESC";
 $result = mysqli_query($connect, $query);
 ?>

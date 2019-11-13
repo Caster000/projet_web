@@ -1,6 +1,6 @@
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "root", "", "projetweb");
+$connect = mysqli_connect("localhost", "root", "", "projet_web");
 if(isset($_POST["activite_id"]))
 {
     $query = "SELECT * FROM activite WHERE id_activite = '".$_POST["activite_id"]."'";

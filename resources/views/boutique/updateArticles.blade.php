@@ -1,6 +1,6 @@
 
 <?php
-$connect = mysqli_connect("localhost", "root", "", "projetweb");
+$connect = mysqli_connect("localhost", "root", "", "projet_web");
 $query = "SELECT * FROM produit ORDER BY id_produit DESC";
 $result = mysqli_query($connect, $query);
 ?>

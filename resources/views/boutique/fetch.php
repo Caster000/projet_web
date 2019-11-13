@@ -1,6 +1,6 @@
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "root", "", "projetweb");
+$connect = mysqli_connect("localhost", "root", "", "projet_web");
 if(isset($_POST["product_id"]))
 {
     $query = "SELECT * FROM produit WHERE id_produit = '".$_POST["product_id"]."'";

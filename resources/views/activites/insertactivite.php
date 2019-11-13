@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "", "projetweb");
+$connect = mysqli_connect("localhost", "root", "", "projet_web");
 if(!empty($_POST))
 {
     $output = '';
