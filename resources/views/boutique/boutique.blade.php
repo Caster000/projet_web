@@ -18,7 +18,7 @@
             @foreach($topArticles as $article)
                 <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4 ">
                     <div class="card card-inverse card-info ">
-                        <img class="card-img-top" src="{{$article->urlImage}}">
+                        <img class="card-img-top" src="{{$article->urlImage}}" alt="{{$article->id_produit}}">
                         <div class="card-block">
                             <h4 class="card-title">{{$article->nom}}, {{$article->prix}}€</h4>
                             <div class="card-text">
@@ -27,8 +27,7 @@
                         </div>
                         <div class="card-footer">
                             <a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}"
-                               class="btn btn-info btn-sm"
-                               href="{{route('article', ['numero'=>$article->id_produit])}}">Voir plus</a>
+                               class="btn btn-info btn-sm">Voir plus</a>
                         </div>
                     </div>
                 </div>
@@ -86,7 +85,7 @@
         @foreach($allArticles as $article)
             <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4 ">
                 <div class="card card-inverse card-info ">
-                    <img class="card-img-top" src="{{$article->urlImage}}">
+                    <img class="card-img-top" src="{{$article->urlImage}}"  alt="{{$article->id_produit}}">
                     <div class="card-block">
                         <h4 class="card-title">{{$article->nom}}, {{$article->prix}}€</h4>
                         <div class="card-text">
@@ -96,7 +95,7 @@
                     </div>
                     <div class="card-footer text-center">
                         <a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}"
-                           class="btn btn-info btn-sm" href="{{route('article', ['numero'=>$article->id_produit])}}">Voir
+                           class="btn btn-info btn-sm">Voir
                             plus</a>
                         @if(auth()->check() && auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
                             <a href="{{ URL::action('BoutiqueController@delete',  $article->id_produit) }}"
