@@ -38,8 +38,7 @@ class ActivitesController extends Controller
         return redirect('/activites');
     }
     public function delete($id_activite){
-        $activite = Activite::find($id_activite);
-        $activite->delete();
+        \App\Activite::find($id_activite)->effacerActivite();
         return redirect('/activites');
     }
     public function inscription($id_activite)
@@ -87,4 +86,5 @@ class ActivitesController extends Controller
         return view('activites.activites', compact('activites'));
 
     }
+
 }

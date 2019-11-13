@@ -14,7 +14,7 @@
         </div>
 
         <div class="row flex-center">
-            @if(auth()->check() && auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
+            @if(auth()->check() && (auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role || auth()->user()->id_role===\App\Role::where('role','CESI')->first()->id_role))
                 @foreach($activites as $activite)
                         <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4 ">
                             <div class="card card-inverse card-info">
@@ -38,7 +38,9 @@
                                             <a class="btn btn-primary btn-sm" href="{{ URL::action('ActivitesController@inscription',  $activite->id_activite) }}">S'inscrire</a>
                                         @endif
                                     @endif
-                                    <a class="btn btn-danger btn-sm" href="{{ URL::action('ActivitesController@delete',  $activite->id_activite) }}">Supprimer</a>
+                                    @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
+                                        <a class="btn btn-danger btn-sm" href="{{ URL::action('ActivitesController@delete',  $activite->id_activite) }}">Supprimer</a>
+                                    @endif
                                     @if(!($activite->visible===1))
                                         <a class="btn btn-warning btn-sm col-lg-7 text-bold" href="{{route('activiteRendreVisible', $activite->id_activite)}}">Invisible</a>
                                     @else

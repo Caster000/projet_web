@@ -43,6 +43,7 @@ class Liker extends Model
     {
         return $this->belongsTo('App\Photo', 'id_photo', 'id_photo');
     }
+
     protected function setKeysForSaveQuery(Builder $query)
     {
         return $query->where('id_photo', $this->getAttribute('id_photo'))

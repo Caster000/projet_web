@@ -44,7 +44,7 @@ class Activite extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function personne()
+    public function personne_creatrice()
     {
         return $this->belongsTo('App\Personne', 'id_personne', 'id_personne');
     }
@@ -71,5 +71,16 @@ class Activite extends Model
     public function personnes_voter()
     {
         return $this->belongsToMany('App\Personne', 'voter', 'id_activite', 'id_personne');
+    }
+
+    public function effacerActivite(){
+        $inscriptions = \App\Inscrire::where('id_activite', $this->id_activite)->get();
+        foreach($inscriptions as $inscription){
+            $inscription->delete(); //Supprime toutes les inscriptions à l'activité
+        }
+        foreach($this->photos as $photo){
+            $photo->effacerPhoto(); //Supprime toutes les photos de l'activité
+        }
+        $this->delete(); //Supprime l'activité
     }
 }

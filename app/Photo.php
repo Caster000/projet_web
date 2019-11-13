@@ -70,4 +70,13 @@ class Photo extends Model
     {
         return $this->belongsToMany('App\Personne', 'liker', 'id_photo', 'id_personne');
     }
+
+    public function effacerPhoto(){
+        $this->commenters()->delete(); //Supprimer tous les commentaires liés à la photo
+        $likes = \App\Liker::where('id_photo', $this->id_photo)->get();
+        foreach($likes as $like){
+            $like->delete();   //Supprimer tous les likes liés à la photo
+        }
+        $this->delete(); //Supprimer la photo
+    }
 }
