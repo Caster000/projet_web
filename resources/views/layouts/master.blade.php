@@ -14,9 +14,6 @@
 
     @yield('styleParticulier')
 
-    <style>
-
-    </style>
 </head>
 <body>
 
