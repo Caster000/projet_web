@@ -3,7 +3,7 @@
 @section('title', 'Conditions Générales de Vente')
 
 @section('ajoutHead')
-<meta lang="fr" charset="utf-8" name="csrf-token" content="{{ csrf_token() }}">
+<meta charset="utf-8" name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
 @section('content')
@@ -56,7 +56,7 @@
 
         <b>Vous pouvez passer commande : </b> 
 
-        Sur Internet : <a href="[http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a]http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a>
+        Sur Internet : <a href="[http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a>
 
         Les informations contractuelles sont présentées en langue française et feront l'objet d'une confirmation au plus tard au moment de la validation de votre commande. 
 
@@ -66,7 +66,7 @@
     <div class="article" id="article4">
         <h2>Article 4 - Validation de votre commande</h2>
 
-        Toute commande figurant sur le site Internet <a href="[http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a]http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a> suppose l'adhésion aux présentes Conditions Générales. Toute confirmation de commande entraîne votre adhésion pleine et entière aux présentes conditions générales de vente, sans exception ni réserve. 
+        Toute commande figurant sur le site Internet <a href="[http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a> suppose l'adhésion aux présentes Conditions Générales. Toute confirmation de commande entraîne votre adhésion pleine et entière aux présentes conditions générales de vente, sans exception ni réserve. 
 
         L'ensemble des données fournies et la confirmation enregistrée vaudront preuve de la transaction.
 
@@ -115,10 +115,10 @@
         La fourniture d'un contenu numérique non fourni sur un support matériel dont l'exécution a commencé après accord préalable exprès du consommateur et renoncement exprès à son droit de rétractation.
         Article 7- Disponibilité
 
-        Nos produits sont proposés tant qu'ils sont visibles sur le site <a href="[http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a]http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a> et dans la limite des stocks disponibles. Pour les produits non stockés, nos offres sont valables sous réserve de disponibilité chez nos fournisseurs.
+        Nos produits sont proposés tant qu'ils sont visibles sur le site <a href="http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a> et dans la limite des stocks disponibles. Pour les produits non stockés, nos offres sont valables sous réserve de disponibilité chez nos fournisseurs.
         En cas d'indisponibilité de produit après passation de votre commande, nous vous en informerons par mail. Votre commande sera automatiquement annulée et aucun débit bancaire ne sera effectué. 
 
-        En outre, le site Internet <a href="[http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a]http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a> n'a pas vocation à vendre ses produits en quantités importantes. Par conséquent la société <b>association</b> se réserve le droit de refuser les commandes de ??? articles identiques.
+        En outre, le site Internet <a href="http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a> n'a pas vocation à vendre ses produits en quantités importantes. Par conséquent la société <b>association</b> se réserve le droit de refuser les commandes de ??? articles identiques.
     </div>
 
     <div class="article" id="article7">
@@ -164,7 +164,7 @@
     <div class="article" id="article11">
         <h2>Article 11 - Propriété intellectuelle</h2>
 
-        Tous les éléments du site <a href="[http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a]http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a> sont et restent la propriété intellectuelle et exclusive de la société <b>association</b>. Nul n'est autorisé à reproduire, exploiter, rediffuser, ou utiliser à quelque titre que ce soit, même partiellement, des éléments du site qu'ils soient logiciels, visuels ou sonores. Tout lien simple ou par hypertexte est strictement interdit sans un accord écrit exprès de la société <b>association</b>. 
+        Tous les éléments du site <a href="http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a> sont et restent la propriété intellectuelle et exclusive de la société <b>association</b>. Nul n'est autorisé à reproduire, exploiter, rediffuser, ou utiliser à quelque titre que ce soit, même partiellement, des éléments du site qu'ils soient logiciels, visuels ou sonores. Tout lien simple ou par hypertexte est strictement interdit sans un accord écrit exprès de la société <b>association</b>. 
     </div>
 
     <div class="article" id="article12">
