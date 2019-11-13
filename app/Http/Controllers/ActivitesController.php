@@ -33,6 +33,7 @@ class ActivitesController extends Controller
         $request->file('image')->storeAs('/images/activite', $file);
         $activite->urlImage = $destinationPath."/".$file;
         $activite->date= $request->date;
+        $activite->prix=$request->prix;
         $activite->save();
         return redirect('/activites');
     }
