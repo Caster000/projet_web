@@ -8,7 +8,7 @@
     </div>
     <div class="row justify-content-center">
         @foreach($galerie as $photo)
-            <div class="card col-lg-6 col-sm-4  mb-3 mr-4 ml-4 photo border border-dark">
+            <div class="card col-lg-6 col-sm-4  mb-3 mr-4 ml-4 photo2 border border-dark">
 {{--                {{dd($activite)}}--}}
                 <a href="{{ URL::action('PhotoController@image',  [$activite->id_activite,$photo->titre]) }}" data-lity><img
                         src="/projet_web/public/{{$photo->urlImage}}" class="card-img-top " alt="{{$photo->titre}}">

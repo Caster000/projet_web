@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Commenter;
+use App\Liker;
 use App\Photo;
 use Illuminate\Http\Request;
 
@@ -46,7 +48,19 @@ class PhotoController extends Controller
             ->where('id_activite',$id_activite)
              ->where('titre',$titre)
             ->first();
-        return view('activites.image_galerie',compact('galerie'));
+        $like = Liker::select('liker.id_personne','liker.id_photo')
+            ->where('photo.titre',$titre)
+            ->join('photo','photo.id_photo','=','liker.id_photo')->get();
+        //echo $like;
+        $countLike =Liker::where('photo.titre',$titre)
+            ->join('photo','photo.id_photo','=','liker.id_photo')
+            ->count();
+        $comment= Commenter::select('nom',"prenom","commentaire","commenter.visible")
+            ->where('photo.titre',$titre)
+            ->Join('personne','personne.id_personne','=','commenter.id_personne')
+            ->join('photo','photo.id_photo','=','commenter.id_photo')->get();
+        //echo $comment;
+        return view('activites.image_galerie',compact('galerie','like','countLike','comment'));
     }
 
     public function photoRendreInvisible($id_photo){
@@ -62,5 +76,9 @@ class PhotoController extends Controller
     public function deletePhoto($id_photo){
         $activite = \App\Photo::find($id_photo)->delete();
         return back();
+    }
+
+    public function indexLike(){
+       // $like = Liker::where($)
     }
 }

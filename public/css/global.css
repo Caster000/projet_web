@@ -56,10 +56,11 @@
     margin-left:0px;
     margin-right: 0;
 }
-.photo{
+.photo2{
     max-width: 20rem;
+}
+.photo{
+    max-width: 30rem;
     /*max-height:500px;*/
 }
-.lity-hide {
-    display: none;
-}
+
