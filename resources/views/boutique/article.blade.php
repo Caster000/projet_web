@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-
+@section('title', 'article')
 
     @if($produit)
         <div class="row m-4 p-4">
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div>
-                &nbsp
+                &nbsp;
             </div>
             <div class="col-lg-12 text-center">
                 <img

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-
+@section('title', 'Galerie')
     <div class="mt-5 mr-5 ml-5">
         <a href="{{ URL::action('ActivitesController@activiteNumero',  $activite->id_activite) }}"
            class="btn btn-success mb-5">Retour sur l'activité</a>
