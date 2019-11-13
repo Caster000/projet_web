@@ -5,7 +5,6 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/', 'GeneralController@accueil')->name('accueil');
     Route::get('cgv', 'GeneralController@cgv')->name('cgv');
     Route::get('mentions_legales', 'GeneralController@mentions_legales')->name('mentions_legales');
-    Route::get('conditions', 'GeneralController@conditions_generales')->name('conditions');
     Route::post('cookieConsent', 'GeneralController@cookieConsent')->name('cookieConsent');
 });
 
@@ -18,6 +17,7 @@ Route::group(['prefix' => 'boutique'], function () {
         Route::get('panier/delete/{id_commande}/{id_produit}', 'PanierController@delete');
         Route::get('/panier/{id_commande}/{id_produit}', 'PanierController@addQuantite');
         Route::get('/panier', 'PanierController@index')->name('panier');
+
         Route::group(['middleware' => 'Administration'], function () {
             Route::get('/updateArticles', 'BoutiqueController@updateArticles')->name('updateArticles');
             Route::post('/', 'BoutiqueController@addArticle');

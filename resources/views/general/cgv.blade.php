@@ -56,7 +56,7 @@
 
         <b>Vous pouvez passer commande : </b> 
 
-        Sur Internet : <a href="[http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a>
+        Sur Internet : <a href="http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a>
 
         Les informations contractuelles sont présentées en langue française et feront l'objet d'une confirmation au plus tard au moment de la validation de votre commande. 
 
@@ -66,7 +66,7 @@
     <div class="article" id="article4">
         <h2>Article 4 - Validation de votre commande</h2>
 
-        Toute commande figurant sur le site Internet <a href="[http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a> suppose l'adhésion aux présentes Conditions Générales. Toute confirmation de commande entraîne votre adhésion pleine et entière aux présentes conditions générales de vente, sans exception ni réserve. 
+        Toute commande figurant sur le site Internet <a href="http://www.bdecesiprojet.fr">http://www.bdecesiprojet.fr</a> suppose l'adhésion aux présentes Conditions Générales. Toute confirmation de commande entraîne votre adhésion pleine et entière aux présentes conditions générales de vente, sans exception ni réserve. 
 
         L'ensemble des données fournies et la confirmation enregistrée vaudront preuve de la transaction.
 
