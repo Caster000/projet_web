@@ -95,7 +95,7 @@
                         </div>
 
                         <div class="form-group row align-items-center check-control">
-                            <input type="checkbox" class="offset-3" required>{!!'&nbsp;'!!}{{ __('J\'accepte les') }}{!!'&nbsp;'!!}{!!"<a href=\"/public/conditions\">Conditions Générales</a>"!!}{!!'&nbsp;'!!}{{__('du site ')}}{{config('app.name', 'Laravel')}}> </input>
+                            <input type="checkbox" class="offset-3" required><span>{!!'&nbsp;'!!}J'accepte les{!!'&nbsp;'!!}</span><span><a href="{{route('mentions_legales')}}">Conditions Générales</a></span><span>{!!'&nbsp;'!!}{{__('du site ')}}{{config('app.name', 'Laravel')}}</span> </input>
 
                         </div>
 

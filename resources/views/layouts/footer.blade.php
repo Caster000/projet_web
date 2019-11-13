@@ -40,10 +40,7 @@
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 MarginPading">
                 <h6 class="text-uppercase mb-4 font-weight-bold">Statut légal</h6>
                 <p>
-                    <a href="{{route('mentions_legales')}}">Mentions légales</a>
-                </p>
-                <p>
-                    <a href="{{route('conditions')}}">Condition générales</a>
+                    <a href="{{route('mentions_legales')}}">Mentions légales et CGU</a>
                 </p>
                 <p>
                     <a href="{{route('cgv')}}">CGV</a>
