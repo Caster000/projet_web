@@ -5,7 +5,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.0/lity.min.js"></script>
 
 
-<script type="text/javascript">
+<script>
  $(document).ready(function(){
     setTimeout(function () {
         $("#cookieConsent").fadeIn(200);

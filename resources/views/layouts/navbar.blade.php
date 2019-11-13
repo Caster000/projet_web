@@ -37,7 +37,7 @@
                         <div id="closeCookieConsent"></div>
                         En navigant sur ce site, vous acceptez l'utilisation des cookies de navigation et les conditions
                         générales d'utilisation.
-                        <a href={{route('mentions_legales')}} target="_blank">&nbsp Plus d'informations</a>
+                        <a href={{route('mentions_legales')}} target="_blank">&nbsp; Plus d'informations</a>
                         <form action={{route('cookieConsent')}} method="post">   {{csrf_field()}}
                             <input class="cookieConsentOK" type="submit" class="submitcookie" value="Très Bien"/></form>
                         <a class="cookieConsentOK" href="https://www.google.fr">Non Merci (retour a Google)</a>
@@ -50,10 +50,10 @@
                     @if (Route::has('login'))
                         @auth
                             <li class="nav-item pl-5 mr-4 ">
-                                <a href="{{ url('/boutique/panier') }}" ><span class="fa fa-shopping-bag ">&nbsp&nbspPanier</span></a>
+                                <a href="{{ url('/boutique/panier') }}" ><span class="fa fa-shopping-bag ">&nbsp;&nbsp;Panier</span></a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('/logout') }}" ><span class="fa fa-sign-out ">&nbspDéconnexion</span></a>
+                                <a href="{{ url('/logout') }}" ><span class="fa fa-sign-out ">&nbsp;Déconnexion</span></a>
                             </li>
                         @else
                             <li class="nav-item mr-2 ">

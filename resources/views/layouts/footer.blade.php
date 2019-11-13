@@ -6,7 +6,7 @@
                 <h6 class="text-uppercase mb-4 font-weight-bold">Bureau Des Étudiants du CESI</h6>
                 <p>Venez nous rencontrer en salle 100 !</p>
                 <p>
-                    <a href="https://www.cesi.fr/">Site du CESI</a></p>
+                    <a href="https://www.cesi.fr/">Site du CESI</a>
                 </p>
             </div>
 
@@ -32,7 +32,7 @@
                 <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
                 <p>19 Avenue Guy de Collongue <br>
                     69130 Écully</p>
-                <p></p><a href="mailto:baptiste.chevallier@viacesi.fr">bde-lyon@viacesi.fr</a></p>
+                <p><a href="mailto:baptiste.chevallier@viacesi.fr">bde-lyon@viacesi.fr</a></p>
                 <p>0 800 054 568</p>
             </div>
 

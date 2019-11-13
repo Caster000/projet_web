@@ -3,7 +3,7 @@
     @section('title', 'Mentions Légales')
 
     @section('ajoutHead')
-    <meta lang="fr" name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @endsection
 
     @section('content')
@@ -27,7 +27,7 @@
                 CLAPPE Bruno ; 
                 NOEL Matheo ;
                 VEDIER Antoine<br />
-                Le modèle de mentions légales est offert par Subdelirium.com <a target="_blank" href="https://www.subdelirium.com/generateur-de-mentions-legales/" alt="Modèle de mentions légales">Modèle de mentions légales</a>
+                Le modèle de mentions légales est offert par Subdelirium.com <a target="_blank" href="https://www.subdelirium.com/generateur-de-mentions-legales/">Modèle de mentions légales</a>
             </p>        
         </div>
 
