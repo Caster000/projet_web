@@ -1,4 +1,9 @@
 @extends('layouts.galerie')
+
+@section('styleParticulier')
+    <link rel="stylesheet" type="text/css" href="/projet_web/public/css/image_galerie.css"/>
+@endsection
+
 @section('content')
 <div  class="row mt-1 ">
     <div class="col-7 ">
@@ -15,17 +20,28 @@
         <div class="row justify-content-center mt-2">
             @foreach($comment as $com)
             <div class="card w-75 mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">{{$com->nom}}&nbsp{{$com->prenom}}</h5>
-                    <p class="card-text">{{$com->commentaire}}</p>
-                    @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
-                        <div class="row">
+                <div class="row">
+                    @if(auth()->user()->id_role===\App\Role::where('role','Etudiant')->first()->id_role)
+                        <div class="card-header col-12">
+                    @else
+                        <div class="card-header col-11">
+                    @endif
+                        <div class="card-body">
+                            <h5 class="card-title">{{$com->nom}}&nbsp{{$com->prenom}}</h5>
+                            <p class="card-text">{{$com->commentaire}}</p>
+                        </div>
+                    </div>
+                            <!--Visible au BDE et au personnel CESI-->
+                    @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role || auth()->user()->id_role===\App\Role::where('role','CESI')->first()->id_role)
+                        <div class="card-header col-1">
                             @if(!($com->visible===1))
-                                <a href="{{route('commentaireRendreVisible', [$com->id_photo, $com->id_personne])}}" class="btn btn-warning btn-sm col-lg-6 text-bold rounded-0">Invisible</a>
+                                <a href="{{route('commentaireRendreVisible', [$com->id_photo, $com->id_personne])}}" class="col-lg-1 rounded-0 pl-0 blue-hover"><span class="fa fa-eye-slash fa-lg"></span></a>
                             @else
-                                <a href="{{route('commentaireRendreInvisible', [$com->id_photo, $com->id_personne])}}" class="btn btn-warning btn-sm col-lg-6 text-bold rounded-0">Visible</a>
+                                <a href="{{route('commentaireRendreInvisible', [$com->id_photo, $com->id_personne])}}" class="col-lg-1 rounded-0 pl-0 blue-hover"><span class="fa fa-eye fa-lg"></span></a>
                             @endif
-                            <a href="{{route('deleteCommentaire', [$com->id_photo, $com->id_personne])}}" class="btn btn-danger btn-sm col-lg-6 rounded-0">Supprimer</a>
+                            @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
+                                <a href="{{route('deleteCommentaire', [$com->id_photo, $com->id_personne])}}" class="col-lg-1 rounded-0 pl-0 red-hover"><span class="fa fa-trash fa-lg"></span></a>
+                            @endif
                         </div>
                     @endif
                 </div>

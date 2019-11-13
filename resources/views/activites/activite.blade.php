@@ -13,13 +13,13 @@
                     {{$activite->description}}
                 </div>
                 <h6 class="mt-4">Prix :</h6>
-                <di>
+                <div>
                     {{$activite->prix}}€
-                </di>
+                </div>
             </div>
             <div class="col-lg-2 col-sm-2 col-md-2">
                 <div class="text-center mb-3">
-                    <a class="btn btn-primary" href="{{ route('activites') }}" aria-pressed="false">&nbspRetour aux activités</a>
+                    <a class="btn btn-primary" href="{{ route('activites') }}" aria-pressed="false"><span class="fa fa-arrow-circle-left"></span>&nbspRetour aux activités</a>
                 </div>
             @if(auth()->check())
                 <div class="text-center">
