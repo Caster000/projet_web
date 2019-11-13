@@ -53,3 +53,9 @@ nav .navbar-nav li a{
 .nav-link:hover{
     text-decoration:underline;
 }
+.al-left{
+    margin-left: 162px;
+}
+.col-7{
+    flex:0;
+}
