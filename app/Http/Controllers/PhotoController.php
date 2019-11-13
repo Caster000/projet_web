@@ -88,10 +88,19 @@ class PhotoController extends Controller
     public function deleteLike($id_photo,$id_personne){
         $like =  Liker::where('id_photo',$id_photo)
             ->where('id_personne',$id_personne)->first();
-       // dd( $like);
-        $like->photo()->delete();
+        //dd( $like);
+        //$like->photo()->delete();
         $like->delete();
 
+        return back();
+    }
+    public function addCommentaire(Request $request,$id_photo,$id_personne){
+        $like = new Commenter;
+        $like->id_photo=$id_photo;
+        $like->id_personne=$id_personne;
+        $like->Commentaire=$request->commentaire;
+        $like->visible=1;
+        $like->save();
         return back();
     }
 }

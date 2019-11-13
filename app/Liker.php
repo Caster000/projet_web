@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 class Liker extends Model
 {
     public $timestamps = false;
+    public $incrementing = false;
     protected $primaryKey = array('id_photo', 'id_personne');
     /**
      * The table associated with the model.
@@ -42,10 +43,9 @@ class Liker extends Model
     {
         return $this->belongsTo('App\Photo', 'id_photo', 'id_photo');
     }
-
     protected function setKeysForSaveQuery(Builder $query)
     {
-        return $query->where('id_produit', $this->getAttribute('id_produit'))
-            ->where('id_commande', $this->getAttribute('id_commande'));
+        return $query->where('id_photo', $this->getAttribute('id_photo'))
+            ->where('id_personne', $this->getAttribute('id_personne'));
     }
 }

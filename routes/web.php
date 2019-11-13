@@ -45,6 +45,7 @@ Route::group(['prefix' => 'activites'], function () {
         Route::get('/{id_activite}/{titre}/d','PhotoController@image');
         Route::get('/{id_photo}/{id_personne}','PhotoController@addLike');
         Route::get('/{id_photo}/{id_personne}/delete','PhotoController@deleteLike');
+        Route::post('/{id_photo}/{id_personne}/comment','PhotoController@addCommentaire');
 
 
         Route::group(['middleware' => 'Administration'], function () {

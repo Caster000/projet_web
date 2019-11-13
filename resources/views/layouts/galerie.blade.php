@@ -28,6 +28,7 @@
 
 
 <!--  ================  Scripts  =================  -->
+@include('layouts.scripts_communs')
 
 @yield('addScripts')
 

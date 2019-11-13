@@ -22,6 +22,33 @@
                 </div>
             </div>
             @endforeach
+                <div class="row justify-content-center">
+                    <button type="button" class="btn btn-info m-2 " data-toggle="modal" data-target="#exampleModal" data-whatever="@ajouterCommentaire"><span class="fa fa-pencil fa-lg"></span>&nbspCommenter... </button>
+                </div>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Nouveau commentaire</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body mr-5 ml-5">
+                                <form action="{{ URL::action('PhotoController@addCommentaire',  [$galerie->id_photo,auth()->user()->id_personne]) }}" method="post" enctype="multipart/form-data">
+                                @csrf <!-- {{ csrf_field() }} -->
+                                    <div class="form">
+                                        <div class="form-group row">
+                                            <textarea class="form-control" placeholder="Commentaire..." name="description" required></textarea>
+                                        </div>
+                                        <div class="modal-footer col mt-4">
+                                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
         </div>
     </div>
 
