@@ -3,8 +3,8 @@
 <div  class="row mt-1 ">
     <div class="col-7 ">
         <img src="/projet_web/public/{{$galerie->urlImage}}" class="img-fluid photo" alt="{{$galerie->titre}}">
-        @if(!(\App\Liker::where('id_photo', $galerie->id_photo)->where('id_personne', auth()->user()->id_personne)))
-             <a href=" {{ URL::action('PhotoController@addLike',  [$galerie->id_photo,auth()->user()->id_personne]) }}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-heart-o fa-lg"></span> </a>
+        @if((\App\Liker::where('id_photo', $galerie->id_photo)->where('id_personne', auth()->user()->id_personne)->first()) == null)
+             <a href=" {{ route('like',  [$galerie->id_photo,auth()->user()->id_personne]) }}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-heart-o fa-lg"></span> </a>
         @else
             <a href=" {{ URL::action('PhotoController@deleteLike',  [$galerie->id_photo,auth()->user()->id_personne]) }}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-heart fa-lg"></span> </a>
         @endif
@@ -18,7 +18,16 @@
                 <div class="card-body">
                     <h5 class="card-title">{{$com->nom}}&nbsp{{$com->prenom}}</h5>
                     <p class="card-text">{{$com->commentaire}}</p>
-
+                    @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
+                        <div class="row">
+                            @if(!($com->visible===1))
+                                <a href="{{route('commentaireRendreVisible', [$com->id_photo, $com->id_personne])}}" class="btn btn-warning btn-sm col-lg-6 text-bold rounded-0">Invisible</a>
+                            @else
+                                <a href="{{route('commentaireRendreInvisible', [$com->id_photo, $com->id_personne])}}" class="btn btn-warning btn-sm col-lg-6 text-bold rounded-0">Visible</a>
+                            @endif
+                            <a href="{{route('deleteCommentaire', [$com->id_photo, $com->id_personne])}}" class="btn btn-danger btn-sm col-lg-6 rounded-0">Supprimer</a>
+                        </div>
+                    @endif
                 </div>
             </div>
             @endforeach
