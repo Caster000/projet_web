@@ -3,8 +3,12 @@
 @section('content')
 
     <div class="mt-5 mr-5 ml-5">
-        <a href="{{ URL::action('ActivitesController@activiteNumero',  $activite->id_activite) }}"
-           class="btn btn-success mb-5">Retour sur l'activité</a>
+        <a href="{{ URL::action('ActivitesController@activiteNumero',  $activite->id_activite) }}" class="btn btn-success mb-5">
+            <span class="fa fa-arrow-circle-left">&nbsp; Retour sur l'activité</span>
+        </a>
+        <a href="{{ URL::action('PhotoController@export',  $activite->id_activite) }}" class="btn btn-info mb-5">
+            <span class="fa fa-download">&nbsp; Télécharger les images</span>
+        </a>
     </div>
     <div class="row justify-content-center">
         @foreach($galerie as $photo)

@@ -6,6 +6,7 @@ use App\Commenter;
 use App\Liker;
 use App\Photo;
 use Illuminate\Http\Request;
+use ZipArchive;
 
 class PhotoController extends Controller
 {
@@ -114,5 +115,29 @@ class PhotoController extends Controller
     public function commentaireRendreVisible($id_photo, $id_personne){
         \App\Commenter::where('id_photo', $id_photo)->where('id_personne',$id_personne)->first()->update(['visible'=>1]);
         return back();
+    }
+
+    public function export($id_activite){
+        $galerie= Photo::select('urlImage')->where('id_activite',$id_activite)->get();
+//        return Storage::url($path);
+       // $files = Storage::disk('local')->allFiles($path);
+       // Zipper::make(public_path('test.zip'))->add($files);
+       // return response()->download(public_path('test.zip'));
+//        dd($galerie);
+        $zip = new \ZipArchive();
+        $zipFile =$id_activite.'.zip';
+        if ( $zip->open($zipFile, \ZipArchive::CREATE  | ZIPARCHIVE::OVERWRITE)===TRUE){
+        foreach ($galerie as $photo){
+            //dd($path.$photo->urlImage);
+            $zip->addFile( $photo->urlImage);
+
+        } //dd($zip);
+        }else{
+            echo 'echec';
+        }
+       // dd($zip);
+        $zip->close();
+
+        return response()->download($id_activite.'.zip');
     }
 }

@@ -69,6 +69,7 @@ Route::group(['prefix' => 'activites'], function () {
             Route::get('/invisible/{id_activite}', 'ActivitesController@rendreInvisible')->name('activiteRendreInvisible');
             Route::get('/updateActivites', 'ActivitesController@updateActivites')->name('updateActivites');
             Route::get('/{id_activite}/list', 'ActivitesController@export');
+            Route::get('/{id_activite}/image/list', 'PhotoController@export');
 
 
         });
