@@ -2,7 +2,7 @@
 .navbarbody {
     font-size:115%;
     color: white;
-    font: caption;
+    font-family: 'Quicksand', sans-serif;
 
 
 
@@ -59,3 +59,4 @@ nav .navbar-nav li a{
 .col-7{
     flex:0;
 }
+

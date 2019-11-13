@@ -5,12 +5,12 @@
 
 
         <nav class="navbar navbar-expand-lg navbar-custom col-12 p-0">
-            <div class="col-lg-2 col-sm-2 col-md-2">
-                <img class="mr-3" src="/projet_web//public/images/logo-CESI.png" width="150px" style="" alt="Logo CESI">
+            <div class="col-lg-2 col-sm-3 col-md-3">
+                <img class="mr-3" src="/projet_web//public/images/logo-CESI.png" width="170" alt="Logo CESI">
             </div>
-            <a href={{route('accueil')}} class="navbar-brand col-3">
+            <a href="{{route('accueil')}}" class="navbar-brand col-3 ">
                 <!-- Logo Text -->
-                <span class="text-uppercase font-weight-bold   navbarbody">Bureau des Étudiants du CESI</span>
+                <span class="text-uppercase font-weight-bold   navbarbody">BDE CESI</span>
             </a>
 
 
@@ -49,11 +49,11 @@
                 <ul class="navbar-nav ">
                     @if (Route::has('login'))
                         @auth
-                            <li class="nav-item">
-                                <a href="{{ url('/logout') }}">Déconnexion</a>
+                            <li class="nav-item pl-5 mr-4 ">
+                                <a href="{{ url('/boutique/panier') }}" ><span class="fa fa-shopping-bag ">&nbsp&nbspPanier</span></a>
                             </li>
-                            <li class="nav-item pl-5">
-                                <a href="{{ url('/boutique/panier') }}">Panier</a>
+                            <li class="nav-item">
+                                <a href="{{ url('/logout') }}" ><span class="fa fa-sign-out ">&nbspDéconnexion</span></a>
                             </li>
                         @else
                             <li class="nav-item mr-2 ">
