@@ -74,7 +74,7 @@ class PhotoController extends Controller
     }
 
     public function deletePhoto($id_photo){
-        \App\Photo::effacerPhoto($id_photo);
+        \App\Photo::find($id_photo)->effacerPhoto();
         return back();
     }
 
@@ -101,7 +101,6 @@ class PhotoController extends Controller
 
     public function deleteCommentaire($id_photo,$id_personne){
         \App\Commenter::where('id_photo', $id_photo)->where('id_personne',$id_personne)->first()->delete();
-        dd(request()->path());
         return back();
     }
 
