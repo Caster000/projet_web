@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/projet_web/public/css/cookiebar.css"/>
 <link rel="stylesheet" type="text/css" href="/projet_web/public/css/mentions.css">
 <link rel="stylesheet" type="text/css" href="/projet_web/public/css/cgv.css">
+<link rel="stylesheet" type="text/css" href="/projet_web/public/css/accueil.css">
 
 <!-- A TOUJOURS ADD EN DERNIER--> <link rel="stylesheet" type="text/css" href="/projet_web/public/css/global.css"/>
 

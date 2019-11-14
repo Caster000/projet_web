@@ -7,6 +7,8 @@
 @section('title', 'Activites')
 @section('content')
 
+        <div class="title mb-3">Activités</div>
+
         <div class="row flex-center">
             <a class="btn btn-primary btn-md mr-2" href="{{route('evenementsPasses')}}">Évènements passés</a>
             <a class="btn btn-primary btn-md mr-2 ml-2" href="{{route('activites')}}">Tous</a>
