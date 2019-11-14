@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('ajoutHead')
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    @endsection
 @section('title','Boutique')
 @section('addScripts')
     <script src="/projet_web/resources/js/boutiqueFiltres.js"></script>
@@ -58,13 +61,15 @@
                 </select>
             </div>
             <div class="col-12 col-sm-8 col-lg-4 pr-5 pl-5">
-                <div class="input-group">
+                <div class="form-group">
                     <input id="ChampsRecherche" type="text" name="search" class="form-control" placeholder="Recherche">
+                    <div id="rechercheList" ></div>
                     <span class="input-group-btn">
                         <button id="Rechercher" type="submit" class="btn btn-secondary"><span
                                 class="fa fa-search"></span> Valider</button>
                     </span>
                 </div>
+                @csrf {{csrf_field()}}
             </div>
 
         </div>

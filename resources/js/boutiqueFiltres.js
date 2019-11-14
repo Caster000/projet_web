@@ -27,6 +27,23 @@ $(document).ready(function(){
 
     });
 
+    $('#ChampsRecherche').keyup(function(){
+        var query =$(this).val();
+        //console.log(query);
+        if(query != ''){
+            var _token= $('input[name="_token"]').val();
+            $.ajax({
+                url:'boutique/fetch',
+                method:"POST",
+                dataType:'json',
+                data:{query:query, _token:_token},
+                success:function(data){
+                    autocomplete(data)
+                }
+            })
+        }
+    })
+
 });
 
 function trierCriteres(trierPrix, trierCategories){
@@ -41,14 +58,17 @@ function trierCriteres(trierPrix, trierCategories){
 }
 
 function rechercher(recherche){
-    $.ajax({
-        url: 'boutique/'+recherche,
-        type: 'get',
-        dataType: 'json',
-        success: function(response){
-            afficherDonnees(response);
-        }
-    });
+
+
+            $.ajax({
+                url: 'boutique/'+recherche,
+                type: 'get',
+                dataType: 'json',
+                success: function(response){
+                    afficherDonnees(response);
+                }
+            });
+
 }
 
 function afficherDonnees(response){
@@ -90,4 +110,26 @@ function afficherDonnees(response){
         $("#affichageArticles").append("Aucun article à afficher !");
     }
 
+}
+
+function autocomplete(response){
+    console.log(response)
+    if(response['data'] != null){
+        taille = response['data'].length;
+    }
+
+    if(taille > 0) {
+        for (var i = 0; i < taille; i++) {
+            let nom = response['data'][i].nom;
+            // let description = response['data'][i].description;
+            // let prix = response['data'][i].prix;
+            // let url = response['data'][i].urlImage;
+            let resultat ='<ul class="dropdown-menu bg-white" style="display:block; position:relative">'+
+            '<li class="bg-white text-dark"><a href"#">'+nom+'</a></li>';
+            $('#rechercheList').fadeIn();
+            //console.log(autocomplete(data));
+            $('#rechercheList').append(resultat);
+        }
+
+    }
 }

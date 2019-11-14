@@ -64,8 +64,20 @@ class BoutiqueController extends Controller
     public function rechercher(Request $request){
         $recherche = $request->recherche;
         $rechercheData['data'] = \App\Produit::rechercher($recherche);
+        //dd($rechercheData);
         echo json_encode($rechercheData);
         exit;
+    }
+
+    public function fetch(Request $request){
+        //dd($request->get('query'));
+        if($request->get('query')){
+            $query = $request->get('query');
+            $data['data'] = \App\Produit::rechercher($query);
+            echo json_encode($data);
+            exit;
+
+        }
     }
 
 }

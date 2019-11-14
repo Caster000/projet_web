@@ -14,6 +14,7 @@ Route::group(['prefix' => 'boutique'], function () {
     Route::get('/', 'BoutiqueController@index')->name('boutique');
     Route::get('/article/{numero}', 'BoutiqueController@article')->name('article');
     Route::get('/{recherche}', 'BoutiqueController@rechercher')->name('rechercher');
+    Route::post('/fetch', 'BoutiqueController@fetch')->name('fetch');
     Route::get('/{prix}/{categorie}', 'BoutiqueController@trierParCriteres')->name('trierParCriteres');
 
     Route::group(['middleware' => 'auth'], function () {
