@@ -61,4 +61,11 @@ class BoutiqueController extends Controller
         exit;
     }
 
+    public function rechercher(Request $request){
+        $recherche = $request->recherche;
+        $rechercheData['data'] = \App\Produit::rechercher($recherche);
+        echo json_encode($rechercheData);
+        exit;
+    }
+
 }

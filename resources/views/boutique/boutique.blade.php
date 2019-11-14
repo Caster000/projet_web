@@ -58,15 +58,13 @@
                 </select>
             </div>
             <div class="col-12 col-sm-8 col-lg-4 pr-5 pl-5">
-                <form action="search" method="get" class="form-inline">
-                    <div class="input-group">
-                        <input type="text" name="search" class="form-control" placeholder="Recherche">
-                        <span class="input-group-btn">
-                            <button type="submit" class="btn btn-secondary"><span
-                                    class="fa fa-search"></span> Valider</button>
-                        </span>
-                    </div>
-                </form>
+                <div class="input-group">
+                    <input id="ChampsRecherche" type="text" name="search" class="form-control" placeholder="Recherche">
+                    <span class="input-group-btn">
+                        <button id="Rechercher" type="submit" class="btn btn-secondary"><span
+                                class="fa fa-search"></span> Valider</button>
+                    </span>
+                </div>
             </div>
 
         </div>
