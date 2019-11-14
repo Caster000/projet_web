@@ -38,7 +38,7 @@
 		<div class="col accueildiv" id="div2">
 			<h2>Boutique du BDE</h2>
 			<p class="accueiltext">Notre site compte également une boutique. Portez les couleurs de l'école ou achetez des goodies, tout ça à prix abordables. Payez en main propre, où attendez l'implémentation du service de paiement en ligne de paypal, et recevez les articles commandés dans de brefs délais. Produits de qualité garantis.</p>
-			<img src="../images/BEL.png" alt="Logo boutique en ligne">
+			<img src="/projet_web/public/images/BEL.png" alt="Logo boutique en ligne">
 		</div>
 	</div>
 </div>
