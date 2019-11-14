@@ -2,13 +2,39 @@
 
 @section('content')
 @section('title', 'Galerie')
+
     <div class="mt-5 mr-5 ml-5">
-        <a href="{{ URL::action('ActivitesController@activiteNumero',  $activite->id_activite) }}" class="btn btn-success mb-5">
+        @if($galerie->isEmpty()|| $galerie->whereIn('visible',0)->all())
+            <div class="row m-4 p-4">
+                <div class="col-lg-6 offset-3 text-center">
+                    <div class="text-bold">
+                        Pas d'image dans la galerie !
+                        <br>
+                        Ajoutez-en !!<br>
+                        <a class="btn btn-success mt-2" href=javascript:history.go(-1)><span class="fa fa-arrow-circle-left">&nbsp; Retour sur l'activité</span></a>
+                        <hr>
+                    </div>
+                </div>
+                <div>
+                    &nbsp
+                </div>
+                <div class="col-lg-12 text-center">
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSKuxfXksQIPvXRbB5h9sEBM3HC-GuLqmG1MRI2-RrWu8q8o8i&s"
+                        alt="" class="img-fluid">
+
+                </div>
+
+            </div>
+        @else
+            <a href="{{ URL::action('ActivitesController@activiteNumero',  $activite->id_activite) }}" class="btn btn-success mb-5">
             <span class="fa fa-arrow-circle-left">&nbsp; Retour sur l'activité</span>
         </a>
-        <a href="{{ URL::action('PhotoController@export',  $activite->id_activite) }}" class="btn btn-info mb-5">
-            <span class="fa fa-download">&nbsp; Télécharger les images</span>
-        </a>
+        @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role || auth()->user()->id_role===\App\Role::where('role','CESI')->first()->id_role)
+            <a href="{{ URL::action('PhotoController@export',  $activite->id_activite) }}" class="btn btn-info mb-5">
+                <span class="fa fa-download">&nbsp; Télécharger les images</span>
+            </a>
+        @endif
     </div>
     <div class="row justify-content-center">
         @foreach($galerie as $photo)
@@ -39,8 +65,7 @@
             @endif
         @endforeach
     </div>
-
-
+@endif
 @endsection
 @section('addScripts')
 @endsection

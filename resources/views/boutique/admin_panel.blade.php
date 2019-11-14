@@ -36,10 +36,9 @@
                             <label class="mr-sm-2" for="inlineFormCustomSelect">Catégorie :</label>
                             <select class="custom-select mr-sm-2" id="inlineFormCustomSelect"name="categorie" required>
                                 <option selected>Choose...</option>
-                                <option value="1">T-shirt</option>
-                                <option value="2">Sweat-shirt</option>
-                                <option value="3">Casquette</option>
-                                <option value="4">Goodies</option>
+                                @foreach($allCategories as $categorie)
+                                    <option value="{{$categorie->id_categorie}}">{{$categorie->categorie}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="modal-footer col mt-4">
