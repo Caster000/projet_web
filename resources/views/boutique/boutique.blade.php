@@ -2,6 +2,7 @@
 @section('title','Boutique')
 @section('addScripts')
     <script src="/projet_web/resources/js/app.js"></script>
+    <script src="/projet_web/resources/js/search.js"></script>
 @endsection
 @section('content')
 
