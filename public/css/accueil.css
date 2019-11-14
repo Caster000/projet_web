@@ -1,0 +1,23 @@
+.aaa{
+	}
+
+.title {
+	margin-top: -25px;
+	text-align: center;
+
+}
+
+.accueildiv{
+	margin: 0.5% 0 0.5% 0.5%;
+	text-align: center;
+
+
+}	
+
+.accueiltext{
+	text-align: justify;
+}
+
+.separation{
+	background-image: url(../images/separation.png)
+}
