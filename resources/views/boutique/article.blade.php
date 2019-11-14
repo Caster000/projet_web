@@ -2,9 +2,11 @@
 
 @section('content')
 @section('title', 'article')
-
+<a class="btn btn-success mt-2 ml-2" href=javascript:history.go(-1)><span
+        class="fa fa-arrow-circle-left">&nbsp; Retour sur la boutique</span></a>
     @if($produit)
         <div class="row m-4 p-4">
+
             <div class="col-sm-5 col-md-4 col-lg-5">
                 <img src="{{$produit->urlImage}}" alt="" class="img-fluid">
             </div>

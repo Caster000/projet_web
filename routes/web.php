@@ -42,15 +42,19 @@ Route::group(['prefix' => 'activites'], function () {
         Route::get('/desinscription/{id_activite}', 'ActivitesController@desinscription')->name('desinscription');
 
         Route::group(['prefix'=>'{id_activite}'], function(){ //Regex id_activite dans RouteServiceProvider@boot
-            Route::post('/', 'PhotoController@addPhoto');
-            Route::get('/galerie','PhotoController@index');
-            Route::get('/{titre}/details','PhotoController@image');
-        });
 
-        Route::group(['prefix'=>'{id_photo}/{id_personne}'], function(){//Regex id_personne et id_photo dans RouteServiceProvider@boot
-            Route::get('/like','PhotoController@addLike')->name('like');
-            Route::get('/deleteLike','PhotoController@deleteLike')->name('deleteLike');
-            Route::post('commentaire/','PhotoController@addCommentaire');
+            Route::group(['middleware' => 'Inscrit'], function () {
+                Route::post('/', 'PhotoController@addPhoto');
+                //MIDDLEWARE POUR LES INSCRITS
+                Route::get('/galerie', 'PhotoController@index');
+                Route::get('/{titre}/details', 'PhotoController@image');
+
+                Route::group(['prefix' => '{id_photo}/{id_personne}'], function () {//Regex id_personne et id_photo dans RouteServiceProvider@boot
+                    Route::get('/like', 'PhotoController@addLike')->name('like');
+                    Route::get('/deleteLike', 'PhotoController@deleteLike')->name('deleteLike');
+                    Route::post('commentaire/', 'PhotoController@addCommentaire');
+                });
+            });
         });
 
         Route::group(['middleware' => 'Administration'], function () { //Regex id_activite dans RouteServiceProvider@boot

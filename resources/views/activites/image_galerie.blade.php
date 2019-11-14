@@ -7,11 +7,12 @@
 @section('content')
 <div  class="row mt-1 ">
     <div class="col-7 ">
+
         <img src="/projet_web/public/{{$galerie->urlImage}}" class="img-fluid photo" alt="{{$galerie->titre}}">
         @if((\App\Liker::where('id_photo', $galerie->id_photo)->where('id_personne', auth()->user()->id_personne)->first()) == null)
-            <a href=" {{ route('like',  [$galerie->id_photo,auth()->user()->id_personne]) }}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-heart-o fa-lg"></span> </a>
+            <a href=" {{ route('like',  [$galerie->id_activite, $galerie->id_photo,auth()->user()->id_personne]) }}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-heart-o fa-lg"></span> </a>
         @else
-            <a href=" {{ URL::action('PhotoController@deleteLike',  [$galerie->id_photo,auth()->user()->id_personne]) }}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-heart fa-lg"></span> </a>
+            <a href=" {{ URL::action('PhotoController@deleteLike',  [$galerie->id_activite,$galerie->id_photo,auth()->user()->id_personne]) }}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-heart fa-lg"></span> </a>
         @endif
             {{$countLike}}
     </div>
@@ -82,7 +83,7 @@
                                 </button>
                             </div>
                             <div class="modal-body mr-5 ml-5">
-                                <form action="{{ URL::action('PhotoController@addCommentaire',  [$galerie->id_photo,auth()->user()->id_personne]) }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ URL::action('PhotoController@addCommentaire',  [$galerie->id_activite, $galerie->id_photo,auth()->user()->id_personne]) }}" method="post" enctype="multipart/form-data">
                                 @csrf <!-- {{ csrf_field() }} -->
                                     <div class="form">
                                         <div class="form-group row">

@@ -12,10 +12,12 @@
                 <div>
                     {{$activite->description}}
                 </div>
+                @if(($activite->prix)!=0)
                 <h6 class="mt-4">Prix :</h6>
                 <div>
                     {{$activite->prix}}€
                 </div>
+                @endif
             </div>
             <div class="col-lg-2 col-sm-2 col-md-2">
                 <div class="text-center mb-3">
