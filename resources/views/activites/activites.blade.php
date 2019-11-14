@@ -11,7 +11,7 @@
 
         <div class="row flex-center">
             <a class="btn btn-primary btn-md mr-2" href="{{route('evenementsPasses')}}">Évènements passés</a>
-            <a class="btn btn-primary btn-md mr-2 ml-2" href="{{route('activites')}}">Tous</a>
+            <a class="btn btn-primary btn-md mr-2 ml-2" href="{{route('activites')}}">Tous les évènements</a>
             <a class="btn btn-primary btn-md ml-2" href="{{route('evenementsDuMois')}}">Évènements du mois</a>
         </div>
 

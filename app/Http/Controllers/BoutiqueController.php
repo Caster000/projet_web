@@ -54,8 +54,8 @@ class BoutiqueController extends Controller
     }
 
     public function trierParCriteres(Request $request){
-        $categorie = \request()->categorie;
-        $prix = \request()->prix;
+        $categorie = $request->categorie;
+        $prix = $request->prix;
         $categorieData['data'] = \App\Produit::parCriteres($prix, $categorie);
         echo json_encode($categorieData);
         exit;
