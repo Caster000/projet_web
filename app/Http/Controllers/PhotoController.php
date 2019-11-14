@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Commentaire;
 use App\Commenter;
 use App\Liker;
 use App\Photo;
@@ -56,10 +57,10 @@ class PhotoController extends Controller
         $countLike =Liker::where('photo.titre',$titre)
             ->join('photo','photo.id_photo','=','liker.id_photo')
             ->count();
-        $comment= Commenter::select('commenter.id_photo','commenter.id_personne', 'nom',"prenom","commentaire","commenter.visible")
+        $comment= Commentaire::select('id_commentaire','commentaire.id_photo','commentaire.id_personne', 'nom',"prenom","commentaire","commentaire.visible")
             ->where('photo.titre',$titre)
-            ->Join('personne','personne.id_personne','=','commenter.id_personne')
-            ->join('photo','photo.id_photo','=','commenter.id_photo')->get();
+            ->Join('personne','personne.id_personne','=','commentaire.id_personne')
+            ->join('photo','photo.id_photo','=','commentaire.id_photo')->get();
         return view('activites.image_galerie',compact('galerie','like','countLike','comment'));
     }
 
@@ -90,28 +91,28 @@ class PhotoController extends Controller
         return back();
     }
     public function addCommentaire(Request $request,$id_activite,$id_photo,$id_personne){
-        $com = new Commenter;
+        $com = new Commentaire();
         $com->id_photo=$id_photo;
         $com->id_personne=$id_personne;
-        $com->Commentaire=$request->commentaire;
+        $com->commentaire=$request->commentaire;
         $com->visible=1;
         $com->save();
         return back();
     }
 
-    public function deleteCommentaire($id_photo,$id_personne){
-        \App\Commenter::where('id_photo', $id_photo)->where('id_personne',$id_personne)->first()->delete();
+    public function deleteCommentaire($id_commentaire){
+        \App\Commentaire::where('id_commentaire', $id_commentaire)->first()->delete();
         return back();
     }
 
-    public function commentaireRendreInvisible($id_photo, $id_personne){
-        \App\Commenter::where('id_photo', $id_photo)->where('id_personne',$id_personne)->first()->update(['visible'=>0]);
+    public function commentaireRendreInvisible($id_commentaire){
+        \App\Commentaire::where('id_commentaire', $id_commentaire)->first()->update(['visible'=>0]);
 
         return back();
     }
 
-    public function commentaireRendreVisible($id_photo, $id_personne){
-        \App\Commenter::where('id_photo', $id_photo)->where('id_personne',$id_personne)->first()->update(['visible'=>1]);
+    public function commentaireRendreVisible($id_commentaire){
+        \App\Commentaire::where('id_commentaire', $id_commentaire)->first()->update(['visible'=>1]);
         return back();
     }
 
