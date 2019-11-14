@@ -7,6 +7,7 @@
 
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.0/lity.min.css"/>
 <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet"> 
 <link rel="stylesheet" type="text/css" href="/projet_web/public/css/cookiebar.css"/>
 <link rel="stylesheet" type="text/css" href="/projet_web/public/css/mentions.css">
 <link rel="stylesheet" type="text/css" href="/projet_web/public/css/cgv.css">

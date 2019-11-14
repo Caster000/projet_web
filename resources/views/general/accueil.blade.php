@@ -1,3 +1,4 @@
+
 @extends('layouts.master')
 
 @section('title', 'Accueil')
@@ -5,9 +6,9 @@
 @section('ajoutHead')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
-
+<div id="tout">
 @section('content')
-<!--div class="title mb-3">BDE CESI</div-->
+<!--div class="title mb-3">BDE CESI</div>
 
 <div class="row">
 	<div class="carousel slide col-12 justify-content-center carousel-fade p-0" data-ride="carousel">
@@ -23,21 +24,21 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div-->
 
 <div class="container-fluid aaa">
-	<div class="row">
-		<div class="col accueildiv aaa">
+	<div class="row-fluid" id="row1">&nbsp;</div>
+	<div class="row" id="row2">
+		<div class="col accueildiv" id="div1">
 			<h2> Bureau des élèves</h2>
 			<p class="accueiltext">Bienvenue sur le Site du Bureau des Élèves du CESI. Vous pourrez y trouver un espace pour consulter les différentes activités qui pourront avoir lieu lors de la vie étudiante le jeudi après midi, poster des photos et intéragir avec les activités auxquelles vous décidez de participer, ou encore réagir au commentaires des autres participants. </p>
-			<p class="accueiltext">	Soyez sans crainte, les membres du BDE et l'équipe pédagogique s'occupe de se débarasser du contenu inapproprié, pour que vous puissiez visiter le site avec la meilleure expérience possible. N'hésitez pas consulter les mentions légales si vous avez des questions, et si elles n'y répondent pas, vous pouvez toujours nous les poser via les informations de contact en bas de page, ou bien même nous venir nous voir en personne.</p>
+			<p class="accueiltext">	Soyez sans crainte, les membres du BDE et l'équipe pédagogique s'occupent de se débarasser du contenu inapproprié, pour que vous puissiez visiter le site avec la meilleure expérience possible. N'hésitez pas consulter les mentions légales si vous avez des questions, et si elles n'y répondent pas, vous pouvez toujours nous les poser via les informations de contact en bas de page, ou bien même nous venir nous voir en personne.</p>
 		</div>
-		<div class="separation">
-			
-		</div>
-		<div class="col accueildiv">
+		<div id="divinter"></div>
+		<div class="col accueildiv" id="div2">
 			<h2>Boutique du BDE</h2>
 			<p class="accueiltext">Notre site compte également une boutique. Portez les couleurs de l'école ou achetez des goodies, tout ça à prix abordables. Payez en main propre, où attendez l'implémentation du service de paiement en ligne de paypal, et recevez les articles commandés dans de brefs délais. Produits de qualité garantis.</p>
+			<img src="../images/BEL.png" alt="Logo boutique en ligne">
 		</div>
 	</div>
 </div>
@@ -45,7 +46,7 @@
 
 
 
-<div class="row justify-content-center mt-3 mb-3">
+<!--div class="row justify-content-center mt-3 mb-3">
 	<div class="col-10 card border border-primary ">
 		<h5 class="card-header ">Featured</h5>
 		<div class="card-body">
@@ -71,5 +72,6 @@
 			</div>
 		</div>
 	</div>
+</div-->
 </div>
 @endsection
