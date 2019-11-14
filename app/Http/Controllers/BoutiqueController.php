@@ -49,10 +49,16 @@ class BoutiqueController extends Controller
         $article->delete();
         return redirect('/boutique');
     }
-    public  function updateArticles(){
+    public function updateArticles(){
         return view('boutique.updateArticles');
     }
 
-
+    public function trierParCriteres(Request $request){
+        $categorie = \request()->categorie;
+        $prix = \request()->prix;
+        $categorieData['data'] = \App\Produit::parCriteres($prix, $categorie);
+        echo json_encode($categorieData);
+        exit;
+    }
 
 }

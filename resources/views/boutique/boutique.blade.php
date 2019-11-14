@@ -1,5 +1,8 @@
 @extends('layouts.master')
 @section('title','Boutique')
+@section('addScripts')
+    <script src="/projet_web/resources/js/app.js"></script>
+@endsection
 @section('content')
 
 
@@ -39,27 +42,20 @@
 
     <div class="container flex-center">
         <div class="btn-group pr-5">
-            <div class="col-12 col-sm-4 col-lg-4 ">
-                <button type="button" class="btn btn-black dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                    Trier vos articles par prix
-                </button>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <span><a class="dropdown-item" href="{{route('accueil')}}">Par prix croissant</a></span>
-                    <span><a class="dropdown-item" href="{{route('accueil')}}">Par prix décroissant</a></span>
-                </div>
-            </div>
-
             <div class="col-12 col-sm-6 col-lg-4">
-                <button type="button" class="btn btn-black dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                    Trier vos articles par catégories
-                </button>
-                <div class="dropdown-menu dropdown-menu-right">
+                <select id="trierPrix" class="btn btn-primary">
+                    <option value="Aleatoire">Trier vos articles par prix</option>
+                    <option value="Croissant">Trier par prix croissant</option>
+                    <option value="Decroissant">Trier par prix décroissant</option>
+                </select>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <select id="trierCategories" class="btn btn-primary">
+                    <option value="Tous">Trier vos articles par catégorie</option>
                     @foreach($allCategories as $categorie)
-                    <button class="dropdown-item" type="button">{{$categorie->categorie}}</button>
+                    <option value="{{$categorie->categorie}}">{{$categorie->categorie}}</option>
                     @endforeach
-                </div>
+                </select>
             </div>
             <div class="col-12 col-sm-8 col-lg-4 pr-5 pl-5">
                 <form action="search" method="get" class="form-inline">
@@ -81,11 +77,11 @@
             Tous nos articles
         </div>
     </div>
-    <div class="row flex-center">
+    <div class="row flex-center" id="affichageArticles">
         @foreach($allArticles as $article)
             <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4 ">
                 <div class="card card-inverse card-info ">
-                    <img class="card-img-top" src="{{$article->urlImage}}"  alt="{{$article->id_produit}}">
+                    <img class="card-img-top" src="{{$article->urlImage}}"  alt="{{$article->nom}}">
                     <div class="card-block">
                         <h4 class="card-title">{{$article->nom}}, {{$article->prix}}€</h4>
                         <div class="card-text">

@@ -52,4 +52,44 @@ class Produit extends Model
     {
         return $this->hasMany('App\Contenir', 'id_produit', 'id_produit');
     }
+
+    public static function parCriteres($prix = null, $categorie = null){   // Retourne tous les produits appartenant à une catégorie
+        if($categorie!=null || $prix = null) {
+            if ($categorie != "Tous") {
+                $id_categorie = \App\Categorie::select('id_categorie')->where('categorie', $categorie)->first()->id_categorie;
+                switch ($prix) {
+                    case 'Aleatoire':
+                        $produitsCategorie = \App\Produit::where('id_categorie', $id_categorie)->get();
+                        break;
+                    case 'Croissant':
+                        $produitsCategorie = \App\Produit::where('id_categorie', $id_categorie)->orderBy('prix', 'asc')->get();
+                        break;
+                    case 'Decroissant':
+                        $produitsCategorie = \App\Produit::where('id_categorie', $id_categorie)->orderBy('prix', 'desc')->get();
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                switch ($prix) {
+                    case 'Aleatoire':
+                        $produitsCategorie = \App\Produit::all();
+                        break;
+                    case 'Croissant':
+                        $produitsCategorie = \App\Produit::orderBy('prix', 'asc')->get();
+                        break;
+                    case 'Decroissant':
+                        $produitsCategorie = \App\Produit::orderBy('prix', 'desc')->get();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return $produitsCategorie;
+        } else{
+            abort(415);
+        }
+    }
+
 }
