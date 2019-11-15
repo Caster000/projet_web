@@ -14,6 +14,7 @@ Route::group(['prefix' => 'boutique'], function () {
     Route::get('/', 'BoutiqueController@index')->name('boutique');
     Route::get('/article/{numero}', 'BoutiqueController@article')->name('article');
     Route::get('/{recherche}', 'BoutiqueController@rechercher')->name('rechercher');
+    Route::post('/fetch', 'BoutiqueController@fetch')->name('fetch');
     Route::get('/{prix}/{categorie}', 'BoutiqueController@trierParCriteres')->name('trierParCriteres');
 
     Route::group(['middleware' => 'auth'], function () {
@@ -72,7 +73,7 @@ Route::group(['prefix' => 'activites'], function () {
                 Route::get('/galerie/delete', 'PhotoController@deletePhoto')->name('deletePhoto');
             });
 
-            Route::group(['prefix'=>'{id_photo}/{id_personne}'], function() {//Regex id_personne et id_photo dans RouteServiceProvider@boot
+            Route::group(['prefix'=>'{id_commentaire}'], function() {//Regex id_personne et id_photo dans RouteServiceProvider@boot
                 Route::get('/visible','PhotoController@commentaireRendreVisible')->name('commentaireRendreVisible');
                 Route::get('/invisible','PhotoController@commentaireRendreInvisible')->name('commentaireRendreInvisible');
                 Route::get('/commentaire/delete','PhotoController@deleteCommentaire')->name('deleteCommentaire');

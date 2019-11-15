@@ -33,12 +33,12 @@
                     @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role || auth()->user()->id_role===\App\Role::where('role','CESI')->first()->id_role)
                         <div class="card-header col-1">
                             @if(!($com->visible===1))
-                                <a href="{{route('commentaireRendreVisible', [$com->id_photo, $com->id_personne])}}" class="col-lg-1 rounded-0 pl-0 blue-hover"><span class="fa fa-eye-slash fa-lg"></span></a>
+                                <a href="{{route('commentaireRendreVisible', [$com->id_commentaire])}}" class="col-lg-1 rounded-0 pl-0 blue-hover"><span class="fa fa-eye-slash fa-lg"></span></a>
                             @else
-                                <a href="{{route('commentaireRendreInvisible', [$com->id_photo, $com->id_personne])}}" class="col-lg-1 rounded-0 pl-0 blue-hover"><span class="fa fa-eye fa-lg"></span></a>
+                                <a href="{{route('commentaireRendreInvisible', [$com->id_commentaire])}}" class="col-lg-1 rounded-0 pl-0 blue-hover"><span class="fa fa-eye fa-lg"></span></a>
                             @endif
                             @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
-                                <a href="{{route('deleteCommentaire', [$com->id_photo, $com->id_personne])}}" class="col-lg-1 rounded-0 pl-0 red-hover"><span class="fa fa-trash fa-lg"></span></a>
+                                <a href="{{route('deleteCommentaire', [$com->id_commentaire])}}" class="col-lg-1 rounded-0 pl-0 red-hover"><span class="fa fa-trash fa-lg"></span></a>
                             @endif
                         </div>
                     @endif
