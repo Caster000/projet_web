@@ -22,6 +22,7 @@ Route::group(['prefix' => 'boutique'], function () {
             Route::get('/{id_produit}', 'PanierController@addToPanier');
             Route::get('/delete/{id_commande}/{id_produit}', 'PanierController@delete');
             Route::get('/{id_commande}/{id_produit}', 'PanierController@addQuantite');
+            Route::get('/payment/{total}/{id_commande}','PaymentController@payWithpaypal');
             Route::get('/', 'PanierController@index')->name('panier');
 
         });

@@ -108,7 +108,7 @@
                                         <h5 class="font-weight-bold">{{$totale + 10}}€</h5>
                                     </li>
                                 </ul>
-                                <a href="{{ URL::action('PaymentController@payWithpaypal',  $payer=($totale + 10) }}" class="btn btn-dark rounded-pill py-2 btn-block">Proceder au payement</a>
+                                <a href="{{ URL::action('PaymentController@payWithpaypal',  [$total=($totale + 10),$id_commande]) }}" class="btn btn-dark rounded-pill py-2 btn-block">Proceder au payement</a>
                             </div>
                     </div>
 

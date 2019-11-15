@@ -16,6 +16,11 @@ class PanierController extends Controller
             ->leftJoin('contenir','contenir.id_commande','=','commande.id_commande')
             ->join('produit','produit.id_produit','=','contenir.id_produit') ->get();
         //echo $articles;
+        $id_commande =Commande::select('commande.id_commande')
+            ->where('id_personne',auth()->user()->id_personne )
+            ->where('valider',0)
+            ->leftJoin('contenir','contenir.id_commande','=','commande.id_commande')
+            ->join('produit','produit.id_produit','=','contenir.id_produit') ->first();
         $totale=0;
         foreach ($articles as $article){
             $montant=$article->prix*$article->Quantite;
@@ -23,7 +28,8 @@ class PanierController extends Controller
             //echo $totale;
         }
         //echo $totale;
-        return view('boutique.panier', compact('articles','totale'));
+        //dd($id_commande);
+        return view('boutique.panier', compact('articles','totale', 'id_commande'));
         }
 
     public function addToPanier($id_produit){                // ajout d'un produit au panier
