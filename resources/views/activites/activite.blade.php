@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@section('title','Activite')
 @section('content')
     @if($activite && ($activite->visible===1 || auth()->check() && (auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role || auth()->user()->id_role===\App\Role::where('role','CESI')->first()->id_role))))
         <div class="row m-4 p-4">
@@ -50,9 +50,10 @@
 {{--                </div>--}}
                     <a href="{{ URL::action('PhotoController@index',  $activite->id_activite) }}" class="btn btn-success mt-2">Voir la Galerie</a>
                 @endif
-            </div>
+
             @endif
-        </div>
+            </div>
+    </div>
     @else
         <div class="row m-4 p-4">
             <div class="col-lg-6 offset-3 text-center">
