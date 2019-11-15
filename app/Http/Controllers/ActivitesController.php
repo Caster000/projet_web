@@ -23,7 +23,7 @@ class ActivitesController extends Controller
     }
 
     public function addActivite(Request $request){                //ajout d'une activite depuis infos du POST
-        $activite = new Activite;
+        $activite = new Activite();
         $activite->activite= $request->nom;
         $activite->description= $request->description;
         $activite->visible= 1;
@@ -34,6 +34,7 @@ class ActivitesController extends Controller
         $activite->urlImage = $destinationPath."/".$file;
         $activite->date= $request->date;
         $activite->prix= $request->prix;
+        $activite->id_personne=auth()->user()->id_personne;
         $activite->save();
         return redirect('/activites');
     }

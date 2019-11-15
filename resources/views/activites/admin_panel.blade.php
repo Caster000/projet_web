@@ -33,31 +33,31 @@
                                     </label>
                                 </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="recurrence" value="hebdomadaire" >
+                                <input class="form-check-input" type="radio" name="recurrence" value="Hebdomadaire" >
                                 <label class="form-check-label">
                                     Hebdomadaire
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="recurrence" value="mensuelle" >
+                                <input class="form-check-input" type="radio" name="recurrence" value="Mensuelle" >
                                 <label class="form-check-label">
                                     Mensuelle
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="recurrence" value="trimestrielle" >
+                                <input class="form-check-input" type="radio" name="recurrence" value="Trimestrielle" >
                                 <label class="form-check-label">
                                     Trimestrielle
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="recurrence" value="semestrielle" >
+                                <input class="form-check-input" type="radio" name="recurrence" value="Semestrielle" >
                                 <label class="form-check-label">
                                     Semestrielle
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="recurrence" value="annuelle" >
+                                <input class="form-check-input" type="radio" name="recurrence" value="Annuelle" >
                                 <label class="form-check-label">
                                     Annuelle
                                 </label>

@@ -1,8 +1,11 @@
 @extends('layouts.master')
-@section('ajoutHead')
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    @endsection
+
 @section('title','Boutique')
+
+@section('styleParticulier')
+    <link rel="stylesheet" type="text/css" href="../public/css/activite.css">
+@endsection
+
 @section('addScripts')
     <script src="/projet_web/resources/js/boutiqueFiltres.js"></script>
     <script>                                                    //script pour l'autocompletion
