@@ -27,6 +27,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::pattern('id_commentaire', '[0-9]+');
         Route::pattern('id_photo','[0-9]+');
         Route::pattern('id_personne','[0-9]+');
+        Route::pattern('id_produit','[0-9]+');
         parent::boot();
     }
 
