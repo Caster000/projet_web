@@ -1,9 +1,8 @@
-<div class="row justify-content-center m-4 text-center">
+<div class="row justify-content-center m-4 text-center">{{--  Bouttons pour les admin, declenche des modals  --}}
     <button type="button" class="btn btn-primary  col-2 m-2" data-toggle="modal" data-target="#exampleModal" data-whatever="@ajouterProduit">Ajouter un nouveau produit</button>
     <a href="{{route('updateArticles')}}" class="btn btn-primary col-2 m-2">Modifier un article</a>
-    </a>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">                {{--  Formulaire pour ajouter un article   --}}
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -17,25 +16,25 @@
             @csrf <!-- {{ csrf_field() }} -->
                     <div class="form">
                         <div class="form-group row">
-                            <label for="nom">Nom :</label>
+                            <label>Nom :</label>
                             <input type="text" class="form-control" placeholder="Ex: Sweat BDE" name="nom" required>
                         </div>
                         <div class="form-group row">
-                            <label for="description">Description </label>
+                            <label>Description </label>
                             <textarea class="form-control" placeholder="Description..." name="description" required></textarea>
                         </div>
                         <div class="form-group row">
-                            <label for="prix">Prix en € :</label>
+                            <label>Prix en € :</label>
                             <input type="number" class="form-control" placeholder="Ex: 10,99" name="prix" required>
                         </div>
                         <div class="form-group row">
-                            <label for="image">Choisissez une image</label>
+                            <label>Choisissez une image</label>
                             <input type="file" class="form-control-file" id="ImageNewProduit" name="image" required>
                         </div>
                         <div class="form-group row ">
-                            <label class="mr-sm-2" for="inlineFormCustomSelect">Catégorie :</label>
-                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect"name="categorie" required>
-                                <option selected>Choose...</option>
+                            <label class="mr-sm-2">Catégorie :</label>
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="categorie" required>
+                                <option value="" selected="selected">Choisissez : </option>
                                 @foreach($allCategories as $categorie)
                                     <option value="{{$categorie->id_categorie}}">{{$categorie->categorie}}</option>
                                 @endforeach

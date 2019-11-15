@@ -30,7 +30,7 @@
                             <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Prénom') }}</label>
 
                             <div class="col-md-6">
-                                <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname" >
+                                <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required>
 
                                 @error('surname')
                                 <span class="invalid-feedback" role="alert">
@@ -42,7 +42,8 @@
 
                         <div class="form-group row">
                             <label for="campus" class="col-md-4 col-form-label text-md-right">{{ __('Campus') }}</label>
-                            <select id="campus" class="form-control col-md-6" @error('campus') is-invalid @enderror name="campus" value="{{ old('campus') }}" required autocomplete="campus" >
+                            <select id="campus" class="form-control col-md-6" @error('campus') is-invalid @enderror name="campus" value="{{ old('campus') }}" required>
+                                    <option class="dropdown-item" value="" selected="selected">Choissisez un campus</option>
                                 @foreach($campus as $campusUnit)
                                     <option class="dropdown-item" value="{{$campusUnit->id_campus}}">{{$campusUnit->campus}}</option>
                                 @endforeach
@@ -95,7 +96,7 @@
                         </div>
 
                         <div class="form-group row align-items-center check-control">
-                            <input type="checkbox" class="offset-3" required><span>{!!'&nbsp;'!!}J'accepte les{!!'&nbsp;'!!}</span><span><a href="{{route('mentions_legales')}}">Conditions Générales</a></span><span>{!!'&nbsp;'!!}{{__('du site ')}}{{config('app.name', 'Laravel')}}</span> </input>
+                            <input type="checkbox" class="offset-3" required><span>{!!'&nbsp;'!!}J'accepte les{!!'&nbsp;'!!}</span><span><a href="{{route('mentions_legales')}}">Conditions Générales</a></span><span>{!!'&nbsp;'!!}{{__('du site du BDE Cesi')}}</span>
 
                         </div>
 

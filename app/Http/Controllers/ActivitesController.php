@@ -12,17 +12,17 @@ use Illuminate\Support\Facades\DB;
 
 class ActivitesController extends Controller
 {
-    public function index(){
+    public function index(){                 //Affichage de base
         $activites=\App\Activite::select('id_activite','activite','description','recurrence','urlImage','date','prix','visible')->get();
         return view('activites.activites', compact('activites'));
     }
 
-    public function activiteNumero($numero){
+    public function activiteNumero($numero){                //affichage d'une activite
     	$activite = Activite::find($numero);
         return view('activites.activite', compact('activite'));
     }
 
-    public function addActivite(Request $request){
+    public function addActivite(Request $request){                //ajout d'une activite depuis infos du POST
         $activite = new Activite();
         $activite->activite= $request->nom;
         $activite->description= $request->description;
@@ -38,14 +38,14 @@ class ActivitesController extends Controller
         $activite->save();
         return redirect('/activites');
     }
-    public function delete($id_activite){
+    public function delete($id_activite){                //Supression activite
         $activite = \App\Activite::find($id_activite);
         if($activite!=null){
             $activite->effacerActivite();
         };
         return back();
     }
-    public function inscription($id_activite)
+    public function inscription($id_activite)                //inscription à un activite
     {
         if (!(\App\Inscrire::where('id_activite', $id_activite)->where('id_personne', auth()->user()->id_personne)->first())) {
             \App\Inscrire::create([
@@ -55,7 +55,7 @@ class ActivitesController extends Controller
         }
         return back();
     }
-    public function desinscription($id_activite){
+    public function desinscription($id_activite){                //desincription a une activite
         $activite = \App\Inscrire::where('id_activite', $id_activite)->where('id_personne', auth()->user()->id_personne)->first();
         if($activite!=null){
             $activite->delete();
@@ -63,32 +63,32 @@ class ActivitesController extends Controller
         return back();
     }
 
-    public function rendreVisible($id_activite){
+    public function rendreVisible($id_activite){                //rendre visible une activite
         \App\Activite::where('id_activite', $id_activite)->first()->update(['visible'=>1]);
         return back();
     }
 
-    public function rendreInvisible($id_activite){
+    public function rendreInvisible($id_activite){                //rendre invisible une activite
         \App\Activite::where('id_activite', $id_activite)->first()->update(['visible'=>0]);
         return back();
     }
 
-    public  function updateActivites()
+    public  function updateActivites()                //modification activite
     {
         return view('activites.updateActivites');
     }
 
-    public function export($id_activite)
+    public function export($id_activite)                //telechargement de la liste des inscrits
     {
         return Excel::download(new InscritExport, 'liste_inscrit.csv');
     }
 
-    public function evenementsPasses(){
+    public function evenementsPasses(){                //affichages des activite passé
         $activites=\App\Activite::where('date','<', DB::raw('NOW()'))->select('id_activite','activite','description','recurrence','urlImage','date','prix','visible')->get();
         return view('activites.activites', compact('activites'));
     }
 
-    public function evenementsDuMois(){
+    public function evenementsDuMois(){                //affichages des activite du mois
         $activites=\App\Activite::where(DB::raw('MONTH(date)'),'=', DB::raw('MONTH(NOW())'))->select('id_activite','activite','description','recurrence','urlImage','date','prix','visible')->get();
         return view('activites.activites', compact('activites'));
 

@@ -1,6 +1,6 @@
 
 <?php
-$connect = mysqli_connect("localhost", "root", "", "projet_web");
+$connect = mysqli_connect("localhost", "root", "", "projet_web");                  {{-- connection--}}
 $query = "SELECT * FROM produit ORDER BY id_produit DESC";
 $result = mysqli_query($connect, $query);
 ?>
@@ -45,7 +45,7 @@ $result = mysqli_query($connect, $query);
 
 </body>
 </html>
-<div id="dataModal" class="modal fade">
+<div id="dataModal" class="modal fade">           {{-- form d'update--}}
     <div class="modal-dialog">
     </div>
 </div>
@@ -94,7 +94,7 @@ $result = mysqli_query($connect, $query);
 </div>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function(){           {{--script d'update en ajax --}}
         $('#add').click(function(){
             $('#insert').val("Insert");
             $('#insert_form')[0].reset();

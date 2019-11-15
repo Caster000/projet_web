@@ -3,10 +3,13 @@
 @section('title', $activite->activite)
 
 @section('content')
+
+                                        {{-- Verification du role de l'utilisateur st si l'activite existe   --}}
+
     @if($activite && ($activite->visible===1 || auth()->check() && (auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role || auth()->user()->id_role===\App\Role::where('role','CESI')->first()->id_role)))
         <div class="row m-4 p-4">
             <div class="col-sm-5 col-md-4 col-lg-5">
-                <img src="{{$activite->urlImage}}" alt="" class="img-fluid">
+                <img src="{{$activite->urlImage}}" alt="{{$activite->titre}}" class="img-fluid">
             </div>
             <div class="col-sm-5 col-md-3 col-lg-5">
                 <h4>{{$activite->activite}}</h4>
@@ -23,33 +26,26 @@
             </div>
             <div class="col-lg-2 col-sm-2 col-md-2">
                 <div class="text-center mb-3">
-                    <a class="btn btn-primary" href="{{ route('activites') }}" aria-pressed="false"><span class="fa fa-arrow-circle-left"></span>&nbspRetour aux activités</a>
+                    <a class="btn btn-primary" href="{{ route('activites') }}"><span class="fa fa-arrow-circle-left"></span>&nbsp;Retour aux activités</a>
                 </div>
-            @if(auth()->check())
+            @if(auth()->check())                                           {{--  Si connecter peut s'inscrire  --}}
                 <div class="text-center">
                     @if((\App\Inscrire::where('id_activite', $activite->id_activite)->where('id_personne', auth()->user()->id_personne)->first()))
-                        <a class="btn btn-warning" href="{{ URL::action('ActivitesController@desinscription',  $activite->id_activite) }}" aria-pressed="false"><span class="fa fa-times fa-lg"></span>&nbspSe raviser</a>
+                        <a class="btn btn-warning" href="{{ URL::action('ActivitesController@desinscription',  $activite->id_activite) }}" aria-pressed="false"><span class="fa fa-times fa-lg"></span>&nbsp;Se raviser</a>
                     @else
-                        <a class="btn btn-warning" href="{{ URL::action('ActivitesController@inscription',  $activite->id_activite) }}" aria-pressed="false"><span class="fa fa-check fa-lg"></span>&nbspParticiper</a>
+                        <a class="btn btn-warning" href="{{ URL::action('ActivitesController@inscription',  $activite->id_activite) }}" aria-pressed="false"><span class="fa fa-check fa-lg"></span>&nbsp;Participer</a>
                     @endif
                 <!-- ADMIN BOUTON -->
                 @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role || auth()->user()->id_role===\App\Role::where('role','CESI')->first()->id_role)
-                    <a href="{{ URL::action('ActivitesController@export',  $activite->id_activite) }}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-download fa-lg"></span> &nbspTélécharger la liste des inscrits</a>
+                    <a href="{{ URL::action('ActivitesController@export',  $activite->id_activite) }}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-download fa-lg"></span> &nbsp;Télécharger la liste des inscrits</a>
                 @endif
-                </div>
+                </div>                                        {{-- Permet l'ajout d'image si inscrit a l'activite ou si membre du bde/cesi   --}}
                 @if((\App\Inscrire::where('id_activite', $activite->id_activite)->where('id_personne', auth()->user()->id_personne)->first()) || auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role || auth()->user()->id_role===\App\Role::where('role','CESI')->first()->id_role)
 {{--                <div class="border border-primary p-4  mt-3">--}}
                     <h6 class="text-center text-bold mt-5">Ajouter une image</h6>
                     <form class="dropzone" paramName="file" action="{{ URL::action('PhotoController@addPhoto',  $activite->id_activite) }}" enctype="multipart/form-data" method="post">
                     @csrf <!-- {{ csrf_field() }} -->
-{{--                        <div class=" mb-4 ">--}}
-{{--                            <label class="mt-2" for="titre">Titre :</label>--}}
-{{--                            <input type="text" class="form-control" placeholder="Ex: Tournoi Smash" name="titre" required>--}}
-{{--                            <input class="mt-3" name="file" type="file" multiple required/>--}}
-{{--                        </div>--}}
-{{--                        <button type="submit" class="btn btn-primary">Ajouter des photos</button>--}}
                     </form>
-{{--                </div>--}}
                     <a href="{{ URL::action('PhotoController@index',  $activite->id_activite) }}" class="btn btn-success mt-2">Voir la Galerie</a>
                 @endif
 
@@ -57,7 +53,7 @@
             </div>
     </div>
     @else
-        <div class="row m-4 p-4">
+        <div class="row m-4 p-4">                                        {{--  Affichage si l'activite est invisible pour les etudiant ou si elle n'existe pas  --}}
             <div class="col-lg-6 offset-3 text-center">
                 <div class="text-bold">
                     Oups ! Problème de livraison !

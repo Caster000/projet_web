@@ -1,7 +1,7 @@
 
 <?php
 $connect = mysqli_connect("localhost", "root", "", "projet_web");
-$query = "SELECT * FROM activite ORDER BY id_activite DESC";
+$query = "SELECT * FROM activite ORDER BY id_activite DESC";                 {{--  connection  --}}
 $result = mysqli_query($connect, $query);
 ?>
 
@@ -44,7 +44,7 @@ $result = mysqli_query($connect, $query);
 </div>
 
 </body>
-</html>
+</html>                 {{-- modal d'affichage du formulaire   --}}
 <div id="dataModal" class="modal fade">
     <div class="modal-dialog">
     </div>
@@ -131,7 +131,7 @@ $result = mysqli_query($connect, $query);
     </a>
 </div>
 
-<script>
+<script>                 {{--  Permet la recuperation des donnees à modifier   --}}
     $(document).ready(function(){
         $('#add').click(function(){
             $('#insert').val("Insert");
@@ -185,7 +185,7 @@ $result = mysqli_query($connect, $query);
             }
             else
             {
-                $.ajax({
+                $.ajax({                     {{--  permet l'insertion des donnees en ajax  --}}
                     url:"/projet_web/resources/views/activites/insertactivite.php",
                     method:"POST",
                     data:$('#insert_form').serialize(),

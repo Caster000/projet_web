@@ -7,7 +7,7 @@
     <div class="title text-center pb-5">
         Panier
     </div>
-    @if($articles->isEmpty())
+    @if($articles->isEmpty())           {{-- si pas de panier --}}
         <div class="row m-4 p-4">
             <div class="col-lg-6 offset-3 text-center">
                 <div class="text-bold">
@@ -26,11 +26,11 @@
                     alt="" class="img-fluid">
             </div>
         </div>
-    @else
+    @else           {{-- Affichage du panier--}}
         <div class="content full-height">
             <div class="container">
                 <div class="row col-12">
-                    <div class="bg-white rounded shadow-smrow col-6">
+                    <div class="bg-white rounded shadow-sm row col-6">
 
                         <!-- Shopping cart table -->
                         <div class="table-responsive">
@@ -53,23 +53,22 @@
                                 </thead>
 
                                 <tbody>
-                                @foreach($articles as $article)
+                                @foreach($articles as $article)           {{--liste les article de votre commande--}}
                                     <tr>
                                         <th scope="row" class="border-0">
                                             <div class="p-2">
                                                 <img src="{{$article->urlImage}}" alt="Article 1" width="70"
                                                      class="img-fluid rounded shadow-sm">
                                                 <div class="ml-3 d-inline-block align-middle">
-                                                    <h5 class="mb-0"><a href="#"
-                                                                        class="text-dark d-inline-block align-middle">{{$article->nom}}</a>
+                                                    <h5 class="mb-0"><a href="#" class="text-dark d-inline-block align-middle">{{$article->nom}}</a>
                                                     </h5><span
                                                         class="text-muted font-weight-normal font-italic d-block">Catégorie : {{$article->categorie}}</span>
                                                 </div>
                                             </div>
                                         </th>
                                         <td class="border-0 align-middle"><strong>{{$article->prix}}€</strong></td>
-                                        <td class="border-0 align-middle"><strong>
-                                                <form name="myform" method="get" action="{{ URL::action('PanierController@addQuantite', [$article->id_commande ,$article->id_produit]) }}">
+                                        <td class="border-0 align-middle"><strong></strong>
+                                                <form name="myform" method="get" action="{{ URL::action('PanierController@addQuantite', [$article->id_commande ,$article->id_produit]) }}">           {{-- Modification de la quantite--}}
                                                     <select onchange='this.form.submit()' class="custom-select mr-sm-2" id="inlineFormCustomSelect"name="quantite">
                                                         <option value="1" autofocus>{{$article->Quantite}}</option>
                                                         <option value="1">1</option>
@@ -87,7 +86,7 @@
                         </div>
                     </div>
 
-                    <div class=" bg-white rounded shadow-sm col-6">
+                    <div class=" bg-white rounded shadow-sm col-6">           {{-- Recapitulatif + total --}}
                             <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Récapitulatif
                                 de commande
                             </div>
@@ -107,7 +106,7 @@
                                         <h5 class="font-weight-bold">{{$totale + 10}}€</h5>
                                     </li>
                                 </ul>
-                                <a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Proceder au payement</a>
+                                <a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Procéder au payement</a>
                             </div>
                     </div>
 
@@ -118,8 +117,4 @@
     @endif
 
 @endsection
-@section('addScript')
-{{--    <script type="text/javascript">--}}
-{{--        document.myform.submit();--}}
-{{--    </script>--}}
-@endsection
+
