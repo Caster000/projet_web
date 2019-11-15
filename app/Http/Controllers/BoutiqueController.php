@@ -9,12 +9,15 @@ class BoutiqueController extends Controller
 {
     public function index(){                //retourne la vue de base de la boutique
         $topArticles=\DB::table('produit') ->join('contenir', 'produit.id_produit','=','contenir.id_produit')
+            ->join('commande','commande.id_commande','=','contenir.id_commande')
             ->selectRaw('produit.id_produit, nom, description, prix, urlImage, SUM(quantite) quantite')
+            ->where('valider',1)
             ->groupBy('produit.id_produit')
             ->limit(3)
             ->orderBy('quantite', 'DESC')
             ->orderBy('produit.nom', 'ASC')
             ->get();
+       // dd($topArticles);
         $allArticles=Produit::get();
         $allCategories = \App\Categorie::get();
         return view('boutique.boutique', compact('topArticles', 'allArticles', 'allCategories'));

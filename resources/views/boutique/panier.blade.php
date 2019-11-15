@@ -57,10 +57,12 @@
                                     <tr>
                                         <th scope="row" class="border-0">
                                             <div class="p-2">
+                                                <a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}">
                                                 <img src="{{$article->urlImage}}" alt="Article 1" width="70"
                                                      class="img-fluid rounded shadow-sm">
+                                                </a>
                                                 <div class="ml-3 d-inline-block align-middle">
-                                                    <h5 class="mb-0"><a href="#"
+                                                    <h5 class="mb-0"><a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}"
                                                                         class="text-dark d-inline-block align-middle">{{$article->nom}}</a>
                                                     </h5><span
                                                         class="text-muted font-weight-normal font-italic d-block">Catégorie : {{$article->categorie}}</span>
@@ -107,7 +109,7 @@
                                         <h5 class="font-weight-bold">{{$totale + 10}}€</h5>
                                     </li>
                                 </ul>
-                                <a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Proceder au payement</a>
+                                <a href="{{ URL::action('PaymentController@payWithpaypal',  $payer=($totale + 10) }}" class="btn btn-dark rounded-pill py-2 btn-block">Proceder au payement</a>
                             </div>
                     </div>
 
