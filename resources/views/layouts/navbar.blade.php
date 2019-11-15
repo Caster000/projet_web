@@ -14,13 +14,13 @@
             </a>
 
 
-            <button class="navbarcolotoggler navbar-toggler ml-auto" type="button" data-toggle="collapse"
+            <button class="navbarcolotoggler navbar-toggler mr-4" type="button" data-toggle="collapse"
                     data-target="#collapsibleNavbar">Menu
 
             </button>
 
-            <div class="collapse navbar-collapse font-weight-bold  col-7 p-0" id="collapsibleNavbar">
-                <div class="col-4">
+            <div class="collapse navbar-collapse font-weight-bold  col-6 " id="collapsibleNavbar">
+                <div class="col-6">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href={{route('accueil')}}>Accueil<span class="sr-only">(current)</span></a>
@@ -45,11 +45,11 @@
 
             @endif
             </div>
-            <div class="col-2 font-weight-bold al-left">
+            <div class="col-4 font-weight-bold connect">
                 <ul class="navbar-nav ">
                     @if (Route::has('login'))
                         @auth
-                            <li class="nav-item pl-5 mr-4 ">
+                            <li class="nav-item mr-4 ">
                                 <a href="{{ url('/boutique/panier') }}" ><span class="fa fa-shopping-bag ">&nbsp;&nbsp;Panier</span></a>
                             </li>
                             <li class="nav-item">
