@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', $activite->activite)
+
 @section('content')
     @if($activite && ($activite->visible===1 || auth()->check() && (auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role || auth()->user()->id_role===\App\Role::where('role','CESI')->first()->id_role))))
         <div class="row m-4 p-4">

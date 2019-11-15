@@ -38,8 +38,11 @@ class ActivitesController extends Controller
         return redirect('/activites');
     }
     public function delete($id_activite){
-        \App\Activite::find($id_activite)->effacerActivite();
-        return redirect('/activites');
+        $activite = \App\Activite::find($id_activite);
+        if($activite!=null){
+            $activite->effacerActivite();
+        };
+        return back();
     }
     public function inscription($id_activite)
     {
@@ -52,7 +55,10 @@ class ActivitesController extends Controller
         return back();
     }
     public function desinscription($id_activite){
-        \App\Inscrire::where('id_activite', $id_activite)->where('id_personne', auth()->user()->id_personne)->first()->delete();
+        $activite = \App\Inscrire::where('id_activite', $id_activite)->where('id_personne', auth()->user()->id_personne)->first();
+        if($activite!=null){
+            $activite->delete();
+        }
         return back();
     }
 
