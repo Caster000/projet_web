@@ -1,5 +1,32 @@
 $(document).ready(function(){
 
+    //autocomplete
+    // $('#ChampsRecherche').keyup(function(){
+    //     //console.log('heu');
+    //     var query =$(this).val();
+    //     console.log(query);
+    //     if(query != ''){
+    //         var _token= $('input[name="_token"]').val();
+    //         $.ajax({
+    //             url:'boutique/fetch',
+    //             method:"POST",
+    //             //dataType:'json',
+    //             data:{query:query, _token:_token},
+    //             success: function(response){
+    //                 console.log(response)
+    //                 $('#rechercheList').fadeIn();
+    //                 $('#rechercheList').html(response);
+    //             },
+    //             error: function(xhr, status, error) {
+    //                 console.log(error)
+    //             }
+    //         })
+    //     }
+    //     $(document).on('click','li', function(){
+    //         $('#ChampsRecherche').val($(this).text());
+    //         $('#rechercheList').fadeOut();
+    //     })
+    // });
     // Ajouter une contrainte de prix
     $('#trierPrix').change(function(){
         var trierPrix = document.getElementById("trierPrix").options[document.getElementById("trierPrix").selectedIndex].value;
@@ -27,22 +54,6 @@ $(document).ready(function(){
 
     });
 
-    $('#ChampsRecherche').keyup(function(){
-        var query =$(this).val();
-        //console.log(query);
-        if(query != ''){
-            var _token= $('input[name="_token"]').val();
-            $.ajax({
-                url:'boutique/fetch',
-                method:"POST",
-                dataType:'json',
-                data:{query:query, _token:_token},
-                success:function(data){
-                    autocomplete(data)
-                }
-            })
-        }
-    })
 
 });
 
@@ -112,24 +123,26 @@ function afficherDonnees(response){
 
 }
 
-function autocomplete(response){
-    console.log(response)
-    if(response['data'] != null){
-        taille = response['data'].length;
-    }
-
-    if(taille > 0) {
-        for (var i = 0; i < taille; i++) {
-            let nom = response['data'][i].nom;
-            // let description = response['data'][i].description;
-            // let prix = response['data'][i].prix;
-            // let url = response['data'][i].urlImage;
-            let resultat ='<ul class="dropdown-menu bg-white" style="display:block; position:relative">'+
-            '<li class="bg-white text-dark"><a href"#">'+nom+'</a></li>';
-            $('#rechercheList').fadeIn();
-            //console.log(autocomplete(data));
-            $('#rechercheList').append(resultat);
-        }
-
-    }
-}
+// function autocomplete(response){
+//     console.log(response)
+//     if(response['data'] != null){
+//         taille = response['data'].length;
+//     }
+//
+//     if(taille > 0) {
+//         for (var i = 0; i < taille; i++) {
+//             let nom = response['data'][i].nom;
+//             // let description = response['data'][i].description;
+//             // let prix = response['data'][i].prix;
+//             // let url = response['data'][i].urlImage;
+//             let resultat ='<ul class="dropdown-menu bg-white" style="display:block; position:relative">'+
+//             '<li class="bg-white text-dark"><a href"#">'+nom+'</a></li>';
+//             $('#rechercheList').empty();
+//             $('#rechercheList').fadeIn();
+//             //console.log(autocomplete(data));
+//
+//             $('#rechercheList').append(resultat);
+//         }
+//
+//     }
+// }

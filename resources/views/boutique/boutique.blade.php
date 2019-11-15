@@ -5,6 +5,36 @@
 @section('title','Boutique')
 @section('addScripts')
     <script src="/projet_web/resources/js/boutiqueFiltres.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#ChampsRecherche').keyup(function () {
+                //console.log('heu');
+                var query = $(this).val();
+                console.log(query);
+                if (query != '') {
+                    var _token = $('input[name="_token"]').val();
+                    $.ajax({
+                        url: 'boutique/fetch',
+                        method: "POST",
+                        //dataType:'json',
+                        data: {query: query, _token: _token},
+                        success: function (response) {
+                            //console.log(response)
+                            $('#rechercheList').fadeIn();
+                            $('#rechercheList').html(response);
+                        },
+                        error: function (xhr, status, error) {
+                            console.log(error)
+                        }
+                    })
+                }
+            });
+            $(document).on('click','li', function(){
+                $('#ChampsRecherche').val($(this).text());
+                $('#rechercheList').fadeOut();
+            })
+        });
+    </script>
 @endsection
 @section('content')
 
@@ -43,16 +73,16 @@
 
     <hr>
 
-    <div class="container flex-center">
-        <div class="btn-group pr-5">
-            <div class="col-12 col-sm-6 col-lg-4">
+    <div class="row justify-content-center">
+
+            <div class="col-3 ml-4">
                 <select id="trierPrix" class="btn btn-primary">
                     <option value="Aleatoire">Trier vos articles par prix</option>
                     <option value="Croissant">Trier par prix croissant</option>
                     <option value="Decroissant">Trier par prix décroissant</option>
                 </select>
             </div>
-            <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-3 ">
                 <select id="trierCategories" class="btn btn-primary">
                     <option value="Tous">Trier vos articles par catégorie</option>
                     @foreach($allCategories as $categorie)
@@ -60,19 +90,18 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-12 col-sm-8 col-lg-4 pr-5 pl-5">
-                <div class="form-group">
-                    <input id="ChampsRecherche" type="text" name="search" class="form-control" placeholder="Recherche">
-                    <div id="rechercheList" ></div>
-                    <span class="input-group-btn">
-                        <button id="Rechercher" type="submit" class="btn btn-secondary"><span
-                                class="fa fa-search"></span> Valider</button>
-                    </span>
-                </div>
+            <div class="col-3">
+                <div class="row">
+                    <input id="ChampsRecherche" type="text" name="search" class="form-control col-6" placeholder="Recherche">
+                        <button id="Rechercher" type="submit" class="btn btn-secondary col-4"><span
+                            class="fa fa-search"></span> Valider</button>
+
+
                 @csrf {{csrf_field()}}
+                </div><div id="rechercheList" ></div>
             </div>
 
-        </div>
+
     </div>
 
     <div class="row flex-center">
