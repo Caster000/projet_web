@@ -60,7 +60,7 @@ class Photo extends Model
      */
     public function commenters()
     {
-        return $this->hasMany('App\Commenter', 'id_photo', 'id_photo');
+        return $this->hasMany('App\Commentaire', 'id_photo', 'id_photo');
     }
 
     /**

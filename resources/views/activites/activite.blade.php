@@ -1,8 +1,12 @@
 @extends('layouts.master')
-@section('title','Activite')
+
+@section('title', $activite->activite)
+
 @section('content')
+
                                         {{-- Verification du role de l'utilisateur st si l'activite existe   --}}
-    @if($activite && ($activite->visible===1 || auth()->check() && (auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role || auth()->user()->id_role===\App\Role::where('role','CESI')->first()->id_role))))
+
+    @if($activite && ($activite->visible===1 || auth()->check() && (auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role || auth()->user()->id_role===\App\Role::where('role','CESI')->first()->id_role)))
         <div class="row m-4 p-4">
             <div class="col-sm-5 col-md-4 col-lg-5">
                 <img src="{{$activite->urlImage}}" alt="{{$activite->titre}}" class="img-fluid">

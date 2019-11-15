@@ -13,16 +13,18 @@ Route::group(['prefix' => 'boutique'], function () {
 
     Route::get('/', 'BoutiqueController@index')->name('boutique');
     Route::get('/article/{numero}', 'BoutiqueController@article')->name('article');
-    Route::get('/{recherche}', 'BoutiqueController@rechercher')->name('rechercher');
     Route::post('/fetch', 'BoutiqueController@fetch')->name('fetch');
-    Route::get('/{prix}/{categorie}', 'BoutiqueController@trierParCriteres')->name('trierParCriteres');
 
     Route::group(['middleware' => 'auth'], function () {
 
-        Route::get('/panier/{id_produit}', 'PanierController@addToPanier');
-        Route::get('panier/delete/{id_commande}/{id_produit}', 'PanierController@delete');
-        Route::get('/panier/{id_commande}/{id_produit}', 'PanierController@addQuantite');
-        Route::get('/panier', 'PanierController@index')->name('panier');
+        Route::group(['prefix'=>'panier'], function(){
+
+            Route::get('/{id_produit}', 'PanierController@addToPanier');
+            Route::get('/delete/{id_commande}/{id_produit}', 'PanierController@delete');
+            Route::get('/{id_commande}/{id_produit}', 'PanierController@addQuantite');
+            Route::get('/', 'PanierController@index')->name('panier');
+
+        });
 
         Route::group(['middleware' => 'BDE'], function () {
             Route::get('/updateArticles', 'BoutiqueController@updateArticles')->name('updateArticles'); //QUE BDE
@@ -31,6 +33,10 @@ Route::group(['prefix' => 'boutique'], function () {
 
         });
     });
+
+    Route::get('/{recherche}', 'BoutiqueController@rechercher')->name('rechercher');
+    Route::get('/{prix}/{categorie}', 'BoutiqueController@trierParCriteres')->name('trierParCriteres');
+
 });
 
 Route::group(['prefix' => 'activites'], function () {
@@ -67,10 +73,10 @@ Route::group(['prefix' => 'activites'], function () {
             Route::get('/{id_activite}/list', 'ActivitesController@export');
             Route::get('/{id_activite}/image/list', 'PhotoController@export');
 
-            Route::group(['prefix'=>'{id_activite}'], function() { //Regex id_activite dans RouteServiceProvider@boot
-                Route::get('/galerie/visible', 'PhotoController@photoRendreVisible')->name('photoRendreVisible');
-                Route::get('/galerie/invisible','PhotoController@photoRendreInvisible')->name('photoRendreInvisible');
-                Route::get('/galerie/delete', 'PhotoController@deletePhoto')->name('deletePhoto');
+            Route::group(['prefix'=>'{id_activite}/galerie'], function() { //Regex id_activite dans RouteServiceProvider@boot
+                Route::get('/visible', 'PhotoController@photoRendreVisible')->name('photoRendreVisible');
+                Route::get('/invisible','PhotoController@photoRendreInvisible')->name('photoRendreInvisible');
+                Route::get('/delete', 'PhotoController@deletePhoto')->name('deletePhoto');
             });
 
             Route::group(['prefix'=>'{id_commentaire}'], function() {//Regex id_personne et id_photo dans RouteServiceProvider@boot
@@ -90,25 +96,6 @@ Route::group(['prefix' => 'activites'], function () {
 
 
 });
-/*
-Route::group(['prefix'=>'administration'], function(){
-
-    Route::group(['prefix'=>'boutique'], function(){
-
-        Route::get('/', 'AdministrationController@index')->name('adminboutique');
-        Route::get('/article/{numero}', 'AdministrationController@article')->name('adminarticle');
-
-    });
-
-    Route::group(['prefix'=>'activites'], function(){
-
-        Route::get('/', 'AdministrationController@index')->name('adminactivites');
-        Route::get('/{numero}', 'AdministrationController@activiteNumero')->name('adminactivite');
-
-    });
-
-});*/
-
 
 Auth::routes();
 

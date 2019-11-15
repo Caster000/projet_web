@@ -86,7 +86,7 @@ class Personne extends Model implements Authenticatable
      */
     public function commenters()
     {
-        return $this->hasMany('App\Commenter', 'id_personne', 'id_personne');
+        return $this->hasMany('App\Commentaire', 'id_personne', 'id_personne');
     }
 
     /**
