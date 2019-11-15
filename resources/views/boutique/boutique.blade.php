@@ -54,7 +54,9 @@
             @foreach($topArticles as $article)
                 <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4 ">
                     <div class="card card-inverse card-info ">
-                        <img class="card-img-top" src="{{$article->urlImage}}" alt="{{$article->id_produit}}">
+                        <a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}">
+                            <img class="card-img-top" src="{{$article->urlImage}}" alt="{{$article->id_produit}}">
+                        </a>
                         <div class="card-block">
                             <h4 class="card-title">{{$article->nom}}, {{$article->prix}}€</h4>
                             <div class="card-text">
@@ -75,14 +77,14 @@
 
     <div class="row justify-content-center">
 
-            <div class="col-3 ml-4">
+            <div class="col-3 ml-4 mr-5 ">
                 <select id="trierPrix" class="btn btn-primary">
                     <option value="Aleatoire">Trier vos articles par prix</option>
                     <option value="Croissant">Trier par prix croissant</option>
                     <option value="Decroissant">Trier par prix décroissant</option>
                 </select>
             </div>
-            <div class="col-3 ">
+            <div class="col-3 align-center mr-5">
                 <select id="trierCategories" class="btn btn-primary">
                     <option value="Tous">Trier vos articles par catégorie</option>
                     @foreach($allCategories as $categorie)
@@ -90,11 +92,11 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-3">
+            <div class="col-3 ml-4 ">
                 <div class="row">
-                    <input id="ChampsRecherche" type="text" name="search" class="form-control col-6" placeholder="Recherche">
-                        <button id="Rechercher" type="submit" class="btn btn-secondary col-4"><span
-                            class="fa fa-search"></span> Valider</button>
+                    <input id="ChampsRecherche" type="text" name="search" class="form-control col-6" placeholder="Recherche...">
+                        <button id="Rechercher" type="submit" class="btn btn-secondary col-2 "><span
+                            class="fa fa-search"></span></button>
 
 
                 @csrf {{csrf_field()}}
@@ -113,7 +115,9 @@
         @foreach($allArticles as $article)
             <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4 ">
                 <div class="card card-inverse card-info ">
-                    <img class="card-img-top" src="{{$article->urlImage}}"  alt="{{$article->nom}}">
+                    <a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}">
+                        <img class="card-img-top" src="{{$article->urlImage}}"  alt="{{$article->nom}}">
+                    </a>
                     <div class="card-block">
                         <h4 class="card-title">{{$article->nom}}, {{$article->prix}}€</h4>
                         <div class="card-text">

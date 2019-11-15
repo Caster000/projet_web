@@ -1,9 +1,9 @@
-<div class="row justify-content-center">
+<div class="row justify-content-center">                                        {{--  Bouttons pour les admin, declenche des modals  --}}
     <button type="button" class="btn btn-primary m-2 col-2" data-toggle="modal" data-target="#exampleModal" data-whatever="@ajouterProduit">Ajouter une nouvelle activité</button>
     <a href="{{route('updateActivites')}}" class="btn btn-primary m-2 col-2">Modifier les activités</a>
 
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">            {{--  Formulaire pour ajouter une activite   --}}
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -77,7 +77,7 @@
                             <input type="number" class="form-control" placeholder="Ex: 10,99" name="prix"required>
                         </div>
                         <div class="modal-footer col mt-4">
-                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                            <button type="submit" class="btn btn-primary">Ajouter</button>            {{--  submit   --}}
                         </div>
                     </div>
                 </form>

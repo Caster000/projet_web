@@ -1,12 +1,8 @@
 @extends('layouts.master')
-@section('title','panier')
+
+@section('title', 'Panier')
+
 @section('content')
-
-
-    @if (Route::has('login'))
-
-    @endif
-
 
     <div class="title text-center pb-5">
         Panier
