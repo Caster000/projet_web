@@ -2,10 +2,10 @@
 
 @section('content')
 @section('title', 'article')
-<a class="btn btn-success mt-2 ml-2" href=javascript:history.go(-1)><span
+<a class="btn btn-success mt-2 ml-2" href=javascript:history.go(-1)><span         {{--     retour arriere   --}}
         class="fa fa-arrow-circle-left">&nbsp; Retour sur la boutique</span></a>
-    @if($produit)
-        <div class="row m-4 p-4">
+    @if($produit)        {{--    check si le produit existe    --}}
+        <div class="row m-4 p-4">        {{--     affichage du produit   --}}
 
             <div class="col-sm-5 col-md-4 col-lg-5">
                 <img src="{{$produit->urlImage}}" alt="" class="img-fluid">
@@ -21,7 +21,7 @@
                     {{$produit->prix}}€
                 </div>
             </div>
-            @if(auth()->check())
+            @if(auth()->check())        {{--   si connecter peut ajouter au panier     --}}
                 <div class="col-lg-2 col-sm-2 col-md-2">
                     <a href="{{ URL::action('PanierController@addToPanier',  $produit->id_produit) }}"
                        class="btn btn-warning"><span class="fa fa-shopping-cart fa-lg"></span>&nbsp;Ajouter au panier</a>
@@ -31,7 +31,7 @@
                 </div>
             @endif
         </div>
-    @else
+    @else        {{--   si pas d'article     --}}
         <div class="row m-4 p-4">
             <div class="col-lg-6 offset-3 text-center">
                 <div class="text-bold">

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class BoutiqueController extends Controller
 {
-    public function index(){
+    public function index(){                //retourne la vue de base de la boutique
         $topArticles=\DB::table('produit') ->join('contenir', 'produit.id_produit','=','contenir.id_produit')
             ->selectRaw('produit.id_produit, nom, description, prix, urlImage, SUM(quantite) quantite')
             ->groupBy('produit.id_produit')
@@ -20,16 +20,16 @@ class BoutiqueController extends Controller
         return view('boutique.boutique', compact('topArticles', 'allArticles', 'allCategories'));
     }
 
-    public function panier(){
+    public function panier(){                //retourne le panier
         return view('boutique.panier');
     }
 
-    public function article($numero){
+    public function article($numero){                //retourne sur la page de l'article
         $produit = Produit::find($numero);
         return view('boutique.article', compact('produit'));
     }
 
-    public function addArticle(Request $request){
+    public function addArticle(Request $request){                //ajout d'un nouvel article a la boutique
         $produit = new Produit;
         $produit->nom =$request->nom;
         $produit->description= $request->description;
@@ -43,17 +43,17 @@ class BoutiqueController extends Controller
         $produit->save();
         return redirect('/boutique');
     }
-    public function delete($id_article){
+    public function delete($id_article){                //suppression d'un article de la boutique
         $article = Produit::find($id_article);
         $article->contenirs()->delete();
         $article->delete();
         return redirect('/boutique');
     }
-    public function updateArticles(){
+    public function updateArticles(){                //upadtae d'un article
         return view('boutique.updateArticles');
     }
 
-    public function trierParCriteres(Request $request){
+    public function trierParCriteres(Request $request){                //affiche par critère
         $categorie = $request->categorie;
         $prix = $request->prix;
         $categorieData['data'] = \App\Produit::parCriteres($prix, $categorie);
@@ -61,7 +61,7 @@ class BoutiqueController extends Controller
         exit;
     }
 
-    public function rechercher(Request $request){
+    public function rechercher(Request $request){                //recherche
         $recherche = $request->recherche;
         $rechercheData['data'] = \App\Produit::rechercher($recherche);
         //dd($rechercheData);
@@ -69,7 +69,7 @@ class BoutiqueController extends Controller
         exit;
     }
 
-    public function fetch(Request $request){
+    public function fetch(Request $request){                //autocompletion
         //dd($request->get('query'));
         if($request->get('query')){
             $query = $request->get('query');

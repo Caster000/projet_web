@@ -5,7 +5,7 @@
 @section('title','Boutique')
 @section('addScripts')
     <script src="/projet_web/resources/js/boutiqueFiltres.js"></script>
-    <script>
+    <script>                                                    //script pour l'autocompletion
         $(document).ready(function() {
             $('#ChampsRecherche').keyup(function () {
                 //console.log('heu');
@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="row flex-center">
-            @foreach($topArticles as $article)
+            @foreach($topArticles as $article)        {{--    boucle d'affichage des produits en top    --}}
                 <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4 ">
                     <div class="card card-inverse card-info ">
                         <a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}">
@@ -75,7 +75,7 @@
 
     <hr>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center">            {{--boutons pour tries + recherche --}}
 
             <div class="col-3 ml-4 mr-5 ">
                 <select id="trierPrix" class="btn btn-primary">
@@ -112,7 +112,7 @@
         </div>
     </div>
     <div class="row flex-center" id="affichageArticles">
-        @foreach($allArticles as $article)
+        @foreach($allArticles as $article)           {{-- affichage des articles de base --}}
             <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4 ">
                 <div class="card card-inverse card-info ">
                     <a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}">
@@ -126,11 +126,11 @@
                         </div>
                     </div>
                     <div class="card-footer text-center">
-                        <a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}"
+                        <a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}"           {{-- aller sur la page de l'article --}}
                            class="btn btn-info btn-sm">Voir
                             plus</a>
                         @if(auth()->check() && auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
-                            <a href="{{ URL::action('BoutiqueController@delete',  $article->id_produit) }}"
+                            <a href="{{ URL::action('BoutiqueController@delete',  $article->id_produit) }}"           {{-- supprimer l'article --}}
                                class="btn btn-danger btn-sm">Supprimer</a>
                         @endif
                     </div>
@@ -139,7 +139,7 @@
         @endforeach
     </div>
 
-    @if(auth()->check() && auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
+    @if(auth()->check() && auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)           {{-- afficher l'admin panel pour le bde --}}
 
         @include('boutique.admin_panel')
 {{--        <div class="col-12 col-sm-4 col-lg-4 ">--}}

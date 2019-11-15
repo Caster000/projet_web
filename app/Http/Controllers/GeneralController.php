@@ -7,18 +7,18 @@ use Illuminate\Support\Facades\Session;
 
 class GeneralController extends Controller
 {
-    public function accueil(){
+    public function accueil(){                //retourne l'acceuil
         return view('general/accueil');
     }
 
-    public function mentions_legales(){
+    public function mentions_legales(){                //retourne les ML
         return view('general/mentions_legales');
     }
 
-    public function cgv(){
+    public function cgv(){                //retourne les cgv
         return view('general/cgv');
     }
-    public function cookieConsent(){
+    public function cookieConsent(){                //affiche le cookie consent
         Session::put('cookieConsent',1);
         return redirect('/');
     }
