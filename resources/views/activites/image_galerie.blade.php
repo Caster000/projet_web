@@ -7,7 +7,7 @@
 @section('content')
 <div  class="row mt-1 ">
     <div class="col-7 ">
-
+        {{--  Affichage de la photo + like  --}}
         <img src="/projet_web/public/{{$galerie->urlImage}}" class="img-fluid photo" alt="{{$galerie->titre}}">
         @if((\App\Liker::where('id_photo', $galerie->id_photo)->where('id_personne', auth()->user()->id_personne)->first()) == null)
             <a href=" {{ route('like',  [$galerie->id_activite, $galerie->id_photo,auth()->user()->id_personne]) }}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-heart-o fa-lg"></span> </a>
@@ -19,7 +19,7 @@
 
     <div class="col-5">
         <div class="row justify-content-center mt-2">
-            @foreach($comment as $com)
+            @foreach($comment as $com)                  {{--  Affichages des commentaires   --}}
             @if(!(auth()->user()->id_role===\App\Role::where('role','Etudiant')->first()->id_role))
             <div class="card w-75 mb-3">
                 <div class="row">
@@ -44,7 +44,7 @@
                     @endif
                 </div>
             </div>
-            @elseif($com->visible == 1)
+            @elseif($com->visible == 1)                 {{--  visibilite des commentaires  --}}
                 <div class="card w-75 mb-3">
                     <div class="row">
                         <div class="card-header col-12">
@@ -70,7 +70,7 @@
                 </div>
             @endif
             @endforeach
-                <div class="row justify-content-center">
+                <div class="row justify-content-center">                 {{--  modal pour ajouter un commentaire  --}}
                     <button type="button" class="btn btn-info m-2 " data-toggle="modal" data-target="#exampleModal" data-whatever="@ajouterCommentaire"><span class="fa fa-pencil fa-lg"></span>&nbspCommenter... </button>
                 </div>
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
