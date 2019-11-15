@@ -67,7 +67,7 @@
                                             </div>
                                         </th>
                                         <td class="border-0 align-middle"><strong>{{$article->prix}}€</strong></td>
-                                        <td class="border-0 align-middle"><strong>
+                                        <td class="border-0 align-middle"><strong></strong>
                                                 <form name="myform" method="get" action="{{ URL::action('PanierController@addQuantite', [$article->id_commande ,$article->id_produit]) }}">           {{-- Modification de la quantite--}}
                                                     <select onchange='this.form.submit()' class="custom-select mr-sm-2" id="inlineFormCustomSelect"name="quantite">
                                                         <option value="1" autofocus>{{$article->Quantite}}</option>
