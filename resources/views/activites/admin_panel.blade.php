@@ -17,64 +17,64 @@
                 @csrf <!-- {{ csrf_field() }} -->
                     <div class="form">
                         <div class="form-group row">
-                            <label for="nom">Nom de l'activité :</label>
+                            <label >Nom de l'activité :</label>
                             <input type="text" class="form-control" placeholder="Ex: Tournoi Smash" name="nom" required>
                         </div>
                         <div class="form-group row">
-                            <label for="description">Description </label>
+                            <label>Description </label>
                             <textarea class="form-control" placeholder="Description..." name="description" required></textarea>
                         </div>
                         <div class="form-group ">
-                            <label for="recurrence">Réccurence de l'évenement : </label><br>
+                            <label>Réccurence de l'évenement : </label><br>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input " type="radio" name="recurrence" id="exampleRadios1" value="unique" checked>
-                                    <label class="form-check-label" for="Unique">
+                                    <input class="form-check-input " type="radio" name="recurrence" value="unique" checked>
+                                    <label class="form-check-label">
                                         Unique
                                     </label>
                                 </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="hebdomadaire" >
-                                <label class="form-check-label" for="Hebdomadaire">
+                                <input class="form-check-input" type="radio" name="recurrence" value="hebdomadaire" >
+                                <label class="form-check-label">
                                     Hebdomadaire
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="mensuelle" >
-                                <label class="form-check-label" for="Mensuelle">
+                                <input class="form-check-input" type="radio" name="recurrence" value="mensuelle" >
+                                <label class="form-check-label">
                                     Mensuelle
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="trimestrielle" >
-                                <label class="form-check-label" for="Trimestrielle">
+                                <input class="form-check-input" type="radio" name="recurrence" value="trimestrielle" >
+                                <label class="form-check-label">
                                     Trimestrielle
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="semestrielle" >
-                                <label class="form-check-label" for="Semestrielle">
+                                <input class="form-check-input" type="radio" name="recurrence" value="semestrielle" >
+                                <label class="form-check-label">
                                     Semestrielle
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="annuelle" >
-                                <label class="form-check-label" for="Annuelle">
+                                <input class="form-check-input" type="radio" name="recurrence" value="annuelle" >
+                                <label class="form-check-label">
                                     Annuelle
                                 </label>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="image">Choisissez une image</label>
+                            <label>Choisissez une image</label>
                             <input type="file" class="form-control-file" id="ImageNewProduit" name="image" >
                         </div>
                         <div class="form-group row">
-                            <label for="date">Date :</label>
+                            <label>Date :</label>
                             <input type="date" name="date" max="3000-12-31"
                                    min="1000-01-01" class="form-control" required>
                         </div>
                         <div class="form-group row">
-                            <label for="prix">Prix en € :</label>
-                            <input type="number" class="form-control" placeholder="Ex: 10,99" name="prix"required>
+                            <label>Prix en € :</label>
+                            <input type="number" class="form-control" placeholder="Ex: 10,99" name="prix" required>
                         </div>
                         <div class="modal-footer col mt-4">
                             <button type="submit" class="btn btn-primary">Ajouter</button>            {{--  submit   --}}

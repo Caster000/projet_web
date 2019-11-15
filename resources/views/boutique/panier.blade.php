@@ -62,15 +62,14 @@
                                                      class="img-fluid rounded shadow-sm">
                                                 </a>
                                                 <div class="ml-3 d-inline-block align-middle">
-                                                    <h5 class="mb-0"><a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}"
-                                                                        class="text-dark d-inline-block align-middle">{{$article->nom}}</a>
+                                                    <h5 class="mb-0"><a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}" class="text-dark d-inline-block align-middle">{{$article->nom}}</a>
                                                     </h5><span
                                                         class="text-muted font-weight-normal font-italic d-block">Catégorie : {{$article->categorie}}</span>
                                                 </div>
                                             </div>
                                         </th>
                                         <td class="border-0 align-middle"><strong>{{$article->prix}}€</strong></td>
-                                        <td class="border-0 align-middle"><strong>
+                                        <td class="border-0 align-middle"><strong></strong>
                                                 <form name="myform" method="get" action="{{ URL::action('PanierController@addQuantite', [$article->id_commande ,$article->id_produit]) }}">           {{-- Modification de la quantite--}}
                                                     <select onchange='this.form.submit()' class="custom-select mr-sm-2" id="inlineFormCustomSelect"name="quantite">
                                                         <option value="1" autofocus>{{$article->Quantite}}</option>

@@ -26,18 +26,18 @@
             </div>
             <div class="col-lg-2 col-sm-2 col-md-2">
                 <div class="text-center mb-3">
-                    <a class="btn btn-primary" href="{{ route('activites') }}" aria-pressed="false"><span class="fa fa-arrow-circle-left"></span>&nbspRetour aux activités</a>
+                    <a class="btn btn-primary" href="{{ route('activites') }}"><span class="fa fa-arrow-circle-left"></span>&nbsp;Retour aux activités</a>
                 </div>
             @if(auth()->check())                                           {{--  Si connecter peut s'inscrire  --}}
                 <div class="text-center">
                     @if((\App\Inscrire::where('id_activite', $activite->id_activite)->where('id_personne', auth()->user()->id_personne)->first()))
-                        <a class="btn btn-warning" href="{{ URL::action('ActivitesController@desinscription',  $activite->id_activite) }}" aria-pressed="false"><span class="fa fa-times fa-lg"></span>&nbspSe raviser</a>
+                        <a class="btn btn-warning" href="{{ URL::action('ActivitesController@desinscription',  $activite->id_activite) }}" aria-pressed="false"><span class="fa fa-times fa-lg"></span>&nbsp;Se raviser</a>
                     @else
-                        <a class="btn btn-warning" href="{{ URL::action('ActivitesController@inscription',  $activite->id_activite) }}" aria-pressed="false"><span class="fa fa-check fa-lg"></span>&nbspParticiper</a>
+                        <a class="btn btn-warning" href="{{ URL::action('ActivitesController@inscription',  $activite->id_activite) }}" aria-pressed="false"><span class="fa fa-check fa-lg"></span>&nbsp;Participer</a>
                     @endif
                 <!-- ADMIN BOUTON -->
                 @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role || auth()->user()->id_role===\App\Role::where('role','CESI')->first()->id_role)
-                    <a href="{{ URL::action('ActivitesController@export',  $activite->id_activite) }}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-download fa-lg"></span> &nbspTélécharger la liste des inscrits</a>
+                    <a href="{{ URL::action('ActivitesController@export',  $activite->id_activite) }}"  aria-pressed="false" class="btn btn-info m-3"><span class="fa fa-download fa-lg"></span> &nbsp;Télécharger la liste des inscrits</a>
                 @endif
                 </div>                                        {{-- Permet l'ajout d'image si inscrit a l'activite ou si membre du bde/cesi   --}}
                 @if((\App\Inscrire::where('id_activite', $activite->id_activite)->where('id_personne', auth()->user()->id_personne)->first()) || auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role || auth()->user()->id_role===\App\Role::where('role','CESI')->first()->id_role)
