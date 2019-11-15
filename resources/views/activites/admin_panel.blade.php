@@ -27,37 +27,37 @@
                         <div class="form-group ">
                             <label for="recurrence">Réccurence de l'évenement : </label><br>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input " type="radio" name="recurrence" id="exampleRadios1" value="unique" checked>
+                                    <input class="form-check-input " type="radio" name="recurrence" id="exampleRadios1" value="Unique" checked>
                                     <label class="form-check-label" for="Unique">
                                         Unique
                                     </label>
                                 </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="hebdomadaire" >
+                                <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="Hebdomadaire" >
                                 <label class="form-check-label" for="Hebdomadaire">
                                     Hebdomadaire
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="mensuelle" >
+                                <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="Mensuelle" >
                                 <label class="form-check-label" for="Mensuelle">
                                     Mensuelle
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="trimestrielle" >
+                                <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="Trimestrielle" >
                                 <label class="form-check-label" for="Trimestrielle">
                                     Trimestrielle
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="semestrielle" >
+                                <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="Semestrielle" >
                                 <label class="form-check-label" for="Semestrielle">
                                     Semestrielle
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="annuelle" >
+                                <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="Annuelle" >
                                 <label class="form-check-label" for="Annuelle">
                                     Annuelle
                                 </label>
