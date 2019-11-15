@@ -73,9 +73,16 @@ class BoutiqueController extends Controller
         //dd($request->get('query'));
         if($request->get('query')){
             $query = $request->get('query');
-            $data['data'] = \App\Produit::rechercher($query);
-            echo json_encode($data);
-            exit;
+            $data = \App\Produit::rechercher($query);
+            $output = '<ul class="dropdown-menu p-0" style="display:block; position:relative">';
+            foreach ($data as $row){
+                $output .= '<li class="bg-white text-dark"><a href"#">'.$row->nom.'</a></li>';
+            }
+            $output .= '</ul>';
+            //dd($output);
+            echo $output;
+           // echo json_encode($data);
+           // exit;
 
         }
     }

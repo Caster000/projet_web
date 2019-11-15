@@ -52,9 +52,10 @@
 {{--                </div>--}}
                     <a href="{{ URL::action('PhotoController@index',  $activite->id_activite) }}" class="btn btn-success mt-2">Voir la Galerie</a>
                 @endif
-            </div>
+
             @endif
-        </div>
+            </div>
+    </div>
     @else
         <div class="row m-4 p-4">
             <div class="col-lg-6 offset-3 text-center">
