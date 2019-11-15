@@ -75,6 +75,10 @@ class Activite extends Model
 
     public function effacerActivite(){
         $inscriptions = \App\Inscrire::where('id_activite', $this->id_activite)->get();
+        $votes = \App\Voter::where('id_activite', $this->id_activite)->get();
+        foreach ($votes as $vote){
+            $vote->delete();
+        }
         foreach($inscriptions as $inscription){
             $inscription->delete(); //Supprime toutes les inscriptions à l'activité
         }
