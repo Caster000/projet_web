@@ -24,7 +24,7 @@
             @if(auth()->check())
                 <div class="col-lg-2 col-sm-2 col-md-2">
                     <a href="{{ URL::action('PanierController@addToPanier',  $produit->id_produit) }}"
-                       class="btn btn-warning"><span class="fa fa-shopping-cart fa-lg"></span>&nbspAjouter au panier</a>
+                       class="btn btn-warning"><span class="fa fa-shopping-cart fa-lg"></span>&nbsp;Ajouter au panier</a>
                     @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)
 
                     @endif

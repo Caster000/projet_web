@@ -60,17 +60,16 @@
                                                 <img src="{{$article->urlImage}}" alt="Article 1" width="70"
                                                      class="img-fluid rounded shadow-sm">
                                                 <div class="ml-3 d-inline-block align-middle">
-                                                    <h5 class="mb-0"><a href="#"
-                                                                        class="text-dark d-inline-block align-middle">{{$article->nom}}</a>
+                                                    <h5 class="mb-0"><a href="#" class="text-dark d-inline-block align-middle">{{$article->nom}}</a>
                                                     </h5><span
                                                         class="text-muted font-weight-normal font-italic d-block">Catégorie : {{$article->categorie}}</span>
                                                 </div>
                                             </div>
                                         </th>
                                         <td class="border-0 align-middle"><strong>{{$article->prix}}€</strong></td>
-                                        <td class="border-0 align-middle"><strong>
+                                        <td class="border-0 align-middle"><strong></strong>
                                                 <form name="myform" method="get" action="{{ URL::action('PanierController@addQuantite', [$article->id_commande ,$article->id_produit]) }}">
-                                                    <select onchange='this.form.submit()' class="custom-select mr-sm-2" id="inlineFormCustomSelect"name="quantite">
+                                                    <select onchange='this.form.submit()' class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="quantite">
                                                         <option value="1" autofocus>{{$article->Quantite}}</option>
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
@@ -107,7 +106,7 @@
                                         <h5 class="font-weight-bold">{{$totale + 10}}€</h5>
                                     </li>
                                 </ul>
-                                <a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Proceder au payement</a>
+                                <a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Procéder au payement</a>
                             </div>
                     </div>
 
