@@ -50,7 +50,7 @@
 			<p class="accueiltext">Notre site comporte également une boutique. Portez les couleurs de l'école ou achetez
                 des goodies, tout ça à prix abordables. Payez en main propre ou attendez l'implémentation du service de paiement
                 en ligne de paypal et recevez les articles commandés rapidement. Produits de qualité garantis.</p>
-			<img src="images/BEL.png" alt="Logo boutique en ligne">
+			<img src="images/BEL.png" alt="Logo boutique en ligne" class="responsiveImage">
 		</div>
 	</div>
 </div>
