@@ -26,24 +26,24 @@ class PanierController extends Controller
         return view('boutique.panier', compact('articles','totale'));
         }
 
-    public function addToPanier($id_produit){
-        $commande =Commande::select('id_commande')->where('id_personne',auth()->user()->id_personne)->where('valider',0)->first();
+    public function addToPanier($id_produit){                // ajout d'un produit au panier
+        $commande =Commande::select('id_commande')->where('id_personne',auth()->user()->id_personne)->where('valider',0)->first();                //verification si une commande non valider existe
         //echo $commande->id_commande;
         if(!is_null($commande)){
             //echo $commande->id_commande;
-            $check=Contenir::where('id_commande',$commande->id_commande)->where('id_produit', $id_produit)->first();
+            $check=Contenir::where('id_commande',$commande->id_commande)->where('id_produit', $id_produit)->first();                //recupere la commande
             //echo $check;
             if(!is_null($check)){
                 //echo $check;
-                Contenir::where('id_commande',$commande->id_commande)->where('id_produit', $id_produit)->increment('Quantite',1);
+                Contenir::where('id_commande',$commande->id_commande)->where('id_produit', $id_produit)->increment('Quantite',1);                //si le produit est déjà dans la commande incremente la quantite
             }else{
-            $contenir=new Contenir;
+            $contenir=new Contenir;                //ajoute le produit a la commande
             $contenir->id_produit =$id_produit;
             $contenir->id_commande =$commande->id_commande;
             $contenir->Quantite =1;
             $contenir->save();
             }
-        }else{
+        }else{                //crer une nouvelle commande
             $article = new Commande;
         $article->valider =0;
         $article->id_personne=auth()->user()->id_personne;
@@ -57,7 +57,7 @@ class PanierController extends Controller
         return redirect('/boutique/panier');
     }
 
-    public function delete($id_commande, $id_produit){
+    public function delete($id_commande, $id_produit){                //enleve un produit du panier (table contenir)
         //echo $id_commande;
         $contenir = Contenir::where('id_produit',$id_produit)
             ->where('id_commande',$id_commande);
@@ -66,7 +66,7 @@ class PanierController extends Controller
         return redirect('/boutique/panier');
     }
 
-    public function addQuantite($id_commande,$id_produit,Request $request){
+    public function addQuantite($id_commande,$id_produit,Request $request){                //modifie la quantite
         $produit= Contenir::where('id_produit',$id_produit)
             ->where('id_commande',$id_commande)->first();
         //echo $produit;

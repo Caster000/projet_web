@@ -16,7 +16,7 @@ class PhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id_activite)
+    public function index($id_activite)                 //retourne les photos
     {   $activite=Photo::where('id_activite',$id_activite)->first();
         $galerie =Photo::select('id_photo','titre','urlImage','visible','id_activite')->where('id_activite',$id_activite)->get();
         return view('activites.galerie',compact('galerie','activite'));
@@ -27,7 +27,7 @@ class PhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addPhoto(Request $request){
+    public function addPhoto(Request $request){                 //ajout de photo
         $this->validate($request, ['file'=>'required|mimes:jpg,jpeg,png']);
         $file= $request->file;
         $name = time().$file->getClientOriginalName();
@@ -45,7 +45,7 @@ class PhotoController extends Controller
         return redirect('/activites/');
     }
 
-    public function image($id_activite, $titre){
+    public function image($id_activite, $titre){                 //retourne les phot,commentaire,like et compte les like pour la galerie
         $galerie =Photo::select('id_photo','titre','urlImage','visible','id_activite')
             ->where('id_activite',$id_activite)
              ->where('titre',$titre)
@@ -74,23 +74,23 @@ class PhotoController extends Controller
         return back();
     }
 
-    public function deletePhoto($id_photo){
+    public function deletePhoto($id_photo){                 //suppression de la photo
         \App\Photo::find($id_photo)->effacerPhoto();
         return back();
     }
 
-    public function addLike($id_activite,$id_photo,$id_personne){
+    public function addLike($id_activite,$id_photo,$id_personne){                 //ajout d'un like a la photo
         \App\Liker::create(['id_photo'=>$id_photo, 'id_personne'=>$id_personne]);
         return back();
     }
-    public function deleteLike($id_activite,$id_photo,$id_personne){
+    public function deleteLike($id_activite,$id_photo,$id_personne){                 //suppression d'un like
         $like =  Liker::where('id_photo',$id_photo)
             ->where('id_personne',$id_personne)->first();
         $like->delete();
 
         return back();
     }
-    public function addCommentaire(Request $request,$id_activite,$id_photo,$id_personne){
+    public function addCommentaire(Request $request,$id_activite,$id_photo,$id_personne){                 //ajout d'un commentaire
         $com = new Commentaire();
         $com->id_photo=$id_photo;
         $com->id_personne=$id_personne;
@@ -100,7 +100,7 @@ class PhotoController extends Controller
         return back();
     }
 
-    public function deleteCommentaire($id_commentaire){
+    public function deleteCommentaire($id_commentaire){                 //supression d'un commentaire
         \App\Commentaire::where('id_commentaire', $id_commentaire)->first()->delete();
         return back();
     }
@@ -116,7 +116,7 @@ class PhotoController extends Controller
         return back();
     }
 
-    public function export($id_activite){
+    public function export($id_activite){                 //telechargement des phot de la galerie
         $galerie= Photo::select('urlImage')->where('id_activite',$id_activite)->get();
 //        return Storage::url($path);
        // $files = Storage::disk('local')->allFiles($path);

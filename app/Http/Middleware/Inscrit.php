@@ -14,7 +14,7 @@ class Inscrit
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next)                 //regarde si l'étudaitn est inscrit OU si l'utilisateur est un membre du cesi/bde
     {
         $activite=$request->id_activite;
         $personne=auth()->user()->id_personne;
