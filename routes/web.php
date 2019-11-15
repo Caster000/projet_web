@@ -13,7 +13,6 @@ Route::group(['prefix' => 'boutique'], function () {
 
     Route::get('/', 'BoutiqueController@index')->name('boutique');
     Route::get('/article/{numero}', 'BoutiqueController@article')->name('article');
-    Route::get('/{recherche}', 'BoutiqueController@rechercher')->name('rechercher');
     Route::post('/fetch', 'BoutiqueController@fetch')->name('fetch');
     Route::get('/{prix}/{categorie}', 'BoutiqueController@trierParCriteres')->name('trierParCriteres');
 
@@ -31,6 +30,8 @@ Route::group(['prefix' => 'boutique'], function () {
 
         });
     });
+
+    Route::get('/{recherche}', 'BoutiqueController@rechercher')->name('rechercher');
 });
 
 Route::group(['prefix' => 'activites'], function () {
@@ -90,25 +91,6 @@ Route::group(['prefix' => 'activites'], function () {
 
 
 });
-/*
-Route::group(['prefix'=>'administration'], function(){
-
-    Route::group(['prefix'=>'boutique'], function(){
-
-        Route::get('/', 'AdministrationController@index')->name('adminboutique');
-        Route::get('/article/{numero}', 'AdministrationController@article')->name('adminarticle');
-
-    });
-
-    Route::group(['prefix'=>'activites'], function(){
-
-        Route::get('/', 'AdministrationController@index')->name('adminactivites');
-        Route::get('/{numero}', 'AdministrationController@activiteNumero')->name('adminactivite');
-
-    });
-
-});*/
-
 
 Auth::routes();
 
