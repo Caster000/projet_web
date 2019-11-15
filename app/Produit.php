@@ -54,6 +54,7 @@ class Produit extends Model
     }
 
     public static function parCriteres($prix = null, $categorie = null){   // Retourne tous les produits appartenant à une catégorie
+        $produitsCategorie = '';
         if($categorie!=null || $prix = null) {
             if ($categorie != "Tous") {
                 $id_categorie = \App\Categorie::select('id_categorie')->where('categorie', $categorie)->first()->id_categorie;
@@ -90,6 +91,10 @@ class Produit extends Model
         } else{
             abort(415);
         }
+    }
+
+    public static function rechercher($recherche = ''){
+        return \App\Produit::where('nom', 'like', "%$recherche%")->orWhere('description', 'like', "%$recherche%")->get();
     }
 
 }
