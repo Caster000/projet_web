@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as BasicAuthenticatable;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * @property int $id_personne
@@ -25,7 +26,7 @@ use Illuminate\Auth\Authenticatable as BasicAuthenticatable;
  * @property Activite[] $activites_voter
  */
 class Personne extends Model implements Authenticatable
-{
+{ use Notifiable;
     use BasicAuthenticatable;
 
     public $timestamps = false;
@@ -120,5 +121,8 @@ class Personne extends Model implements Authenticatable
     {
         return $this->belongsToMany('App\Activite', 'voter', 'id_personne', 'id_activite');
     }
-
+    public function routeNotificationForSlack($notification)
+    {
+        return 'https://hooks.slack.com/services/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';
+    }
 }

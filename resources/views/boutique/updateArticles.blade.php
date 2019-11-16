@@ -1,6 +1,6 @@
 
 <?php
-$connect = mysqli_connect("localhost", "root", "", "projet_web");                  {{-- connection--}}
+$connect = mysqli_connect("localhost", "root", "", "projet_web");                 // connection
 $query = "SELECT * FROM produit ORDER BY id_produit DESC";
 $result = mysqli_query($connect, $query);
 ?>
@@ -92,9 +92,9 @@ $result = mysqli_query($connect, $query);
         </button>
     </a>
 </div>
-
+{{--script d'update en ajax --}}
 <script>
-    $(document).ready(function(){           {{--script d'update en ajax --}}
+    $(document).ready(function(){
         $('#add').click(function(){
             $('#insert').val("Insert");
             $('#insert_form')[0].reset();
@@ -102,9 +102,9 @@ $result = mysqli_query($connect, $query);
         $(document).on('click', '.edit_data', function(){
             var product_id = $(this).attr("id");
             $.ajax({
-                url:"/projet_web/resources/views/boutique/fetch.php",
+                url:"updateArticles/"+product_id,
                 method:"POST",
-                data:{product_id:product_id},
+                data:{"_token": "{{ csrf_token() }}",product_id:product_id},
                 dataType:"json",
                 success:function(data){
                     $('#nom').val(data.nom);

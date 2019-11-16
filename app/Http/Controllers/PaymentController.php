@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Commande;
+use App\Events\CommandePayer;
+use App\Notifications\Commander;
+use App\Personne;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use PayPal\Api\Amount;
@@ -77,8 +81,15 @@ class PaymentController extends Controller
         Session::put('paypal_payment_id', $payment->getId());
         if (isset($redirect_url)) {
             /** redirect to paypal **/
-            $commande= Commande::where('id_commande',$id_commande)->first();
+            $commande= Commande::where('id_commande',$id_commande)
+                ->join('personne','personne.id_personne','=','commande.id_personne')
+                ->first();        //on passe la commande a valider
             $commande->valider=1;
+            $user = Personne::first();
+            $user->notify(new Commander($commande));
+//            $user= auth()->user();
+//
+//            $user->notify(new Commander($commande));
             $commande->save();
             return Redirect::away($redirect_url);
         }

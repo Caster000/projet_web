@@ -1,5 +1,4 @@
 <?php
-
 Route::group(['prefix' => '/'], function () {
 
     Route::get('/', 'GeneralController@accueil')->name('accueil');
@@ -14,7 +13,7 @@ Route::group(['prefix' => 'boutique'], function () {
     Route::get('/', 'BoutiqueController@index')->name('boutique');
     Route::get('/article/{numero}', 'BoutiqueController@article')->name('article');
     Route::post('/fetch', 'BoutiqueController@fetch')->name('fetch');
-
+    Route::post('/updateArticles/{id_produit}', 'BoutiqueController@update' )->name('update');
     Route::group(['middleware' => 'auth'], function () {
 
         Route::group(['prefix'=>'panier'], function(){
@@ -46,6 +45,7 @@ Route::group(['prefix' => 'activites'], function () {
     Route::get('/evenementsPasses', 'ActivitesController@evenementsPasses')->name('evenementsPasses');
     Route::get('/evenementsDuMois', 'ActivitesController@evenementsDuMois')->name('evenementsDuMois');
     Route::get('/{numero}', 'ActivitesController@activiteNumero')->where('numero','[0-9]+')->name('activite');
+    Route::post('/updateActivites/{id_activite}', 'ActivitesController@update' )->name('update');
 
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/inscription/{id_activite}', 'ActivitesController@inscription')->name('inscription');

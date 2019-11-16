@@ -6,7 +6,11 @@ if(!empty($_POST))
     $message = '';
     $activite = mysqli_real_escape_string($connect, $_POST["activite"]);
     $description = mysqli_real_escape_string($connect, $_POST["description"]);
+    if(!empty($_POST["recurrence"])){
     $recurrence = mysqli_real_escape_string($connect, $_POST["recurrence"]);
+    }else{
+        $recurrence=NULL;
+    }
     $urlImage = mysqli_real_escape_string($connect, $_POST["urlImage"]);
     $date = mysqli_real_escape_string($connect, $_POST["date"]);
     $prix = mysqli_real_escape_string($connect, $_POST["prix"]);

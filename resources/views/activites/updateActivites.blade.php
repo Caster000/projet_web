@@ -1,7 +1,7 @@
 
 <?php
 $connect = mysqli_connect("localhost", "root", "", "projet_web");
-$query = "SELECT * FROM activite ORDER BY id_activite DESC";                 {{--  connection  --}}
+$query = "SELECT * FROM activite ORDER BY id_activite DESC";                 //  connection  --}}
 $result = mysqli_query($connect, $query);
 ?>
 
@@ -58,46 +58,47 @@ $result = mysqli_query($connect, $query);
             </div>
             <div class="modal-body">
                 <form method="post" id="insert_form">
+
                     <label>Nom de l'activite</label>
                     <input type="text" name="activite" id="activite" class="form-control" />
                     <br />
                     <label>Description</label>
                     <textarea name="description" id="description" class="form-control"></textarea>
                     <br />
-                    <div class="form-group ">
+                    <div class="form-group " >
                         <label for="recurrence">Réccurence de l'évenement : </label><br>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input " type="radio" name="recurrence" id="exampleRadios1" value="unique" checked>
+                            <input class="form-check-input " type="radio" name="recurrence" id="reccurence1" value="unique">
                             <label class="form-check-label" for="Unique">
                                 Unique
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="hebdomadaire" >
+                            <input class="form-check-input" type="radio" name="recurrence" id="reccurence2" value="hebdomadaire" >
                             <label class="form-check-label" for="Hebdomadaire">
                                 Hebdomadaire
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="mensuelle" >
+                            <input class="form-check-input" type="radio" name="recurrence" id="reccurence3" value="mensuelle" >
                             <label class="form-check-label" for="Mensuelle">
                                 Mensuelle
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="trimestrielle" >
+                            <input class="form-check-input" type="radio" name="recurrence" id="reccurence4" value="trimestrielle" >
                             <label class="form-check-label" for="Trimestrielle">
                                 Trimestrielle
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="semestrielle" >
+                            <input class="form-check-input" type="radio" name="recurrence" id="reccurence5" value="semestrielle" >
                             <label class="form-check-label" for="Semestrielle">
                                 Semestrielle
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="recurrence" id="exampleRadios1" value="annuelle" >
+                            <input class="form-check-input" type="radio" name="recurrence" id="reccurence6" value="annuelle" >
                             <label class="form-check-label" for="Annuelle">
                                 Annuelle
                             </label>
@@ -107,10 +108,10 @@ $result = mysqli_query($connect, $query);
                     <input type="text" name="urlImage" id="urlImage" class="form-control" />
                     <br />
                     <label>Date</label>
-                    <input type="date" name="date" max="3000-12-31" min="1000-01-01" class="form-control" required>
+                    <input type="date" name="date" max="3000-12-31" min="1000-01-01" class="form-control" id="date" required>
                     <br>
                     <label for="prix">Prix en € :</label>
-                    <input type="number" class="form-control" placeholder="Ex: 10,99" name="prix"required>
+                    <input type="number" class="form-control" placeholder="Ex: 10,99" id="prix" name="prix"required>
                     <br>
                     <input type="hidden" name="activite_id" id="activite_id" />
                     <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />
@@ -140,14 +141,35 @@ $result = mysqli_query($connect, $query);
         $(document).on('click', '.edit_data', function(){
             var activite_id = $(this).attr("id");
             $.ajax({
-                url:"/projet_web/resources/views/activites/fetchactivite.php",
+                url:"updateActivites/"+activite_id,
                 method:"POST",
-                data:{activite_id:activite_id},
+                data:{"_token": "{{ csrf_token() }}",activite_id:activite_id},
                 dataType:"json",
                 success:function(data){
+                    console.log(data);
                     $('#activite').val(data.activite);
                     $('#description').val(data.description);
-                    $('#recurrence').val(data.recurrence);
+                    switch (data.recurrence) {
+                        case 'Unique':
+                            $('#reccurence1').prop("checked", true);
+                            break;
+                        case 'Hebdomadaire':
+                            $('#reccurence2').prop("checked", true);
+                            break;
+                        case 'Mensuelle':
+                            $('#reccurence3').prop("checked", true);
+                            break;
+                        case 'Trimestrielle':
+                            $('#reccurence4').prop("checked", true);
+                            break;
+                        case 'Semestrielle':
+                            $('#reccurence5').prop("checked", true);
+                            break;
+                        case 'Anuelle':
+                            $('#reccurence6').prop("checked", true);
+                            break;
+                    }
+
                     $('#urlImage').val(data.urlImage);
                     $('#date').val(data.date);
                     $('#prix').val(data.prix);
@@ -185,7 +207,7 @@ $result = mysqli_query($connect, $query);
             }
             else
             {
-                $.ajax({                     {{--  permet l'insertion des donnees en ajax  --}}
+                $.ajax({                     //  permet l'insertion des donnees en ajax  --}}
                     url:"/projet_web/resources/views/activites/insertactivite.php",
                     method:"POST",
                     data:$('#insert_form').serialize(),

@@ -89,5 +89,11 @@ class BoutiqueController extends Controller
 
         }
     }
+    public function update( Request $request){
+        //dd( $request->id_produit);
+        $produit =Produit::where('id_produit',$request->id_produit)->first();
+        //dd( json_encode($produit));
+        echo json_encode($produit);
+    }
 
 }
