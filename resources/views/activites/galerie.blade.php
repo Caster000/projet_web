@@ -3,6 +3,9 @@
 @section('content')
 @section('title', 'Galerie')
 
+@section('styleParticulier')
+    <link rel="stylesheet" type="text/css" href="/projet_web/public/css/galerie.css">
+@endsection
 
 @if(auth()->user()->id_role===\App\Role::where('role','Etudiant')->first()->id_role)                {{--   check si l'utilisateur est un etudiant  --}}
     @if($galerie->isEmpty() || $galerie->whereIn('visible',0)->all())                       {{--  check si il y a des image ou des images visible   --}}
