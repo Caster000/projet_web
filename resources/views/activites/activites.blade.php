@@ -23,14 +23,16 @@
                                 <a href="{{ URL::action('ActivitesController@activiteNumero',  $activite->id_activite) }}">
                                     <img class="card-img-top" src="{{$activite->urlImage}}" alt="image d'activite {{$activite->id_activite}}">
                                 </a>
-                                <div class="card-block">
+                                <div class="card-block card-size-standard">
                                     <h4 class="card-title text-center">{{$activite->activite}}@if(($activite->prix)!=0), {{$activite->prix}}€@endif</h4>
                                     <div class="card-text">
                                         <div class="row" >
                                             <div class="col-6 text-left text-bold m-0 p-0" >{{$activite->recurrence}}</div>
                                             <div class="col-6 text-right m-0 p-0" >{{$activite->date}}</div>
                                         </div>
-                                        {{$activite->description}}
+                                        <div class="description mt-1">
+                                            {{$activite->description}}
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card-footer text-center">
