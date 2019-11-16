@@ -59,7 +59,9 @@
                     @if($activite->visible===1)
                         <div class="col-sm-6 col-md-4 col-lg-3 mt-2 mb-4 ">
                             <div class="card card-inverse card-info ">
-                                <img class="card-img-top" src="{{$activite->urlImage}}" alt="image d'activite {{$activite->id_activite}}">
+                                <a href="{{ URL::action('ActivitesController@activiteNumero',  $activite->id_activite) }}">
+                                    <img class="card-img-top" src="{{$activite->urlImage}}" alt="image d'activite {{$activite->id_activite}}">
+                                </a>
                                 <div class="card-block">
                                     <h4 class="card-title text-center">{{$activite->activite}}@if(($activite->prix)!=0), {{$activite->prix}}€@endif</h4>
                                     <div class="card-text">
