@@ -123,6 +123,6 @@ class Personne extends Model implements Authenticatable
     }
     public function routeNotificationForSlack($notification)
     {
-        return 'https://hooks.slack.com/services/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';
+        return 'https://hooks.slack.com/services/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';
     }
 }
