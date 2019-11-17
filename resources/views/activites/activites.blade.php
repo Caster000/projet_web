@@ -64,7 +64,7 @@
                                 <a href="{{ URL::action('ActivitesController@activiteNumero',  $activite->id_activite) }}">
                                     <img class="card-img-top" src="{{$activite->urlImage}}" alt="image d'activite {{$activite->id_activite}}">
                                 </a>
-                                <div class="card-block">
+                                <div class="card-block card-size-standard">
                                     <h4 class="card-title text-center">{{$activite->activite}}@if(($activite->prix)!=0), {{$activite->prix}}€@endif</h4>
                                     <div class="card-text">
                                         <div class="row" >

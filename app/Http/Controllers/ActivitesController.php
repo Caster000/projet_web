@@ -98,7 +98,7 @@ class ActivitesController extends Controller
 
         $activite =Activite::where('id_activite',$request->id_activite)->first();
         //dd( json_encode($activite));
-        echo json_encode(utf8_encode($activite));
+        echo json_encode($activite);
     }
 
 }
