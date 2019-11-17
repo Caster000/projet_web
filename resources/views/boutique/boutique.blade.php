@@ -66,7 +66,7 @@
                         <div class="card-block card-size-standard">
                             <h4 class="card-title">{{$article->nom}}, {{$article->prix}}€</h4>
                             <div class="hidden-scrollbar">
-                                <div class="card-text description">
+                                <div class="card-text inner-hidden-scrollbar">
                                     {{$article->description}}
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                 </select>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-10 pr-5 mr-3">
+            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-10 ml-2">
                 <div class="row justify-content-center">
                     <input id="ChampsRecherche" type="text" name="search" class="form-control col-6" placeholder="Recherche...">
                         <button id="Rechercher" type="submit" class="btn btn-secondary col-2 "><span class="fa fa-search"></span></button>
@@ -130,7 +130,7 @@
                     <div class="card-block card-size-standard">
                         <h4 class="card-title">{{$article->nom}}, {{$article->prix}}€</h4>
                         <div class="hidden-scrollbar">
-                            <div class="card-text description">
+                            <div class="card-text inner-hidden-scrollbar">
                                 {{$article->description}}
                             </div>
                         </div>

@@ -27,31 +27,35 @@
                                     <h4 class="card-title text-center">{{$activite->activite}}@if(($activite->prix)!=0), {{$activite->prix}}€@endif</h4>
                                     <div class="card-text">
                                         <div class="row" >
-                                            <div class="col-6 text-left text-bold m-0 p-0" >{{$activite->recurrence}}</div>
-                                            <div class="col-6 text-right m-0 p-0" >{{$activite->date}}</div>
+                                            <div class="col-xl-7 col-md-7 col-sm-6 text-left text-bold m-0 p-0">{{$activite->recurrence}}</div>
+                                            <div class="col-xl-5 col-md-5 col-sm-6 text-right m-0 p-0" >{{$activite->date}}</div>
                                         </div>
-                                        <div class="description mt-1">
-                                            {{$activite->description}}
+                                        <div class="hidden-scrollbar">
+                                            <div class="inner-hidden-scrollbar mt-1">
+                                                {{$activite->description}}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <a class="btn btn-info btn-sm" href="{{ URL::action('ActivitesController@activiteNumero',  $activite->id_activite) }}">En savoir plus</a>
-                                    @if($activite->visible===1)             {{-- Verification de la visibilité des activités --}}
-                                        @if((\App\Inscrire::where('id_activite', $activite->id_activite)->where('id_personne', auth()->user()->id_personne)->first()))             {{-- Check si inscrit --}}
-                                            <a class="btn btn-primary btn-sm" href="{{ URL::action('ActivitesController@desinscription',  $activite->id_activite) }}">Se désinscrire</a>             {{-- Possibilite de se desinscrire --}}
-                                        @else
-                                            <a class="btn btn-primary btn-sm" href="{{ URL::action('ActivitesController@inscription',  $activite->id_activite) }}">S'inscrire</a>             {{-- Possibilité de s'inscrire --}}
+                                    <div class="row justify-content-center">
+                                        <div class="ml-1 mr-1"><a class="btn btn-info btn-sm" href="{{ URL::action('ActivitesController@activiteNumero',  $activite->id_activite) }}">En savoir plus</a></div>
+                                        @if($activite->visible===1)             {{-- Verification de la visibilité des activités --}}
+                                            @if((\App\Inscrire::where('id_activite', $activite->id_activite)->where('id_personne', auth()->user()->id_personne)->first()))             {{-- Check si inscrit --}}
+                                            <div class="ml-1 mr-1"><a class="btn btn-primary btn-sm" href="{{ URL::action('ActivitesController@desinscription',  $activite->id_activite) }}">Se désinscrire</a> </div>            {{-- Possibilite de se desinscrire --}}
+                                            @else
+                                            <div class="ml-1 mr-1"><a class="btn btn-primary btn-sm" href="{{ URL::action('ActivitesController@inscription',  $activite->id_activite) }}">S'inscrire</a></div>             {{-- Possibilité de s'inscrire --}}
+                                            @endif
                                         @endif
-                                    @endif
-                                    @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)             {{-- check si appartient au bde pour afficher le panel d'admin --}}
-                                        <a class="btn btn-danger btn-sm" href="{{ URL::action('ActivitesController@delete',  $activite->id_activite) }}">Supprimer</a>
-                                    @endif
-                                    @if(!($activite->visible===1))             {{-- Panel admin de la visibilite --}}
-                                        <a class="btn btn-warning btn-sm col-lg-7 text-bold" href="{{route('activiteRendreVisible', $activite->id_activite)}}">Invisible</a>
-                                    @else
-                                        <a class="btn btn-warning btn-sm col-lg-3 text-bold" href="{{route('activiteRendreInvisible', $activite->id_activite)}}">Visible</a>
-                                    @endif
+                                        @if(auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role)             {{-- check si appartient au bde pour afficher le panel d'admin --}}
+                                            <div class="ml-1 mr-1"><a class="btn btn-danger btn-sm" href="{{ URL::action('ActivitesController@delete',  $activite->id_activite) }}">Supprimer</a></div>
+                                        @endif
+                                        @if(!($activite->visible===1))             {{-- Panel admin de la visibilite --}}
+                                            <div class="ml-1 mr-1 p-0 col-lg-7"><a class="btn btn-warning col-12 btn-sm text-bold" href="{{route('activiteRendreVisible', $activite->id_activite)}}">Invisible</a></div>
+                                        @else
+                                            <div class="ml-1 mr-1"><a class="btn btn-warning btn-sm text-bold" href="{{route('activiteRendreInvisible', $activite->id_activite)}}">Visible</a></div>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -68,21 +72,27 @@
                                     <h4 class="card-title text-center">{{$activite->activite}}@if(($activite->prix)!=0), {{$activite->prix}}€@endif</h4>
                                     <div class="card-text">
                                         <div class="row" >
-                                            <div class="col-6 text-left text-bold m-0 p-0" >{{$activite->recurrence}}</div>
-                                            <div class="col-6 text-right m-0 p-0" >{{$activite->date}}</div>
+                                            <div class="col-xl-7 col-md-7 col-sm-6 text-left text-bold m-0 p-0">{{$activite->recurrence}}</div>
+                                            <div class="col-xl-5 col-md-5 col-sm-6 text-right m-0 p-0" >{{$activite->date}}</div>
                                         </div>
-                                        {{$activite->description}}
+                                        <div class="hidden-scrollbar">
+                                            <div class="inner-hidden-scrollbar mt-1">
+                                                {{$activite->description}}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <a class="btn btn-info btn-sm" href="{{ URL::action('ActivitesController@activiteNumero',  $activite->id_activite) }}">En savoir plus</a>
-                                    @if(auth()->check())                 {{-- Possibilite de s'inscrire/desinscrire --}}
-                                        @if((\App\Inscrire::where('id_activite', $activite->id_activite)->where('id_personne', auth()->user()->id_personne)->first()))
-                                            <a class="btn btn-primary btn-sm" href="{{ URL::action('ActivitesController@desinscription',  $activite->id_activite) }}">Se désinscrire</a>
-                                        @else
-                                            <a class="btn btn-primary btn-sm" href="{{ URL::action('ActivitesController@inscription',  $activite->id_activite) }}">S'inscrire</a>
+                                    <div class="row justify-content-center">
+                                        <div class="ml-1 mr-1"><a class="btn btn-info btn-sm" href="{{ URL::action('ActivitesController@activiteNumero',  $activite->id_activite) }}">En savoir plus</a></div>
+                                        @if(auth()->check())                 {{-- Possibilite de s'inscrire/desinscrire --}}
+                                            @if((\App\Inscrire::where('id_activite', $activite->id_activite)->where('id_personne', auth()->user()->id_personne)->first()))
+                                                <div class="ml-1 mr-1"><a class="btn btn-primary btn-sm" href="{{ URL::action('ActivitesController@desinscription',  $activite->id_activite) }}">Se désinscrire</a></div>
+                                            @else
+                                                <div class="ml-1 mr-1"><a class="btn btn-primary btn-sm" href="{{ URL::action('ActivitesController@inscription',  $activite->id_activite) }}">S'inscrire</a></div>
+                                            @endif
                                         @endif
-                                    @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>

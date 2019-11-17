@@ -8,11 +8,52 @@
     object-fit: cover;
 }
 
-.description{
-    max-height: 4rem;
+.inner-hidden-scrollbar{
+    max-height: 3rem;
     overflow-y: auto;
 }
 
 .card-size-standard{
-    height: 7vw;
+    height: 9rem;
+    overflow-y: hidden;
+}
+
+@media (max-width: 1127px){
+    .card-size-standard{
+        height: 10rem;
+        overflow-y: hidden;
+    }
+    .inner-hidden-scrollbar{
+        max-height: 5rem;
+    }
+}
+
+@media (max-width: 575px){
+    .card-size-standard{
+        height: 11em;
+        overflow-y: hidden;
+    }
+    .inner-hidden-scrollbar{
+        max-height: 4rem;
+    }
+
+    .card-img-top {
+        width: 100%;
+        height: 30vw;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 767px){
+
+    .card-img-top {
+        height: 30vw;
+    }
+}
+
+@media (max-width: 575px){
+
+    .card-img-top {
+        height: 60vw;
+    }
 }
