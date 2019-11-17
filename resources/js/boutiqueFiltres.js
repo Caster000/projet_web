@@ -47,13 +47,15 @@ $(document).ready(function(){
 
     // Rechercher un article particulier
     $('#Rechercher').click(function(){
-        //console.log(document.getElementById("ChampsRecherche").value);
         var recherche = document.getElementById("ChampsRecherche").value;
 
         rechercher(recherche);
 
     });
 
+    $('#ChampsRecherche').keyup(function(){
+       rechercher(this.value);
+    });
 
 });
 
@@ -69,7 +71,6 @@ function trierCriteres(trierPrix, trierCategories){
 }
 
 function rechercher(recherche){
-
 
             $.ajax({
                 url: 'boutique/'+recherche,
@@ -101,10 +102,12 @@ function afficherDonnees(response){
                 '<div class=\"col-sm-6 col-md-4 col-lg-3 mt-2 mb-4\">'+
                 '<div class=\"card card-inverse card-info\">'+
                 '<img class=\"card-img-top\" src=\"'+url+'\" alt=\"'+nom+'\">'+
-                '<div class=\"card-block\">'+
+                '<div class=\"card-block card-size-standard\">'+
                 '<h4 class=\"card-title\">'+nom+', '+prix+'€</h4>'+
-                '<div class=\"card-text\">'+
+                '<div class=\"hidden-scrollbar\">'+
+                '<div class=\"card-text description\">'+
                 description+
+                '</div>'+
                 '</div>'+
                 '</div>'+
                 '<div class=\"card-footer text-center\">'+

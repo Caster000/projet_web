@@ -3,7 +3,7 @@
 @section('title','Boutique')
 
 @section('styleParticulier')
-    <link rel="stylesheet" type="text/css" href="../public/css/activite.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/boutique.css">
 @endsection
 
 @section('addScripts')
@@ -11,9 +11,7 @@
     <script>                                                    //script pour l'autocompletion
         $(document).ready(function() {
             $('#ChampsRecherche').keyup(function () {
-                //console.log('heu');
                 var query = $(this).val();
-                console.log(query);
                 if (query != '') {
                     var _token = $('input[name="_token"]').val();
                     $.ajax({
@@ -22,12 +20,11 @@
                         //dataType:'json',
                         data: {query: query, _token: _token},
                         success: function (response) {
-                            //console.log(response)
                             $('#rechercheList').fadeIn();
                             $('#rechercheList').html(response);
                         },
                         error: function (xhr, status, error) {
-                            console.log(error)
+                            //console.log(error)
                         }
                     })
                 }
@@ -35,6 +32,12 @@
             $(document).on('click','li', function(){
                 $('#ChampsRecherche').val($(this).text());
                 $('#rechercheList').fadeOut();
+            })
+            $(document).on('blur','#ChampsRecherche', function(){
+                $('#rechercheList').fadeOut();
+            })
+            $(document).on('focus','#ChampsRecherche', function(){
+                $('#rechercheList').fadeIn();
             })
         });
     </script>
@@ -60,10 +63,12 @@
                         <a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}">
                             <img class="card-img-top" src="{{$article->urlImage}}" alt="{{$article->id_produit}}">
                         </a>
-                        <div class="card-block">
+                        <div class="card-block card-size-standard">
                             <h4 class="card-title">{{$article->nom}}, {{$article->prix}}€</h4>
-                            <div class="card-text">
-                                {{$article->description}}
+                            <div class="hidden-scrollbar">
+                                <div class="card-text description">
+                                    {{$article->description}}
+                                </div>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -78,41 +83,42 @@
 
     <hr>
 
-    <div class="row justify-content-center">            {{--boutons pour tries + recherche --}}
+    <div class="row flex-center mt-4">
+        <div class="display-4 text-center text-danger p-md-3 m-4">
+            Tous nos articles
+        </div>
+    </div>
 
-            <div class="col-3 ml-4 mr-5 ">
+    <div class="row justify-content-center mb-5">            {{--boutons pour tris + recherche --}}
+
+            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
+                <div class="row justify-content-center">
                 <select id="trierPrix" class="btn btn-primary">
                     <option value="Aleatoire">Trier vos articles par prix</option>
                     <option value="Croissant">Trier par prix croissant</option>
                     <option value="Decroissant">Trier par prix décroissant</option>
                 </select>
+                </div>
             </div>
-            <div class="col-3 align-center mr-5">
+            <div class="col-xl-3 col-lg-3 col-md-2 col-sm-12">
+                <div class="row justify-content-center">
                 <select id="trierCategories" class="btn btn-primary">
                     <option value="Tous">Trier vos articles par catégorie</option>
                     @foreach($allCategories as $categorie)
                     <option value="{{$categorie->categorie}}">{{$categorie->categorie}}</option>
                     @endforeach
                 </select>
+                </div>
             </div>
-            <div class="col-3 ml-4 ">
-                <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-10 pr-5 mr-3">
+                <div class="row justify-content-center">
                     <input id="ChampsRecherche" type="text" name="search" class="form-control col-6" placeholder="Recherche...">
-                        <button id="Rechercher" type="submit" class="btn btn-secondary col-2 "><span
-                            class="fa fa-search"></span></button>
-
-
+                        <button id="Rechercher" type="submit" class="btn btn-secondary col-2 "><span class="fa fa-search"></span></button>
                 @csrf {{csrf_field()}}
-                </div><div id="rechercheList" ></div>
+                </div>
+                <div id="rechercheList" class="margin-rechercheList"></div>
             </div>
 
-
-    </div>
-
-    <div class="row flex-center">
-        <div class="display-4 text-center text-danger p-md-3">
-            Tous nos articles
-        </div>
     </div>
     <div class="row flex-center" id="affichageArticles">
         @foreach($allArticles as $article)           {{-- affichage des articles de base --}}
@@ -121,11 +127,12 @@
                     <a href="{{ URL::action('BoutiqueController@article',  $article->id_produit) }}">
                         <img class="card-img-top" src="{{$article->urlImage}}"  alt="{{$article->nom}}">
                     </a>
-                    <div class="card-block">
+                    <div class="card-block card-size-standard">
                         <h4 class="card-title">{{$article->nom}}, {{$article->prix}}€</h4>
-                        <div class="card-text">
-                            {{$article->description}}
-
+                        <div class="hidden-scrollbar">
+                            <div class="card-text description">
+                                {{$article->description}}
+                            </div>
                         </div>
                     </div>
                     <div class="card-footer text-center">

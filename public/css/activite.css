@@ -7,3 +7,12 @@
     height: 15vw;
     object-fit: cover;
 }
+
+.description{
+    max-height: 4rem;
+    overflow-y: auto;
+}
+
+.card-size-standard{
+    height: 7vw;
+}

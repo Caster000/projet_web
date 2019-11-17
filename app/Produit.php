@@ -94,6 +94,7 @@ class Produit extends Model
     }
 
     public static function rechercher($recherche = ''){
+        $recherche=htmlspecialchars($recherche);
         return \App\Produit::where('nom', 'like', "%$recherche%")->orWhere('description', 'like', "%$recherche%")->get();
     }
 

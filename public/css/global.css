@@ -67,3 +67,24 @@
 .red-hover:hover{
     color:red;
 }
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 300px; /*Marge de la taille du footer +10px supplémentaires*/
+}
+
+@media (max-width: 767px) {
+    body {
+        margin-bottom: 785px; /*Marge de la taille du footer +10px supplémentaires*/
+    }
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

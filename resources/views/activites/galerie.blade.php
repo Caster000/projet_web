@@ -30,12 +30,12 @@
                         alt="" class="img-fluid">
                 </div>
             </div>
+        </div>
     @else            {{--  Affichage des photos visible   --}}
                 <a href="{{ URL::action('ActivitesController@activiteNumero',  $activite->id_activite) }}"
                    class="btn btn-success mb-5">
                     <span class="fa fa-arrow-circle-left">&nbsp; Retour sur l'activité</span>
                 </a>
-        </div>
         <div class="row justify-content-center">
             @foreach($galerie as $photo)
                 @if($photo->visible==1)
@@ -73,6 +73,7 @@
                         alt="" class="img-fluid">
                 </div>
             </div>
+        </div>
     @else               {{--   bouton telecharger  --}}
                 <a href="{{ URL::action('ActivitesController@activiteNumero',  $activite->id_activite) }}"
                    class="btn btn-success mb-5">
@@ -82,7 +83,6 @@
                    class="btn btn-info mb-5">
                     <span class="fa fa-download">&nbsp; Télécharger les images</span>
                 </a>
-        </div>
         <div class="row justify-content-center">
             @foreach($galerie as $photo)            {{--   affichage des photos  --}}
                 @if($photo->visible==1 || auth()->user()->id_role===\App\Role::where('role','BDE')->first()->id_role || auth()->user()->id_role===\App\Role::where('role','CESI')->first()->id_role)

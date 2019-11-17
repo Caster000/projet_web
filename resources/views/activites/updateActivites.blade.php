@@ -146,7 +146,7 @@ $result = mysqli_query($connect, $query);
                 data:{"_token": "{{ csrf_token() }}",activite_id:activite_id},
                 dataType:"json",
                 success:function(data){
-                    console.log(data);
+                    //console.log(data);
                     $('#activite').val(data.activite);
                     $('#description').val(data.description);
                     switch (data.recurrence) {
