@@ -3,11 +3,11 @@
 @section('title','Boutique')
 
 @section('styleParticulier')
-    <link rel="stylesheet" type="text/css" href="../public/css/boutique.css">
+    <link rel="stylesheet" type="text/css" href="/css/boutique.css">
 @endsection
 
 @section('addScripts')
-    <script src="/projet_web/resources/js/boutiqueFiltres.js"></script>
+    <script src="../resources/js/boutiqueFiltres.js"></script>
     <script>                                                    //script pour l'autocompletion
         $(document).ready(function() {
             $('#ChampsRecherche').keyup(function () {

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('styleParticulier')
-    <link rel="stylesheet" type="text/css" href="../public/css/activite.css">
+    <link rel="stylesheet" type="text/css" href="/css/activite.css">
 @endsection
 
 @section('title', 'Activites')

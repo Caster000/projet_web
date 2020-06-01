@@ -6,7 +6,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-custom col-12 p-0">
             <div class="col-lg-2 col-sm-3 col-md-3">
-                <img class="mr-3" src="/projet_web//public/images/logo-CESI.png" width="170" alt="Logo CESI">
+                <img class="mr-3" src="/images/logo-CESI.png" width="170" alt="Logo CESI">
             </div>
             <a href="{{route('accueil')}}" class="navbar-brand col-3 ">
                 <!-- Logo Text -->
