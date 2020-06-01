@@ -3,7 +3,7 @@
 @section('title', 'Galerie')
 
 @section('styleParticulier')
-    <link rel="stylesheet" type="text/css" href="/projet_web/public/css/image_galerie.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/image_galerie.css"/>
 @endsection
 
 @section('content')
