@@ -63,8 +63,8 @@
                                 <li class="nav-item">
                                     <a href="{{ route('register') }}">Inscription</a>
                                 </li>
-                        @endif
-                    @endauth
+                            @endif
+                         @endauth
                 @endif
                 <!--
                     <li class="nav-item">
