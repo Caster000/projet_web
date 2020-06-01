@@ -4,7 +4,7 @@
 @section('title', 'Galerie')
 
 @section('styleParticulier')
-    <link rel="stylesheet" type="text/css" href="/projet_web/public/css/galerie.css">
+    <link rel="stylesheet" type="text/css" href="/css/galerie.css">
 @endsection
 
 @if(auth()->user()->id_role===\App\Role::where('role','Etudiant')->first()->id_role)                {{--   check si l'utilisateur est un etudiant  --}}
@@ -42,7 +42,7 @@
                     <div class="card col-lg-6 col-sm-4  mb-3 mr-4 ml-4 photo2 border border-dark">
                         <a href="{{ URL::action('PhotoController@image',  [$activite->id_activite,$photo->titre]) }}"
                            data-lity><img
-                                src="/projet_web/public/{{$photo->urlImage}}" class="card-img-top "
+                                src="{{$photo->urlImage}}" class="card-img-top "
                                 alt="{{$photo->titre}}">
                         </a>
                     </div>
