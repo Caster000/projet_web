@@ -10,7 +10,7 @@
 <div  class="row mt-1 ">
     <div class="col-7 ">
         {{--  Affichage de la photo + like  --}}
-        <img src="/projet_web/public/{{$galerie->urlImage}}" class="img-fluid photo" alt="{{$galerie->titre}}">
+        <img src="{{$galerie->urlImage}}" class="img-fluid photo" alt="{{$galerie->titre}}">
         @if((\App\Liker::where('id_photo', $galerie->id_photo)->where('id_personne', auth()->user()->id_personne)->first()) == null)
             <a href=" {{ route('like',  [$galerie->id_activite, $galerie->id_photo,auth()->user()->id_personne]) }}" class="btn btn-info m-3"><span class="fa fa-heart-o fa-lg"></span> </a>
         @else
