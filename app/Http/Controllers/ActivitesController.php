@@ -28,7 +28,7 @@ class ActivitesController extends Controller
         $activite->description= $request->description;
         $activite->visible= 1;
         $activite->recurrence= $request->recurrence;
-        $destinationPath = '../../storage/app/public/images/activite'; // upload path
+        $destinationPath = '/projet_web/storage/app/public/images/activite'; // upload path
         $file = $request->image->getClientOriginalName();
         $request->file('image')->storeAs('/images/activite', $file);
         $activite->urlImage = $destinationPath."/".$file;

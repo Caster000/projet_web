@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Campus;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -76,5 +77,10 @@ class RegisterController extends Controller
             'id_role'=>1,
             'id_campus'=>$data['campus'],
         ]);
+
+    }
+    protected function showRegistrationForm(){
+        $campus = Campus::all();
+        return view('auth.register',compact('campus'));
     }
 }
