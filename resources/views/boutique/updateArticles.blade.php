@@ -140,7 +140,7 @@ $result = mysqli_query($connect, $query);
             else
             {
                 $.ajax({
-                    url:"/projet_web/resources/views/boutique/insert.php",
+                    url:"../resources/views/boutique/insert.php",
                     method:"POST",
                     data:$('#insert_form').serialize(),
                     beforeSend:function(){

@@ -208,7 +208,7 @@ $result = mysqli_query($connect, $query);
             else
             {
                 $.ajax({                     //  permet l'insertion des donnees en ajax  --}}
-                    url:"/projet_web/resources/views/activites/insertactivite.php",
+                    url:"../resources/views/activites/insertactivite.php",
                     method:"POST",
                     data:$('#insert_form').serialize(),
                     beforeSend:function(){

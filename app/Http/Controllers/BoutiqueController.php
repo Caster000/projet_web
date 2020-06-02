@@ -39,7 +39,7 @@ class BoutiqueController extends Controller
         $produit->prix =$request->prix;
         $produit->nom =$request->nom;
         $produit->id_categorie =$request->categorie;
-        $destinationPath = '/projet_web/storage/app/public/images/articles'; // upload path
+        $destinationPath = '/storage/app/public/images/articles'; // upload path
         $file = $request->image->getClientOriginalName();
         $request->file('image')->storeAs('/images/articles', $file);
         $produit->urlImage = $destinationPath."/".$file;

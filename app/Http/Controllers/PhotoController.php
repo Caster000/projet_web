@@ -31,7 +31,7 @@ class PhotoController extends Controller
         $this->validate($request, ['file'=>'required|mimes:jpg,jpeg,png']);
         $file= $request->file;
         $name = time().$file->getClientOriginalName();
-        $destinationPath = '/projet_web/public/images/activite/';
+        $destinationPath = '/images/activite/';
        // $destinationPath = '/projet_web/storage/app/public/images/activite/'; // upload path
        // $request->file('file')->storeAs('/images/activite/', $file);
         $file->move('images/activite/'.$request->id_activite."/",$name);
