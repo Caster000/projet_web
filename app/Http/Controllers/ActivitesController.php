@@ -30,7 +30,7 @@ class ActivitesController extends Controller
         $activite->recurrence= $request->recurrence;
         $destinationPath = '../storage/app/public/images/activite'; // upload path
         $file = $request->image->getClientOriginalName();
-        $request->file('image')->storeAs('../storage/images/activite', $file);
+        $request->file('image')->storeAs('../storage/app/public/images/activite', $file);
         $activite->urlImage = $destinationPath."/".$file;
         $activite->date= $request->date;
         $activite->prix= $request->prix;
