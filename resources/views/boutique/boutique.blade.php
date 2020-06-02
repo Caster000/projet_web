@@ -7,7 +7,7 @@
 @endsection
 
 @section('addScripts')
-    <script src="../resources/js/boutiqueFiltres.js"></script>
+    <script src="/js/boutiqueFiltres.js"></script>
     <script>                                                    //script pour l'autocompletion
         $(document).ready(function() {
             $('#ChampsRecherche').keyup(function () {
