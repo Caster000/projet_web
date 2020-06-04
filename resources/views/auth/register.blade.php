@@ -78,7 +78,7 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
+                                <div class="font-weight-light font-italic ">8 caractères minimum dont 3 parmi 1 majuscule 1 minuscule 1 chiffre </div>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
